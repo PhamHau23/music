@@ -1,16 +1,20 @@
-import { useState } from 'react'
-import './App.css'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { publicRoutes } from './routes'
+import MainLayout from './components/layouts/MainLayout'
+
 
 function App() {
-  const[num, setNum] = useState(0)
-  const count = () => {
-    setNum(num + 1)
-  }
   return(
-    <>
-      <button onClick={count}>add</button>
-      <p>{num}</p>
-    </>
+    <Router>
+      <div className='App'>
+        <Routes>
+          {publicRoutes.map((route, i) => {
+            const Layout = route.layout || MainLayout
+            return (<Route key={i} path={route.path} element={<Layout><route.component/></Layout>}/>)
+          })}
+        </Routes>
+      </div>
+    </Router>
   )  
 }
 
