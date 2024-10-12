@@ -1,0 +1,59 @@
+
+.navbar-wrapper{
+    width: 240px;
+    position: relative;
+    background-color: var(--navbar-color);
+    height: 100vh;
+}
+
+.navbar-logo{
+    width: 240px;
+    height: 70px;
+    position: fixed;
+    align-items: center;
+    display: flex;
+}
+
+.logo{
+    background-image: url('https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 120px;
+    height: 40px;
+    display: inline-block;
+    margin-left: 22px;
+}
+
+.navbar-main{
+    margin-top: 80px;
+    
+    ul{
+        color: var(--main-t-color);;
+    }
+
+    a{
+        color: var(--main-t-color);
+    }
+
+    img{
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.navbar-item{
+    span{
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+
+        p{
+            margin-left: 10px;
+        }
+    }
+
+
+    &:hover{
+        background-color: var(--nav-hover-color);
+    }
+}

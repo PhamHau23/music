@@ -5,6 +5,9 @@
 :root{
     --primary-color: #262626;
     --bg-color: white;
+    --navbar-color: #231B2E;
+    --main-t-color: white;
+    --nav-hover-color: rgba(211, 211, 211, 0.093);
 }
 
 *{
@@ -18,9 +21,23 @@ html{
 body{
     font-family: "Roboto", sans-serif;
     font-size: 1.6rem;
+    height: 100%;
 }
 
 a{
     color: black;
     text-decoration: none;
+}
+
+ul{
+    padding-inline-start: unset;
+}
+
+li{
+    list-style-type: none;
+}
+
+.App{
+    display: flex;
+    width: 100%;
 }
