@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "~assets/*": [
+                "src/assets/*"
+            ],
+            "~components/*": [
+                "src/components/*"
+            ],
+            "~pages/*": [
+                "src/pages/*"
+            ],
+            "~routes/*": [
+                "src/routes/*"
+            ],
+            "~/*": [
+                "src/*"
+            ],
+            "~Thuvien/*": [
+                "src/pages/Thuvien/*"
+            ],
+            "~Zingchart/*": [
+                "src/pages/Zingchart/*"
+            ],
+            "~Radio": [
+                "src/pages/Radio/*"
+            ]
+        }
+    }
+}

@@ -1,13 +1,13 @@
 import Header from "../Header"
-import SideBar from "../sidebar"
+import SideBar from "../Sidebar"
 
 function MainLayout({children}){
     return(
-        <div>
-            <Header />
+        <>
             <SideBar />
+            <Header />
             {children}
-        </div>
+        </>
     )
 }
 
