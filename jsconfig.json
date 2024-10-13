@@ -25,6 +25,9 @@
             ],
             "~Radio": [
                 "src/pages/Radio/*"
+            ],
+            "~icon/*": [
+                "src/icon/*"
             ]
         }
     }
