@@ -28,11 +28,7 @@
     margin-top: 80px;
     
     ul{
-        color: var(--main-t-color);;
-    }
-
-    a{
-        color: var(--main-t-color);
+        color: var(--sub-t-color);
     }
 
     img{
@@ -49,11 +45,46 @@
 
         p{
             margin-left: 10px;
+            width: 140px;
         }
     }
 
+    i{
+        svg{
+            width: 24px;
+            height: 24px;
+            color: var(--sub-t-color);
+            display: none;
+        }
+
+    }
+
+    a{
+        color: var(--sub-t-color);
+    }
 
     &:hover{
         background-color: var(--nav-hover-color);
+        
+        svg{
+            display: block !important;
+        }
+
+        a{
+            color: var(--main-t-color) !important;
+        }
+    }
+}
+
+
+.focus{
+    background-color: var(--nav-hover-color);
+    
+    svg{
+        display: block !important;
+    }
+
+    a{
+        color: var(--main-t-color) !important;
     }
 }
