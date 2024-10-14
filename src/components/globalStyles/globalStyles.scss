@@ -11,6 +11,7 @@
     --sub-t-color: #D6D5D8;
     --nav-hover-color: rgba(211, 211, 211, 0.093);
     --pp-color: #8E46CD;
+    --grey-color: #4e4758;
 }
 
 *{
@@ -50,4 +51,31 @@ li{
     max-width: 100%;
     height: 1px;
     display: block;
+}
+
+.button{
+    text-align: center;
+    font-size: .9em;
+    border: 1px solid var(--main-t-color);
+    font-weight: 600;
+    display: flex;
+    margin: auto;
+    background-color: transparent;
+    padding: 5px 20px;
+    border-radius: 30px;
+}
+
+.live-tag{
+
+    position: relative;
+
+    &::after{
+        position: absolute;
+        content: "live";
+        right: 100px;
+        font-size: .8em;
+        background-color: red;
+        padding: 0 6px;
+        border-radius: 7px;
+    }
 }

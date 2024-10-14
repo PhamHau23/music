@@ -1,0 +1,22 @@
+.search-wrap{
+    width: 440px;
+    height: 40px;
+    color: var(--sub-t-color);
+    background-color: var(--grey-color);
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+
+    i{
+        margin-left: 10px;
+        margin-right: 5px;
+    }
+
+    input{
+        margin-right: 10px;
+        width: 100%;
+        background-color: transparent;
+        outline: transparent;
+        border-color: transparent;
+    }
+}

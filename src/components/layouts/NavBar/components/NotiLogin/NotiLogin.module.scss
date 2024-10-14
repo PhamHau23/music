@@ -16,17 +16,7 @@
     }
 
     button{
-        text-align: center;
         color: var(--main-t-color);
-        font-size: .9em;
-        border: 1px solid var(--main-t-color);
-        font-weight: 600;
-        display: flex;
-        margin: auto;
-        background-color: transparent;
-        padding: 5px 20px;
-        border-radius: 30px;
-
         &:hover{
             color: var(--sub-t-color);
         }
