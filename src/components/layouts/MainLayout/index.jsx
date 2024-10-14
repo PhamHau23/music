@@ -12,7 +12,7 @@ function MainLayout({children}){
             <Navbar />
             <div className={c('wrap')}>
                 <Header />
-                <div>
+                <div className={c('web-content')}>
                     {children}
                 </div>
             </div>

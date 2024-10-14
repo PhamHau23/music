@@ -1,0 +1,17 @@
+.nav-wrap{
+    margin-right: 30px;
+
+    span{
+        color: var(--grey-color);
+        font-size: 1.2em;
+        cursor: pointer;
+        
+        &:nth-last-child(1){
+            margin-left: 10px;
+        }
+    }
+}
+
+.active{
+    color: var(--main-t-color)
+}

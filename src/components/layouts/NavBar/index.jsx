@@ -58,7 +58,7 @@ function Navbar(){
                     
                     <li onClick={() => handleClick('radio')} className={c('navbar-item', linkStyle('radio'))}>
                         <Link title="radio" to={'/radio'}>
-                            <span>
+                            <span className={c('live-tag')}>
                                 {iconRadio}
                                 <p>Radio</p>
                                 <i>{playIcon}</i>

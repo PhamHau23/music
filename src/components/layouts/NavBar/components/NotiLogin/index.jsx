@@ -7,7 +7,7 @@ function NotiLogin(){
         <div className={styles.wrap}>
             <p>Đăng nhập để khám phá playlist dành riêng cho bạn</p>
             <Link to={'/login'}>
-                <button>ĐĂNG NHẬP</button>
+                <button className='button'>ĐĂNG NHẬP</button>
             </Link>
         </div>
     )

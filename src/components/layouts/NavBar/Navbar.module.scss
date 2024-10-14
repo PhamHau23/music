@@ -5,6 +5,7 @@
     background-color: var(--navbar-color);
     height: 100vh;
     z-index: 999;
+    overflow-y: hidden;
 }
 
 .navbar-logo{
