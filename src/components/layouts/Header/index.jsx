@@ -1,11 +1,13 @@
-import { Link } from "react-router-dom"
+import classNames from "classnames/bind"
+import styles from './Header.module.scss'
+
 
 function Header(){
+    const c = classNames.bind(styles)
+    
     return (
-        <header>
-            <Link to='/'>home</Link>
-            <Link to='/rank'>bang xep hang</Link>
-            <Link to='/login'>login</Link>
+        <header className={c('wrap')}>
+
         </header>
     )
 }

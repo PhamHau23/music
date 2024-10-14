@@ -3,12 +3,14 @@
 
 
 :root{
+    --web-color: #170F23;
     --primary-color: #262626;
     --bg-color: white;
     --navbar-color: #231B2E;
     --main-t-color: white;
     --sub-t-color: #D6D5D8;
     --nav-hover-color: rgba(211, 211, 211, 0.093);
+    --pp-color: #8E46CD;
 }
 
 *{
@@ -41,6 +43,7 @@ li{
 .App{
     display: flex;
     width: 100%;
+    background-color: var(--web-color);
 }
 
 .line{
