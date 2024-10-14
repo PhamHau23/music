@@ -1,10 +1,11 @@
 import classNames from "classnames/bind"
 import { Link } from "react-router-dom"
+import { useState } from "react"
 import styles from './Navbar.module.scss'
 import { iconKhamPha, iconRadio, iconThuVien, iconZingChart } from "~assets/icon"
-import { playIcon } from "~/icon"
-import { useRef, useState } from "react"
-import Zingchart from "~pages/Zingchart"
+import { categoryIcon, musicIcon, playIcon, starIcon } from "~/icon"
+import NotiLogin from "./components/NotiLogin"
+import CreatePlaylist from "./components/CreatePlaylist"
 
 const c = classNames.bind(styles)
 
@@ -22,8 +23,8 @@ function Navbar(){
 
     return (
         <aside className={c('navbar-wrapper')}>
-            <div className={c('navbar-logo')}>
-                <Link to={'/'} className={c('logo')}></Link>
+            <div onClick={() => handleClick('home')} className={c('navbar-logo')}>
+                <Link title="home" to={'/'} className={c('logo')}></Link>
             </div>
             <div className={c('navbar-main')}>
                 <ul>
@@ -65,8 +66,43 @@ function Navbar(){
                         </Link>
                     </li>
                 </ul>
-                <span className={c('line')} style={{margin: '0 20px', backgroundColor: '#858282'}}></span>
+                <span className='line' style={{margin: '0 20px', backgroundColor: '#858282'}}></span>
+                <ul>
+                    <li onClick={() => handleClick('newmusic')} className={c('navbar-item', linkStyle('newmusic'))}>
+                        <Link title="newmusic" to={'/newmusic'}>
+                            <span>
+                                {musicIcon}
+                                <p>Nhạc Mới</p>
+                                <i>{playIcon}</i>
+                            </span>
+                        </Link>
+                    </li>
+
+                    <li onClick={() => handleClick('category')} className={c('navbar-item', linkStyle('category'))}>
+                        <Link title="category" to={'/category'}>
+                            <span>
+                                {categoryIcon}
+                                <p>Chủ Đề & Thể Loại</p>
+                            </span>
+                        </Link>
+                    </li>
+
+                    <li onClick={() => handleClick('rank')} className={c('navbar-item', linkStyle('rank'))}>
+                        <Link title="rank" to={'/rank'}>
+                            <span>
+                                {starIcon}
+                                <p>Top 100</p>
+                            </span>
+                        </Link>
+                    </li>
+                </ul>
+                
+                <div>
+                    {<NotiLogin />}
+                    {<CreatePlaylist />}
+                </div>
             </div>
+
         </aside>
     )
 }

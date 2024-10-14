@@ -1,12 +1,21 @@
+import classNames from "classnames/bind"
+import styles from "./MainLayout.module.scss"
 import Header from "../Header"
-import SideBar from "../Sidebar"
+import Navbar from "../NavBar"
+
+const c = classNames.bind(styles)
+
 
 function MainLayout({children}){
     return(
         <>
-            <SideBar />
-            <Header />
-            {children}
+            <Navbar />
+            <div className={c('wrap')}>
+                <Header />
+                <div>
+                    {children}
+                </div>
+            </div>
         </>
     )
 }

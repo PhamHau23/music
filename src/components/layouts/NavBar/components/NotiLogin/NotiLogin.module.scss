@@ -1,0 +1,34 @@
+
+.wrap{
+    border: 1px solid transparent;
+    background-color: var(--pp-color);
+    border-radius: 10px;
+    margin: 20px;
+    padding: 5px 10px 10px 10px;
+
+    p{
+        text-align: center;
+        color: var(--main-t-color);
+        font-size: .8em;
+        font-weight: 600;
+        margin: 10px 0;
+        line-height: 1.5;
+    }
+
+    button{
+        text-align: center;
+        color: var(--main-t-color);
+        font-size: .9em;
+        border: 1px solid var(--main-t-color);
+        font-weight: 600;
+        display: flex;
+        margin: auto;
+        background-color: transparent;
+        padding: 5px 20px;
+        border-radius: 30px;
+
+        &:hover{
+            color: var(--sub-t-color);
+        }
+    }
+}

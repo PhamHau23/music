@@ -17,15 +17,6 @@
             "~/*": [
                 "src/*"
             ],
-            "~Thuvien/*": [
-                "src/pages/Thuvien/*"
-            ],
-            "~Zingchart/*": [
-                "src/pages/Zingchart/*"
-            ],
-            "~Radio": [
-                "src/pages/Radio/*"
-            ],
             "~icon/*": [
                 "src/icon/*"
             ]
