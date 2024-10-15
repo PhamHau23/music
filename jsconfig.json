@@ -19,6 +19,9 @@
             ],
             "~icon/*": [
                 "src/icon/*"
+            ],
+            "~ListMusic/*": [
+                "src/components/ListMusic/*"
             ]
         }
     }

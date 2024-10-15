@@ -3,16 +3,16 @@ import styles from "./MainLayout.module.scss"
 import Header from "../Header"
 import Navbar from "../NavBar"
 
-const c = classNames.bind(styles)
 
 
 function MainLayout({children}){
+    const c = classNames.bind(styles)
     return(
         <>
             <Navbar />
-            <div className={c('wrap')}>
+            <div className={c('mainLayout-wrap')}>
                 <Header />
-                <div className={c('web-content')}>
+                <div className={c('mainLayout-content')}>
                     {children}
                 </div>
             </div>
