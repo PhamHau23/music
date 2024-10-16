@@ -5,7 +5,7 @@
     background-color: var(--navbar-color);
     height: 100vh;
     z-index: 999;
-    overflow-y: hidden;
+    position: fixed;
 }
 
 .navbar-logo{
@@ -36,52 +36,5 @@
     img{
         width: 24px;
         height: 24px;
-    }
-}
-
-.navbar-item{
-    span{
-        display: flex;
-        align-items: center;
-        margin-left: 20px;
-
-        p{
-            margin-left: 10px;
-            width: 140px;
-        }
-    }
-
-    i{
-        svg{
-            width: 24px;
-            height: 24px;
-            color: var(--sub-t-color);
-            display: none;
-        }
-
-    }
-
-    a{
-        color: var(--sub-t-color);
-    }
-
-    &:hover{
-        svg{
-            display: block !important;
-        }
-
-        a{
-            color: var(--main-t-color) !important;
-        }
-    }
-}
-
-
-.focus{
-    background-color: var(--nav-hover-color);
-    border-left: 3px solid var(--pp-color);
-    
-    a{
-        color: var(--main-t-color) !important;
     }
 }

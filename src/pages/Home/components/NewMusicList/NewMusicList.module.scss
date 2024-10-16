@@ -1,0 +1,26 @@
+.Newmusic-select-list{
+    display: flex;
+    justify-content: space-between;
+
+    div{
+        display: flex;
+    }
+
+    button{
+        margin: 0 20px 0 0;
+        border-color: var(--grey-color);
+        font-size: .8em;
+        font-weight: 400;
+        justify-content: center;
+        width: 100px;
+    }
+
+    span{
+        display: flex;
+        align-items: end;
+        a{
+            color: var(--sub-t-color);
+            font-size: .8em;
+        }
+    }
+}

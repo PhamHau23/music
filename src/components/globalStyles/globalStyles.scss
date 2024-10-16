@@ -43,6 +43,7 @@ li{
 
 .App{
     display: flex;
+    position: relative;
     width: 100%;
     background-color: var(--web-color);
 }
@@ -63,6 +64,11 @@ li{
     background-color: transparent;
     padding: 5px 20px;
     border-radius: 30px;
+
+}
+
+.button.active{
+    background-color: var(--pp-color);
 }
 
 .live-tag{
