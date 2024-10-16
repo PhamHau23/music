@@ -22,6 +22,9 @@
             ],
             "~ListMusic/*": [
                 "src/components/ListMusic/*"
+            ],
+            "~Button/*": [
+                "src/components/Button/*"
             ]
         }
     }

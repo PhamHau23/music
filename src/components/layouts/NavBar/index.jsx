@@ -6,20 +6,13 @@ import { iconKhamPha, iconRadio, iconThuVien, iconZingChart } from "~assets/icon
 import { categoryIcon, musicIcon, playIcon, starIcon } from "~/icon"
 import NotiLogin from "./components/NotiLogin"
 import CreatePlaylist from "./components/CreatePlaylist"
+import NavItem from "./components/NavItem"
 
-const c = classNames.bind(styles)
 
 function Navbar(){
-
-    const [click, setClick] = useState(null)
-
-    const handleClick = (link) => {
-        setClick(link)
-    }
-
-    const linkStyle = (link) => {
-        return click === link ? 'focus' : ''
-    }
+    
+    const c = classNames.bind(styles)
+    const [item, setItem] = useState('')
 
     return (
         <aside className={c('navbar-wrapper')}>
@@ -28,73 +21,16 @@ function Navbar(){
             </div>
             <div className={c('navbar-main')}>
                 <ul>
-                    <li onClick={() => handleClick('thuvien')} className={c('navbar-item', linkStyle('thuvien'))}>
-                        <Link title="thư viện" to={'/thuvien'}>
-                            <span>
-                                {iconThuVien}
-                                <p>Thư Viện</p>
-                            </span>
-                        </Link>
-                    </li>
-
-                    <li onClick={() => handleClick('home')} className={c('navbar-item', linkStyle('home'))}>
-                        <Link title="home" to={'/'}>
-                            <span>
-                                {iconKhamPha}
-                                <p>Trang chủ</p>
-                            </span>
-                        </Link>
-                    </li>
-                    
-                    <li onClick={() => handleClick('zingchart')} className={c('navbar-item', linkStyle('zingchart'))}>
-                        <Link title="zingchart" to={'/zingchart'}>
-                            <span>
-                                {iconZingChart}
-                                <p>Zing chart</p>
-                                <i>{playIcon}</i>
-                            </span>
-                        </Link>
-                    </li>
-                    
-                    <li onClick={() => handleClick('radio')} className={c('navbar-item', linkStyle('radio'))}>
-                        <Link title="radio" to={'/radio'}>
-                            <span className={c('live-tag')}>
-                                {iconRadio}
-                                <p>Radio</p>
-                                <i>{playIcon}</i>
-                            </span>
-                        </Link>
-                    </li>
+                    {<NavItem path={'/thuvien'} name={'Thư Viện'} mainIcon={iconThuVien} item={item} setItem={setItem}/>}
+                    {<NavItem path={'/'} name={'Trang Chủ'} mainIcon={iconKhamPha} item={item} setItem={setItem}/>}
+                    {<NavItem path={'/zingchart'} name={'Zing Chart'} mainIcon={iconZingChart} subIcon={playIcon} item={item} setItem={setItem}/>}
+                    {<NavItem path={'/radio'} name={'Radio'} mainIcon={iconRadio} subIcon={playIcon} live={c('live-tag')} item={item} setItem={setItem}/>}
                 </ul>
                 <span className='line' style={{margin: '0 20px', backgroundColor: '#858282'}}></span>
                 <ul>
-                    <li onClick={() => handleClick('newmusic')} className={c('navbar-item', linkStyle('newmusic'))}>
-                        <Link title="newmusic" to={'/newmusic'}>
-                            <span>
-                                {musicIcon}
-                                <p>Nhạc Mới</p>
-                                <i>{playIcon}</i>
-                            </span>
-                        </Link>
-                    </li>
-
-                    <li onClick={() => handleClick('category')} className={c('navbar-item', linkStyle('category'))}>
-                        <Link title="category" to={'/category'}>
-                            <span>
-                                {categoryIcon}
-                                <p>Chủ Đề & Thể Loại</p>
-                            </span>
-                        </Link>
-                    </li>
-
-                    <li onClick={() => handleClick('rank')} className={c('navbar-item', linkStyle('rank'))}>
-                        <Link title="rank" to={'/rank'}>
-                            <span>
-                                {starIcon}
-                                <p>Top 100</p>
-                            </span>
-                        </Link>
-                    </li>
+                    {<NavItem path={'/newmusic'} name={'Bài Hát Mới'} mainIcon={musicIcon} subIcon={playIcon} item={item} setItem={setItem}/>}
+                    {<NavItem path={'/category'} name={'Chủ Đề && Thể Loại'} mainIcon={categoryIcon} item={item} setItem={setItem}/>}
+                    {<NavItem path={'/rank'} name={'Bảng Xếp Hạng'} mainIcon={starIcon} item={item} setItem={setItem}/>}
                 </ul>
                 
                 <div>
