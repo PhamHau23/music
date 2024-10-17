@@ -25,6 +25,12 @@
             ],
             "~Button/*": [
                 "src/components/Button/*"
+            ],
+            "~hooks/*": [
+                "src/hooks/*"
+            ],
+            "~useFetchData/*": [
+                "src/hooks/useFetchData/*"
             ]
         }
     }

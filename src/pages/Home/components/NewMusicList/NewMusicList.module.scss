@@ -1,4 +1,4 @@
-.Newmusic-select-list{
+.Newmusic-select{
     display: flex;
     justify-content: space-between;
 
@@ -22,5 +22,101 @@
             color: var(--sub-t-color);
             font-size: .8em;
         }
+    }
+}
+
+.Newmusic-list-wrap{
+    display: flex;
+    margin-top: 20px;
+    flex-wrap: wrap;
+
+    img{
+        width: 70px;
+        height: 70px;
+        border-radius: 3px;
+        margin-right: 10px;
+    }
+}
+
+.Newmusic-list{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 33.3333%;
+
+    &:nth-child(1){
+        padding-left: -10px;
+        padding-right: 10px;
+    }
+
+    &:nth-child(2){
+        padding: 0 10px;
+    }
+
+    &:nth-child(3){
+        padding-left: 10px;
+        padding-right: -10px;
+    }
+}
+
+.Newmusic-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    
+    &:hover{
+        cursor: pointer;
+        background-color: var(--nav-hover-color);
+        border-radius: 3px;
+
+        .other-option{
+            display: flex;
+            margin: auto 0;
+        }
+    }
+}
+
+.Newmusic-info{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+
+    .name-music{
+        color: var(--main-t-color);
+        font-size: 1em;
+        font-weight: 500;
+        margin: 5px 0;
+    }
+
+    .name-singer{
+        color: var(--sub-t-color);
+        opacity: .4;
+        font-size: .85em;
+        margin: 3px 0;
+    }
+
+    .time{
+        color: var(--sub-t-color);
+        opacity: .4;
+        font-size: .85em;
+        margin: 0;
+        margin: 3px 0;
+    }
+}
+
+.other-option{
+    width: 35px;
+    height: 35px;
+    background-color: var(--grey-color);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+    i{
+        color: var(--main-t-color);
+        line-height: 1;
+        font-size: 1em;
     }
 }
