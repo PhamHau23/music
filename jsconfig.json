@@ -31,6 +31,12 @@
             ],
             "~useFetchData/*": [
                 "src/hooks/useFetchData/*"
+            ],
+            "~MusicItem/*": [
+                "src/components/MusicItem/*"
+            ],
+            "~MusicList/*": [
+                "src/components/MusicList/*"
             ]
         }
     }
