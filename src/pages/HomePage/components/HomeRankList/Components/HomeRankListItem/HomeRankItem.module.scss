@@ -1,0 +1,67 @@
+.homeRankList-item{
+    padding: 15px;
+    border-radius: 5px;
+    background-color: var(--alpha-bg);
+    display: flex;
+    flex: 0 0 32.333%;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    position: relative;
+    
+    a{
+        display: flex;
+        width: 100%;
+    }
+    
+    p{
+        margin: unset;
+    }
+    
+    img{
+        border-radius: 5px;
+        width: 120px;
+        height: 120px;
+    }
+}
+
+
+.info{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+    
+
+    .top{
+        color: var(--main-t-color);
+        font-size: 1em;
+
+        :nth-child(2){
+            color: var(--t-color2);
+            font-size: .8em;
+        }
+    }
+
+    .bot{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: end;
+        color: var(--t-color2);
+
+        span{
+            font-size: 3em;
+            -webkit-text-stroke: 1px var(--color-text-stroke);
+            color: var(--t-color2);
+            color: transparent;
+            line-height: 1;
+            font-weight: 900;
+            opacity: .4;
+        }
+
+        p{
+            line-height: 1.5;
+        }
+    }
+}

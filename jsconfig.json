@@ -20,23 +20,11 @@
             "~icon/*": [
                 "src/icon/*"
             ],
-            "~ListMusic/*": [
-                "src/components/ListMusic/*"
-            ],
-            "~Button/*": [
-                "src/components/Button/*"
-            ],
             "~hooks/*": [
                 "src/hooks/*"
             ],
-            "~useFetchData/*": [
-                "src/hooks/useFetchData/*"
-            ],
-            "~MusicItem/*": [
-                "src/components/MusicItem/*"
-            ],
-            "~MusicList/*": [
-                "src/components/MusicList/*"
+            "~contexts/*": [
+                "src/contexts/*"
             ]
         }
     }
