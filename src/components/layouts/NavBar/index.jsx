@@ -26,7 +26,7 @@ function Navbar(){
                     {<NavItem path={'/zingchart'} name={'Zing Chart'} mainIcon={iconZingChart} subIcon={playIcon} item={item} setItem={setItem}/>}
                     {<NavItem path={'/radio'} name={'Radio'} mainIcon={iconRadio} subIcon={playIcon} live={c('live-tag')} item={item} setItem={setItem}/>}
                 </ul>
-                <span className='line' style={{margin: '0 20px', backgroundColor: '#858282'}}></span>
+                <span className='line' style={{margin: '0 20px'}}></span>
                 <ul>
                     {<NavItem path={'/newmusic'} name={'Bài Hát Mới'} mainIcon={musicIcon} subIcon={playIcon} item={item} setItem={setItem}/>}
                     {<NavItem path={'/category'} name={'Chủ Đề && Thể Loại'} mainIcon={categoryIcon} item={item} setItem={setItem}/>}
