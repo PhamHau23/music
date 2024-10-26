@@ -3,28 +3,28 @@
         "baseUrl": ".",
         "paths": {
             "~assets/*": [
-                "src/assets/*"
+                "D:/react_app/musicApp/music-app/src/assets/*"
             ],
             "~components/*": [
-                "src/components/*"
+                "D:/react_app/musicApp/music-app/src/components/*"
             ],
             "~pages/*": [
-                "src/pages/*"
+                "D:/react_app/musicApp/music-app/src/pages/*"
             ],
             "~routes/*": [
-                "src/routes/*"
+                "D:/react_app/musicApp/music-app/src/routes/*"
             ],
             "~/*": [
-                "src/*"
+                "D:/react_app/musicApp/music-app/src/*"
             ],
             "~icon/*": [
-                "src/icon/*"
+                "D:/react_app/musicApp/music-app/src/icon/*"
             ],
             "~hooks/*": [
-                "src/hooks/*"
+                "D:/react_app/musicApp/music-app/src/hooks/*"
             ],
             "~contexts/*": [
-                "src/contexts/*"
+                "D:/react_app/musicApp/music-app/src/contexts/*"
             ]
         }
     }

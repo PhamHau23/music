@@ -1,3 +1,96 @@
 .newMusicPage{
     position: relative;
+
+    .newMusicPage-title{
+        h1{
+            font-size: 3em !important;
+        }
+
+        span.NewMusicPage-icon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px;
+            padding: 10px;
+            background-color: #ffffff;
+            color: black;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+        }
+    }
+}
+
+.songList{
+    position: relative;
+
+    .topNumber{
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+    .songItem{
+        border-radius: 5px;
+        .songInfo{
+            img{
+                width: 40px;
+                height: 40px;
+                border-radius: 3px;
+                margin-right: 10px;
+            }
+
+            div{
+                p{
+                    margin: unset;
+                }
+
+                p.songName{
+                    margin-bottom: 7px;
+                    font-size: 1em;
+                    color: var(--t-color);
+
+                    &:hover{
+                        color: var(--pp-color) !important;
+                    }
+                }
+
+                p.songSinger{
+                    margin-top: 7px;
+                    font-size: .8em;
+                    color: var(--t-color2);
+
+                    &:hover{
+                        color: var(--pp-color) !important;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        
+        .songDesc{
+            p{
+                margin: unset;
+                font-size: .8em;
+                color: var(--t-color2);
+
+                &:hover{
+                    color: var(--pp-color) !important;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .songTime{
+            p{
+                margin: unset;
+                font-size: .8em;
+                color: var(--t-color2);
+            }
+        }
+
+        &:hover{
+            cursor: pointer;
+            background-color: var(--alpha-bg);
+        }
+    }
 }
