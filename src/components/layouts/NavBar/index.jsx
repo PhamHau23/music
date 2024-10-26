@@ -12,7 +12,7 @@ import NavItem from "./components/NavItem"
 function Navbar(){
     
     const c = classNames.bind(styles)
-    const [item, setItem] = useState('')
+    const [item, setItem] = useState('Trang Chủ')
 
     return (
         <aside className={c('navbar-wrapper')}>

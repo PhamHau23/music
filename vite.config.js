@@ -7,5 +7,12 @@ export default defineConfig({
   plugins: [
     react(),
     ViteAliases()
-  ]
+  ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler' // Sử dụng API mới
+      }
+    }
+  }
 })
