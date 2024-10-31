@@ -1,6 +1,6 @@
 @import 'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Roboto:wght@100;300;400;500;700&display=swap');
 
 :root{
     --web-color: #170F23;
@@ -8,6 +8,7 @@
     --bg-color: white;
     --navbar-color: #231B2E;
     --main-t-color: white;
+    --title-color: white;
     --t-color: #D6D5D8;
     --t-color2: hsla(0, 0%, 100%, 0.5);
     --nav-hover-color: rgba(211, 211, 211, 0.093);
@@ -17,6 +18,9 @@
     --alpha-bg: hsla(0, 0%, 100%, 0.1);
     --color-text-stroke: #fff;
     --line-color: #373737;
+    --top-1-color: red;
+    --top-2-color: green;
+    --top-3-color: pink;
 }
 
 *{
@@ -71,6 +75,7 @@ li{
     background-color: transparent;
     padding: 5px 20px;
     border-radius: 30px;
+    align-items: center;
 
 }
 
@@ -133,4 +138,46 @@ li{
 
 .over-hidden{
     overflow: hidden;
+}
+
+.relative{
+    position: relative;
+}
+
+.flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.t-al--center{
+    text-align: center;
+}
+
+@mixin titleStyle($frontSize){
+    font-size: $frontSize;
+    color: var(--title-color);
+}
+
+@mixin subText($frontSize){
+    font-size: $frontSize;
+    color: var(--t-color2);
+}
+
+@mixin boderIcon($padding){
+    padding: $padding;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.border-icon{
+    padding: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

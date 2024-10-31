@@ -1,0 +1,29 @@
+.genresPage-wrap{
+    position: relative;
+    width: 100%;
+
+    .genresPage-img{
+        margin-bottom: 20px;
+        
+        img{
+            width: 100%;
+            border-radius: 10px;
+            height: 350px;
+        }
+    }
+
+    .featured-list{
+        display: grid;
+        position: relative;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        width: 100%;
+
+        .featured-item{
+            position: relative;
+            width: 100%;
+            border: 1px solid red;
+            border-radius: 5px;
+        }
+    }
+}

@@ -1,6 +1,7 @@
 import classNames from "classnames/bind"
 import styles from "./MusicItem.module.scss" 
 import { dau3Cham } from "~/icon"
+import HoverSongAni from "src/components/HoverSongAni";
 
 function HomeNewMusicItem({data}){
 
@@ -19,8 +20,9 @@ function HomeNewMusicItem({data}){
                     item.map((subItem, subIndex) => (
                         <div key={subIndex} className={c('Newmusic-item')}>
                             <div className={c('flex')}>
-                                <div className={c('Newmusic-img')}>
-                                    <img src={subItem.img} alt="" />
+                                <div className={c('Newmusic-img', 'relative')}>
+                                    <img src={subItem.img} alt=""/>
+                                    <HoverSongAni />
                                 </div>
                             <div className={c('Newmusic-info')}>
                                 <a href="/" className={c('name-music')}>{subItem.musicName}</a>

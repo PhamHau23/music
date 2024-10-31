@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 import classNames from "classnames/bind"
 import styles from "./MainLayout.module.scss"
 import Header from "../Header"
@@ -6,6 +8,7 @@ import Navbar from "../NavBar"
 
 
 function MainLayout({children}){
+
     const c = classNames.bind(styles)
     return(
         <>

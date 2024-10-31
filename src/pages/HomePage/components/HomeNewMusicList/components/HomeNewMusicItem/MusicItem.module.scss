@@ -40,6 +40,14 @@
         background-color: var(--nav-hover-color);
         border-radius: 3px;
 
+        img{
+            opacity: .4;
+        }
+
+        span{
+            display: block;
+        }
+
         .other-option{
             display: flex;
             margin: auto 0;

@@ -25,6 +25,9 @@
             ],
             "~contexts/*": [
                 "D:/react_app/musicApp/music-app/src/contexts/*"
+            ],
+            "~configs/*": [
+                "D:/react_app/musicApp/music-app/src/configs/*"
             ]
         }
     }

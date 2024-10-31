@@ -4,7 +4,7 @@
     span{
         color: var(--grey-color);
         font-size: 1.2em;
-        cursor: pointer;
+        cursor: unset;
         
         &:nth-last-child(1){
             margin-left: 10px;
@@ -13,5 +13,6 @@
 }
 
 .active{
-    color: var(--main-t-color)
+    color: var(--main-t-color) !important;
+    cursor: pointer !important;
 }
