@@ -5,8 +5,9 @@ import RadioPage from '~pages/RadioPage'
 import ZingChartPage from '~pages/ZingChartPage'
 import ThuVienPage from '~pages/ThuVienPage'
 import LoginLayoutPage from '~components/layouts/Login'
-import CategoryPage from '~pages/CategoryPage'
+import GenresPage from 'src/pages/GenresPage'
 import NewMusicPage from '~pages/NewMusicPage'
+import SongPage from 'src/pages/SongPage'
 
 export const publicRoutes = [
     {path: '/', component: HomePage},
@@ -15,8 +16,9 @@ export const publicRoutes = [
     {path: '/thuvien', component: ThuVienPage},
     {path: '/radio', component: RadioPage},
     {path: '/zingchart', component: ZingChartPage},
-    {path: '/category', component: CategoryPage},
-    {path: '/newmusic', component: NewMusicPage}
+    {path: '/genres', component: GenresPage},
+    {path: '/newmusic', component: NewMusicPage},
+    {path: '/songs/:genreId', component: SongPage}
 ]
 
 export const privateRoutes = [

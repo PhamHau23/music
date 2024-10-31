@@ -1,0 +1,99 @@
+
+.songItem{
+    border-radius: 5px;
+
+    .topNumber{
+        -webkit-text-stroke: 1px var(--color-text-stroke);
+        color: transparent;
+        font-size: 2em;
+        font-weight: 700;
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+    
+    .songIconMusic{
+        display: flex;
+        align-items: center;
+        color: var(--t-color2);
+        font-size: .8em;
+        font-weight: 700;
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+    .songInfo{
+        .songItemImg{
+            img{
+                width: 40px;
+                height: 40px;
+                border-radius: 3px;
+                margin-right: 10px;
+            }
+        }
+
+        div{
+            p{
+                margin: unset;
+            }
+
+            p.songName{
+                margin-bottom: 7px;
+                font-size: 1em;
+                color: var(--t-color);
+
+                &:hover{
+                    color: var(--pp-color) !important;
+                }
+            }
+
+            p.songSinger{
+                margin-top: 7px;
+                font-size: .8em;
+                color: var(--t-color2);
+
+                &:hover{
+                    color: var(--pp-color) !important;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    
+    .songDesc{
+        p{
+            margin: unset;
+            font-size: .8em;
+            color: var(--t-color2);
+
+            &:hover{
+                color: var(--pp-color) !important;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .songTime{
+        p{
+            margin: unset;
+            font-size: .8em;
+            color: var(--t-color2);
+        }
+    }
+
+    &:hover{
+        cursor: pointer;
+        background-color: var(--alpha-bg);
+
+        img{
+            opacity: .4;
+        }
+
+        // span.topNumber{
+        //     display: block;
+        // }
+
+        span{
+            display: flex;
+        }
+    }
+}

@@ -1,8 +1,9 @@
 .category-item-wrap{
     display: flex;
-    overflow: hidden;
+    flex-wrap: wrap;
+    flex-direction: row;
+    column-gap: 23px;
     width: 100%;
-    justify-content: space-between;
 
     a{
         display: block;

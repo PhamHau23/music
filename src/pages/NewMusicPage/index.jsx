@@ -1,8 +1,9 @@
 import classNames from "classnames/bind"
 import styles from "./NewMusicPage.module.scss"
 import { playIcon1 } from "src/icon"
+import SongList from "src/components/SongList"
 
-const img = 'https://res.cloudinary.com/dtzqisgc8/image/upload/v1729928981/webMusic/t%E1%BA%A3i_xu%E1%BB%91ng_2_mauvvs.jpg'
+const api = 'http://localhost:3000/api/newmusic'
 
 export default function NewMusicPage(){
 
@@ -16,88 +17,8 @@ export default function NewMusicPage(){
                     <span className={c('NewMusicPage-icon')}>{playIcon1}</span>
                 </div>
             </div>
-            <div className={c('songList')}>
-                <div className={c('songItem')}>
-                    <div className="flex padding-all-10 al-center">
-                        <span className={c('topNumber')}>1</span>
-                        <div className={c('songInfo', 'flex flex-2')}>
-                            <img src={img} alt=""/>
 
-                            <div>
-                                <p className={c('songName')}>name</p>
-                                <p className={c('songSinger')}>sub-info</p>
-                            </div>
-                        </div>
-                        <div className={c('songDesc', 'flex flex-2')}>
-                            <p>desc</p>
-                        </div>
-                        <div className={c('songTime')}>
-                            <p>time</p>
-                        </div>
-                    </div>
-                    <span className="line" style={{margin: '0 5px'}}></span>
-                </div>
-                <div className={c('songItem')}>
-                    <div className="flex padding-all-10 al-center">
-                        <span className={c('topNumber')}>1</span>
-                        <div className={c('songInfo', 'flex flex-2')}>
-                            <img src={img} alt=""/>
-
-                            <div>
-                                <p className={c('songName')}>name</p>
-                                <p className={c('songSinger')}>sub-info</p>
-                            </div>
-                        </div>
-                        <div className={c('songDesc', 'flex flex-2')}>
-                            <p>desc</p>
-                        </div>
-                        <div className={c('songTime')}>
-                            <p>time</p>
-                        </div>
-                    </div>
-                    <span className="line" style={{margin: '0 5px'}}></span>
-                </div>
-                <div className={c('songItem')}>
-                    <div className="flex padding-all-10 al-center">
-                        <span className={c('topNumber')}>1</span>
-                        <div className={c('songInfo', 'flex flex-2')}>
-                            <img src={img} alt=""/>
-
-                            <div>
-                                <p className={c('songName')}>name</p>
-                                <p className={c('songSinger')}>sub-info</p>
-                            </div>
-                        </div>
-                        <div className={c('songDesc', 'flex flex-2')}>
-                            <p>desc</p>
-                        </div>
-                        <div className={c('songTime')}>
-                            <p>time</p>
-                        </div>
-                    </div>
-                    <span className="line" style={{margin: '0 5px'}}></span>
-                </div>
-                <div className={c('songItem')}>
-                    <div className="flex padding-all-10 al-center">
-                        <span className={c('topNumber')}>1</span>
-                        <div className={c('songInfo', 'flex flex-2')}>
-                            <img src={img} alt=""/>
-
-                            <div>
-                                <p className={c('songName')}>name</p>
-                                <p className={c('songSinger')}>sub-info</p>
-                            </div>
-                        </div>
-                        <div className={c('songDesc', 'flex flex-2')}>
-                            <p>desc</p>
-                        </div>
-                        <div className={c('songTime')}>
-                            <p>time</p>
-                        </div>
-                    </div>
-                    <span className="line" style={{margin: '0 5px'}}></span>
-                </div>
-            </div>
+            <SongList api={api}/>
         </div>
     )
 }

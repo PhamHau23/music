@@ -1,0 +1,159 @@
+@mixin subText(){
+    font-size: .9em;
+    color: var(--t-color2);
+}
+
+@mixin iconHover($content, $width){
+    &:hover{
+        &::after{
+            position: absolute;
+            content: $content;
+            display: flex;
+            padding: 5px;
+            background-color: var(--primary-color);
+            font-size: .8em;
+            color: var(--t-color);
+            border-radius: 3px;
+            font-weight: 400;
+            width: $width;
+            top: -40px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &::before{
+            position: absolute;
+            content: "";
+            border: 10px solid;
+            border-color: var(--primary-color) transparent transparent;
+            top: -15px;
+            display: block;
+        }
+    }
+}
+
+.SongPageInfo-wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .SongPage-img{
+        width: 300px;
+        height: 300px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+
+
+        img{
+            position: absolute;
+            width: 350px;
+            top: 0px;
+            left: -45px;
+            cursor: pointer;
+
+            &:hover{
+                transform: scale(1.1);
+                transition: ease-in .3s;
+            }
+        }
+
+        &:hover{
+            cursor: pointer;
+            background-color: var(--alpha-bg);
+    
+            img{
+                opacity: .4;
+            }
+    
+            span{
+                display: block;
+                left: 50%;
+                font-size: 2em;
+            }
+        }
+    }
+
+    .SongPage-title{
+        p{
+            font-size: 1.4em;
+            color: var(--title-color);
+            padding: unset;
+            font-weight: 600;
+            margin: 5px 40px;
+            line-height: 1.4em;
+        }
+    }
+
+    .SongPage-time{
+        margin: 5px 0;
+        span{
+            @include subText();
+        }
+    }
+
+    .SongPage-singer{
+        margin: 5px 0;
+        a{
+            @include subText();
+        }
+
+        a{
+            margin: 0 3px;
+            &:hover{
+                color: var(--pp-color);
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .SongPage-subscribe{
+        margin: 5px 0;
+
+        span{
+            @include subText()
+        }
+    }
+
+    .SongPage-button{
+        button{
+            padding: 10px 30px;
+            background-color: var(--pp-color);
+            color: var(--t-color);
+            border-color: transparent;
+            font-weight: 400;
+
+            i{
+                margin-right: 5px;
+                font-size: 1.1em;
+            }
+        }
+    }
+
+    .SongPage-icon{
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
+        span{
+            position: relative;
+            margin: 0 10px;
+            background-color: var(--alpha-bg);
+            padding: 18px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        :nth-child(1){
+            &:hover{
+                @include iconHover("thêm vào thư viện", 110px)
+            }
+        }
+
+        :nth-child(2){
+            &:hover{
+                @include iconHover("khác", 30px)
+            }
+        }
+    }
+}

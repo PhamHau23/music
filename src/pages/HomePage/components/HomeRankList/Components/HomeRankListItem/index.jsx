@@ -1,5 +1,6 @@
 import classNames from "classnames/bind"
 import styles from "./HomeRankItem.module.scss"
+import HoverSongAni from "src/components/HoverSongAni"
 
 const img = 'https://i.pinimg.com/564x/d7/79/50/d7795026c03f26b13cd751cfb062691b.jpg'
 
@@ -52,7 +53,10 @@ function HomeRankItem(){
                 arr.map((item, index) => (
                     <div className={c('homeRankList-item')} key={index}>
                         <a href="/">
-                            <img src={item.img} />
+                            <div className={c('img')}>
+                                <img src={item.img} />
+                                <HoverSongAni />
+                            </div>
 
                             <div className={c('info')}>
                                 <div className={c('top')}>

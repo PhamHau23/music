@@ -16,11 +16,31 @@
     p{
         margin: unset;
     }
+
+    .img{
+        position: relative;
+        height: 120px;
+        width: 120px;
+        z-index: 1;
+    }
     
     img{
         border-radius: 5px;
         width: 120px;
         height: 120px;
+    }
+
+    &:hover{
+        img{
+            opacity: .5;
+        }
+
+        span{
+            display: block;
+            color: white;
+            font-size: 1.3em;
+            z-index: 2;
+        }
     }
 }
 

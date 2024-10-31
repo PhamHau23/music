@@ -14,23 +14,28 @@
         overflow: hidden;
         border: 1px solid red;
         border-radius: 50%;
-        cursor: pointer;
+        background-color: red;
 
-        .mainImg{
+        img{
             position: absolute;
             width: 160px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-            background-color: aqua;
-
-            &:hover{
-                width: 180px;
-                transition: .5s;
-            }
         }
 
+        &:hover{
+            cursor: pointer;
+            background-color: var(--alpha-bg);
+
+            .mainImg{
+                transform: scale(1.1);
+                transition: .5s;
+                opacity: .5;
+            }
+
+            span{
+                display: block;
+                font-size: 1.5em;
+            }
+        }
     }
 
     .radioImg2{
@@ -43,7 +48,6 @@
         right: 0;
         bottom: 56px;
         text-align: unset;
-        z-index: 3;
         
         .subImg{
             width: 70px;

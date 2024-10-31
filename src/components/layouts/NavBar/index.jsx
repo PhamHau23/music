@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { useState } from "react"
 import styles from './Navbar.module.scss'
 import { iconKhamPha, iconRadio, iconThuVien, iconZingChart } from "~assets/icon"
-import { categoryIcon, musicIcon, playIcon, starIcon } from "~/icon"
+import { categoryIcon, musicIcon, starIcon, CirclePlayIcon } from "~/icon"
 import NotiLogin from "./components/NotiLogin"
 import CreatePlaylist from "./components/CreatePlaylist"
 import NavItem from "./components/NavItem"
@@ -23,13 +23,13 @@ function Navbar(){
                 <ul>
                     {<NavItem path={'/thuvien'} name={'Thư Viện'} mainIcon={iconThuVien} item={item} setItem={setItem}/>}
                     {<NavItem path={'/'} name={'Trang Chủ'} mainIcon={iconKhamPha} item={item} setItem={setItem}/>}
-                    {<NavItem path={'/zingchart'} name={'Zing Chart'} mainIcon={iconZingChart} subIcon={playIcon} item={item} setItem={setItem}/>}
-                    {<NavItem path={'/radio'} name={'Radio'} mainIcon={iconRadio} subIcon={playIcon} live={c('live-tag')} item={item} setItem={setItem}/>}
+                    {<NavItem path={'/zingchart'} name={'Zing Chart'} mainIcon={iconZingChart} subIcon={<CirclePlayIcon />} item={item} setItem={setItem}/>}
+                    {<NavItem path={'/radio'} name={'Radio'} mainIcon={iconRadio} subIcon={<CirclePlayIcon />} live={c('live-tag')} item={item} setItem={setItem}/>}
                 </ul>
                 <span className='line' style={{margin: '0 20px'}}></span>
                 <ul>
-                    {<NavItem path={'/newmusic'} name={'Bài Hát Mới'} mainIcon={musicIcon} subIcon={playIcon} item={item} setItem={setItem}/>}
-                    {<NavItem path={'/category'} name={'Chủ Đề && Thể Loại'} mainIcon={categoryIcon} item={item} setItem={setItem}/>}
+                    {<NavItem path={'/newmusic'} name={'Bài Hát Mới'} mainIcon={musicIcon} subIcon={<CirclePlayIcon />} item={item} setItem={setItem}/>}
+                    {<NavItem path={'/genres'} name={'Chủ Đề && Thể Loại'} mainIcon={categoryIcon} item={item} setItem={setItem}/>}
                     {<NavItem path={'/rank'} name={'Bảng Xếp Hạng'} mainIcon={starIcon} item={item} setItem={setItem}/>}
                 </ul>
                 

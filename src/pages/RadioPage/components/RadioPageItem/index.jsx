@@ -1,5 +1,6 @@
 import classNames from "classnames/bind"
 import styles from "./RadioPageItem.module.scss"
+import HoverSongAni from "src/components/HoverSongAni"
 
 const img1 = 'https://res.cloudinary.com/dtzqisgc8/image/upload/v1729841627/webMusic/xh9f21xsq8ithnqhsnxu.jpg'
 const img2 = 'https://res.cloudinary.com/dtzqisgc8/image/upload/v1729841628/webMusic/yerurei_on_twi_j3b4du.jpg'
@@ -59,6 +60,7 @@ function RadioPageItem(){
                 <div className={c('radioItem')} key={index}>
                     <div className={c('radioImg1')}>
                         <img src={item.img1} alt="" className={c('mainImg')}/>
+                        <HoverSongAni />
                     </div>
 
                     <div className={c('radioImg2')}>
