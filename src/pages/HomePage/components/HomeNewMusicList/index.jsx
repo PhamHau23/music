@@ -5,57 +5,99 @@ import Button from "~components/Button"
 import { useEffect, useState } from "react"
 import useFetchData from "~/hooks/useFetchData"
 import HomeNewMusicItem from "./components/HomeNewMusicItem"
+import SongListType2 from "src/components/SongListType2"
+import { SongDataProvider } from "src/contexts"
 
 const img = 'https://res.cloudinary.com/dtzqisgc8/image/upload/v1728973355/webMusic/z5931269727500_28c24b4c3b60750350935ecaab5763cc_nzks20.jpg'
 
 
 const arr = [
     {
-        img: img,
-        musicName: 'hope is the thing with feather',
-        singerName: 'robin',
-        timeUpdate: '1h',
+        songImg: img,
+        songName: 'Say Sóng',
+        songSinger: [
+            'Tăng Duy Tân',
+            'Binz'
+        ],
+        timeUpadated: '11/02/2024',
         type: 'vn'
     },
 
     {
-        img: img,
-        musicName: 'hope is the thing with feather',
-        singerName: 'robin',
-        timeUpdate: '1h',
+        songImg: img,
+        songName: 'Say Sóng',
+        songSinger: [
+            'Tăng Duy Tân',
+            'Binz'
+        ],
+        timeUpadated: '11/02/2024',
         type: 'vn'
     },
 
     {
-        img: img,
-        musicName: 'hope is the thing with feather',
-        singerName: 'robin',
-        timeUpdate: '1h',
+        songImg: img,
+        songName: 'Say Sóng',
+        songSinger: [
+            'Tăng Duy Tân',
+            'Binz'
+        ],
+        timeUpadated: '11/02/2024',
         type: 'vn'
     },
 
     {
-        img: img,
-        musicName: 'hope is the thing with feather',
-        singerName: 'robin',
-        timeUpdate: '1h',
+        songImg: img,
+        songName: 'Say Sóng',
+        songSinger: [
+            'Tăng Duy Tân',
+            'Binz'
+        ],
+        timeUpadated: '11/02/2024',
         type: 'vn'
     },
 
     {
-        img: img,
-        musicName: 'hope is the thing with feather',
-        singerName: 'robin',
-        timeUpdate: '1h',
-        type: 'korea'
+        songImg: img,
+        songName: 'Say Sóng',
+        songSinger: [
+            'Tăng Duy Tân',
+            'Binz'
+        ],
+        timeUpadated: '11/02/2024',
+        type: 'vn'
     },
 
     {
-        img: img,
-        musicName: 'hope is the thing with feather',
-        singerName: 'robin',
-        timeUpdate: '1h',
-        type: 'china'
+        songImg: img,
+        songName: 'Say Sóng',
+        songSinger: [
+            'Tăng Duy Tân',
+            'Binz'
+        ],
+        timeUpadated: '11/02/2024',
+        type: 'cn'
+    },
+
+    {
+        songImg: img,
+        songName: 'Say Sóng',
+        songSinger: [
+            'Tăng Duy Tân',
+            'Binz'
+        ],
+        timeUpadated: '11/02/2024',
+        type: 'cn'
+    },
+
+    {
+        songImg: img,
+        songName: 'Say Sóng',
+        songSinger: [
+            'Tăng Duy Tân',
+            'Binz'
+        ],
+        timeUpadated: '11/02/2024',
+        type: 'cn'
     }
 ]
 
@@ -92,7 +134,9 @@ function HomeNewMusicList(){
                 </div>
 
                 <div className={c('Newmusic-list-wrap')}>
-                    <HomeNewMusicItem data={music} />
+                    <SongDataProvider value={music}>
+                        <SongListType2 />
+                    </SongDataProvider>
                 </div>
             </div>
         </div>

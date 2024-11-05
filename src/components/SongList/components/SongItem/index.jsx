@@ -35,13 +35,13 @@ function SongItem({api, icon}){
                             <img src={item.img} alt=""/>
                             <HoverSongAni />
                         </div>
-                        <div>
-                            <p className={c('songName')}>{item.songName}</p>
-                            <p className={c('songSinger')}>{item.songSinger}</p>
+                        <div className="w-100">
+                            <p className={c('songName','t-line1')} style={{width: '95%'}}>{item.songName}</p>
+                            <p className={c('songSinger', 't-line1')} style={{width: '95%'}}>{item.songSinger}</p>
                         </div>
                     </div>
-                    <div className={c('songDesc', 'flex flex-2')}>
-                        <p>{item.songDesc}</p>
+                    <div className={c('songDesc', 'flex flex-2', 'w-100')}>
+                        <p className="t-line1" style={{width: '90%'}}>{item.songDesc}</p>
                     </div>
                     <div className={c('songTime')}>
                         <p>{item.songTime}</p>

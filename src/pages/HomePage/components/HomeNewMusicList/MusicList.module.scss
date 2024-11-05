@@ -26,13 +26,11 @@
 }
 
 .Newmusic-list-wrap{
-    display: flex;
     margin-top: 20px;
-    flex-wrap: wrap;
 
     img{
-        width: 70px;
-        height: 70px;
+        width: 70px !important;
+        height: 70px !important;
         border-radius: 3px;
         margin-right: 10px;
     }

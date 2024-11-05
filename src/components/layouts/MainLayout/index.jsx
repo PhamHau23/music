@@ -4,6 +4,7 @@ import classNames from "classnames/bind"
 import styles from "./MainLayout.module.scss"
 import Header from "../Header"
 import Navbar from "../NavBar"
+import MusicPlayer from "src/components/MusicPlayer"
 
 
 
@@ -19,6 +20,7 @@ function MainLayout({children}){
                     {children}
                 </div>
             </div>
+            <MusicPlayer />
         </>
     )
 }

@@ -5,6 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export { FaRegPlayCircle  as CirclePlayIcon} from "react-icons/fa";
 export { BsMusicNoteList as ListSongIcon } from "react-icons/bs";
+export { FaPause as PauseSongIcon } from "react-icons/fa6";
+export { FaForwardStep as NextSongIcon } from "react-icons/fa6";
+export { FaBackwardStep as BackSongIcon } from "react-icons/fa6";
+export { FaRandom as RandomSongIcon } from "react-icons/fa";
+export { RxLoop as LoopSongIcon } from "react-icons/rx";
+export { FaPlay as PlaySongIcon } from "react-icons/fa6";
 export const musicIcon = <FontAwesomeIcon icon={faMusic} />
 export const starIcon = <FontAwesomeIcon icon={faStar} />
 export const categoryIcon = <FontAwesomeIcon icon={faIcons} />

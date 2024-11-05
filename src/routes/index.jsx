@@ -8,6 +8,7 @@ import LoginLayoutPage from '~components/layouts/Login'
 import GenresPage from 'src/pages/GenresPage'
 import NewMusicPage from '~pages/NewMusicPage'
 import SongPage from 'src/pages/SongPage'
+import GenrePage from 'src/pages/GenrePage'
 
 export const publicRoutes = [
     {path: '/', component: HomePage},
@@ -18,7 +19,8 @@ export const publicRoutes = [
     {path: '/zingchart', component: ZingChartPage},
     {path: '/genres', component: GenresPage},
     {path: '/newmusic', component: NewMusicPage},
-    {path: '/songs/:genreId', component: SongPage}
+    {path: '/songs/:genreId', component: SongPage},
+    {path: '/genres/:genre', component: GenrePage}
 ]
 
 export const privateRoutes = [

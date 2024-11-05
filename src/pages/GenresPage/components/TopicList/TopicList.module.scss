@@ -1,0 +1,42 @@
+@use "../../GenresPage.module.scss";
+
+.topicList{
+
+    margin-bottom: 20px;
+    
+    @include GenresPage.genresPageList1;
+    .topicItem{
+        
+        @include GenresPage.genresPageItem1(left);
+        align-items: unset;
+        .topicInfo{
+
+            position: absolute;
+            bottom: 70px;
+            margin-left: 20px;
+            display: flex;
+            width: 100%;
+
+            p{
+                margin: unset;
+                top: -20px;
+            }
+
+            img{
+                margin-top: 10px;
+                border-radius: 5px;
+                width: 45px;
+                height: 45px;
+                transform: scale(1) !important;
+
+                &:nth-child(2){
+                    left: 50px;
+                }
+
+                &:nth-last-child(1){
+                    left: 100px;
+                }
+            }
+        }
+    }
+}

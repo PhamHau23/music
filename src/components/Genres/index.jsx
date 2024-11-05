@@ -10,7 +10,7 @@ function Genres({title, data}){
     return(
         <div className={c('Category-wrap')}>
             <h1>{title}</h1>
-            <Genre data={data}/>
+            {data && <Genre data={data}/>}
         </div>
     )
 }
