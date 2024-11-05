@@ -5,6 +5,7 @@
 :root{
     --web-color: #170F23;
     --primary-color: #262626;
+    --musicPlayer-color: #130C1C;
     --bg-color: white;
     --navbar-color: #231B2E;
     --main-t-color: white;
@@ -40,6 +41,18 @@ body{
 a{
     color: black;
     text-decoration: none;
+}
+
+.a-style1{
+    font-size: 0.8em;
+    color: var(--t-color2);
+    margin-right: 3px;
+
+    &:hover{
+        color: var(--pp-color);
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }
 
 ul{
@@ -180,4 +193,39 @@ li{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.t-line1{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 70%;
+}
+
+.t-line2{
+    display: -webkit-box;        
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    line-height: 1.5;
+    max-height: calc(1.5em * 2);
+    width: 70%;
+}
+
+.w-100{
+    width: 100%;
+}
+
+.carousel-item-padding{
+    padding: 0 10px;
+}
+
+.carouselTrack{
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carouselContent{
+    overflow: hidden;
 }

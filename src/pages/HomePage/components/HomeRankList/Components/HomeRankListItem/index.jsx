@@ -2,55 +2,14 @@ import classNames from "classnames/bind"
 import styles from "./HomeRankItem.module.scss"
 import HoverSongAni from "src/components/HoverSongAni"
 
-const img = 'https://i.pinimg.com/564x/d7/79/50/d7795026c03f26b13cd751cfb062691b.jpg'
-
-const day = new Date
-
-const upLoadDate = `${day.getUTCDate()}/${day.getUTCMonth() + 1}/${day.getUTCFullYear()}`
-
-const arr = [
-    {
-        img,
-        songName: 'hope is the thing with feather',
-        singerName: 'robin',
-        top: 1,
-        upLoadDate
-    },
-
-    {
-        img,
-        songName: 'hope is the thing with feather',
-        singerName: 'robin',
-        top: 2,
-        upLoadDate
-    },
-
-    {
-        img,
-        songName: 'hope is the thing with feather',
-        singerName: 'robin',
-        top: 3,
-        upLoadDate
-    },
-
-    {
-        img,
-        songName: 'hope is the thing with feather',
-        singerName: 'robin',
-        top: 4,
-        upLoadDate
-    }
-]
-
-
-function HomeRankItem(){
+function HomeRankItem({data}){
 
     const c = classNames.bind(styles)
 
     return (
         <div className="flex col-gap-18 over-hidden">
             {
-                arr.map((item, index) => (
+                data.map((item, index) => (
                     <div className={c('homeRankList-item')} key={index}>
                         <a href="/">
                             <div className={c('img')}>
@@ -58,10 +17,10 @@ function HomeRankItem(){
                                 <HoverSongAni />
                             </div>
 
-                            <div className={c('info')}>
-                                <div className={c('top')}>
-                                    <p>{item.songName}</p>
-                                    <p>{item.singerName}</p>
+                            <div className={c('info', 'w-100')}>
+                                <div className={c('top', 'w-100')}>
+                                    <p className="t-line1" style={{width: '100%'}}>{item.songName}</p>
+                                    <p className="t-line2" style={{width: '100%'}}>{item.singerName}</p>
                                 </div>
 
                                 <div className={c('bot')}>

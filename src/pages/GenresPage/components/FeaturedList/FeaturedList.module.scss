@@ -1,0 +1,17 @@
+@use "../..//GenresPage.module.scss";
+
+.featured-wrap{
+
+    .featured-list{
+        @include GenresPage.genresPageList1;
+
+        .featured-item{
+            @include GenresPage.genresPageItem1(center);
+        }
+    }
+
+    button{
+        margin-top: 20px;
+        font-weight: 400;
+    }
+}

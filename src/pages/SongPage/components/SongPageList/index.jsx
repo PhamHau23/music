@@ -11,7 +11,7 @@ function SongPageList(){
         <div className="flex-2">
             <div className={c('SongPageList-tilte','flex')}>
                 <span>{<ListSongIcon />}</span>
-                <span className="flex-2">BÀI HÁT</span>
+                <span className="flex-2" style={{marginRight: '10px'}}>BÀI HÁT</span>
                 <span className="flex-2">ALBUM</span>
                 <span>THỜI GIAN</span>
             </div>

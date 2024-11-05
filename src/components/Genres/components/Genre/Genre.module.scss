@@ -5,21 +5,43 @@
     column-gap: 23px;
     width: 100%;
 
+    .item{
+        margin-bottom: 10px;
+    }
+
     a{
         display: block;
         width: 220px;
         height: 220px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+
+        &:hover{
+            img{
+                opacity: .5;
+                transition: .5s;
+                transform: scale(1.1);
+            }
+
+            span{
+                display: flex;
+                color: white;
+                left: 50%;
+                font-size: 2em;
+            }
+        }
     }
 
     img{
+        border-radius: 5px;
         width: 100%;
         height: 100%;
-        max-height: 100%;
-        border-radius: 5px;
+        position: absolute;
     }
 
     p{
-        margin: 10px 0;
+        margin: 10px 0 0 0;
         color: var(--t-color2);
     }
 }

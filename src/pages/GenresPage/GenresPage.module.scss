@@ -1,3 +1,46 @@
+@mixin genresPageList1(){
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(4 , 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+@mixin genresPageItem1($textAlign){
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 150px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    img{
+        position: absolute;
+        width: 100%;
+        height: 160px;
+        z-index: 1;
+    }
+
+    p{
+        position: absolute;
+        font-size: 1.4em;
+        font-weight: 600;
+        width: 100%;
+        z-index: 2;
+        text-align: $textAlign;
+    }
+
+    &:hover{
+        img{
+            transform: scale(1.1);
+            transition: .5s;
+        }
+    }
+}
+
+
 .genresPage-wrap{
     position: relative;
     width: 100%;
@@ -9,21 +52,6 @@
             width: 100%;
             border-radius: 10px;
             height: 350px;
-        }
-    }
-
-    .featured-list{
-        display: grid;
-        position: relative;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        width: 100%;
-
-        .featured-item{
-            position: relative;
-            width: 100%;
-            border: 1px solid red;
-            border-radius: 5px;
         }
     }
 }

@@ -1,0 +1,9 @@
+@use "../../GenresPage.module.scss";
+
+.nationList{
+    @include GenresPage.genresPageList1;
+}
+
+.nationItem{
+    @include GenresPage.genresPageItem1(center)
+}
