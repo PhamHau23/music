@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import classNames from "classnames/bind"
 import styles from "./FeaturedList.module.scss"
-import Button from "src/components/Button"
 import DpAllItem from "../DpAllBtn"
 
 const img = 'https://res.cloudinary.com/dtzqisgc8/image/upload/v1730361708/t%E1%BA%A3i_xu%E1%BB%91ng_3_ap7x4p.jpg'

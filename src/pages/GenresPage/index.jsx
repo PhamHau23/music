@@ -4,12 +4,8 @@ import FeaturedList from "./components/FeaturedList"
 import NationList from "./components/NationList"
 import TopicList from "./components/TopicList"
 import Genres from "src/components/Genres"
-import { NationProvider } from "src/contexts"
 const img = 'https://res.cloudinary.com/dtzqisgc8/image/upload/v1730361708/t%E1%BA%A3i_xu%E1%BB%91ng_3_ap7x4p.jpg'
 
-const api = [
-    
-]
 
 function GenresPage(){
     const c = classNames.bind(styles)
