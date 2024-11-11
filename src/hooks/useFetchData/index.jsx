@@ -4,9 +4,7 @@ function useFetchData(url){
     const [data, setData] = useState(url)
 
     useEffect(() => {
-        if(url){
-            setData(url)
-        }
+        setData(url)
     },[url])
 
     return data

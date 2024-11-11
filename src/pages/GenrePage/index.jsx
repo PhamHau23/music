@@ -1,4 +1,4 @@
-import { useLocation, useParams } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 import classNames from "classnames/bind"
 import styles from "./GenrePage.module.scss"
 import SongListType2 from "src/components/SongListType2"
@@ -29,15 +29,12 @@ const data = [
     }
 ]
 
-const img1 = 'https://photo-zmp3.zmdcdn.me/cover/9/5/8/e/958e9994c6720513cc84a7f7a478020b.jpg'
-const img = 'https://res.cloudinary.com/dtzqisgc8/image/upload/v1729928981/webMusic/t%E1%BA%A3i_xu%E1%BB%91ng_2_mauvvs.jpg'
 
 const newData = genresConfig.map((item) => item.genres)
 
 function GenrePage(){
 
     const c = classNames.bind(styles)
-    const {genre} = useParams()
     const location = useLocation()
 
     console.log(newData)
@@ -45,8 +42,8 @@ function GenrePage(){
     return(
         <div className={c('genrePage')}>
             <div className={c('img')}>
-                <img src={location.state.nationImg} alt="" />
-                <p>{location.state.nationName}</p>
+                <img src={location.state.img} alt="" />
+                <p>{location.state.tenQuocGia.toUpperCase()}</p>
             </div>
             <div>
                 <Genres title={'Nổi Bật'} data={newData[0]}/>
