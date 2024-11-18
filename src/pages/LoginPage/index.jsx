@@ -9,7 +9,7 @@ function LoginPage(){
 
   const c = classNames.bind(styles)
   
-  const data = useFetchApi('eu/the-loai')
+  const data = useFetchApi('vn/the-loai')
   console.log(data)
 
 

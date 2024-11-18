@@ -1,6 +1,6 @@
 import classNames from "classnames/bind"
 import styles from "./CarouselContainer.module.scss"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { angleLeft, angleRight } from "~/icon"
 
 function CarouselContainer({children}){
@@ -9,10 +9,17 @@ function CarouselContainer({children}){
     const [index, setIndex] = useState(0);
     const totalItems = React.Children.count(children);
 
-    console.log(index)
-
     const nextSlide = () => setIndex((prev) => (prev + 1) % totalItems);
     const prevSlide = () => setIndex((prev) => (prev - 1 + totalItems) % totalItems);
+
+    useEffect(() => {
+        const autoSlide = setInterval(() => {
+            if(index !== totalItems - 3) nextSlide()
+            if(index === totalItems - 3) setIndex(0)
+        }, 5000)
+
+        return () => clearInterval(autoSlide)
+    })
 
     return(
         <div className={c('carousel-wrap')}>
