@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 const api = import.meta.env.VITE_API_URL
-const test = import.meta.env.VITE_NAME
 
 function useFetchApi(url){
 
