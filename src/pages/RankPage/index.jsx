@@ -15,11 +15,7 @@ function RankPage(){
             </div>
 
             <div>
-                {genresConfig.map((item) => (
-                        <GenreList key={item.nationId}> 
-                            {<Genres title={item.nationName} data={item.genres}/>} 
-                        </GenreList>)
-                    )}
+                
             </div>
         </div>
     )
