@@ -11,6 +11,8 @@ export { FaBackwardStep as BackSongIcon } from "react-icons/fa6";
 export { FaRandom as RandomSongIcon } from "react-icons/fa";
 export { RxLoop as LoopSongIcon } from "react-icons/rx";
 export { FaPlay as PlaySongIcon } from "react-icons/fa6";
+export { FaRegEye as ShowPassIcon } from "react-icons/fa";
+export { FaRegEyeSlash as HiddenPassIcon } from "react-icons/fa";
 export const musicIcon = <FontAwesomeIcon icon={faMusic} />
 export const starIcon = <FontAwesomeIcon icon={faStar} />
 export const categoryIcon = <FontAwesomeIcon icon={faIcons} />

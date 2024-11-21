@@ -14,7 +14,6 @@ export const publicRoutes = [
     {path: '/', component: HomePage},
     {path: '/rank', component: RankPage},
     {path: '/login', component: LoginPage, layout: LoginLayoutPage},
-    {path: '/thuvien', component: ThuVienPage},
     {path: '/radio', component: RadioPage},
     {path: '/zingchart', component: ZingChartPage},
     {path: '/genres', component: GenresPage},
@@ -24,5 +23,5 @@ export const publicRoutes = [
 ]
 
 export const privateRoutes = [
-
+    {path: '/thuvien', component: ThuVienPage}
 ]

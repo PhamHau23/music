@@ -68,7 +68,7 @@ function HomeRankList(){
     return(
         <div className={c('HomeRankList','col-gap-18')}>
             <h1>BXH Nhạc Mới</h1>
-            <CarouselContainer title='BXH Nhạc Mới' data={arr}>
+            <CarouselContainer title='BXH Nhạc Mới' data={arr} widthItem={33.8} num={3}>
                 {
                     arr.map((item, index) => (
                         <div className={c('homeRankList-item')} key={index}>

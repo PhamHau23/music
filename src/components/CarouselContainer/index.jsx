@@ -3,7 +3,7 @@ import styles from "./CarouselContainer.module.scss"
 import React, { useEffect, useState } from "react"
 import { angleLeft, angleRight } from "~/icon"
 
-function CarouselContainer({children}){
+function CarouselContainer({children, widthItem, num}){
 
     const c = classNames.bind(styles)
     const [index, setIndex] = useState(0);
@@ -14,8 +14,8 @@ function CarouselContainer({children}){
 
     useEffect(() => {
         const autoSlide = setInterval(() => {
-            if(index !== totalItems - 3) nextSlide()
-            if(index === totalItems - 3) setIndex(0)
+            if(index !== totalItems - num) nextSlide()
+            if(index === totalItems - num) setIndex(0)
         }, 5000)
 
         return () => clearInterval(autoSlide)
@@ -26,13 +26,13 @@ function CarouselContainer({children}){
             <div className={c('carouselContent')}>
                 <div className={c('flex','col-gap-18','carouselTrack')} 
                     style={{
-                            transform: `translateX(-${index * (33.8)}%)`,
+                            transform: `translateX(-${index * (widthItem)}%)`,
                            }}>
                     {children}
                 </div>
             </div>
             <button className={c('arrow-left', index === 0 || 'active')} onClick={prevSlide} disabled = {index === 0}>{angleLeft}</button>
-            <button className={c('arrow-right', index === totalItems - 3 || 'active')} onClick={nextSlide} disabled = {index === totalItems - 3} >{angleRight}</button>
+            <button className={c('arrow-right', index === totalItems - num || 'active')} onClick={nextSlide} disabled = {index === totalItems - num} >{angleRight}</button>
         </div>
     )
 }
