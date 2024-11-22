@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom"
 import classNames from "classnames/bind"
 import styles from "./MusicList.module.scss"
-import Button from "~components/Button"
-import { useEffect, useState } from "react"
-import useFetchData from "~/hooks/useFetchData"
-import HomeNewMusicItem from "./components/HomeNewMusicItem"
+import Button from "src/components/Button"
+import { useState } from "react"
+import useFetchData from "src/hooks/useFetchData"
 import SongListType2 from "src/components/SongListType2"
 import { SongDataProvider } from "src/contexts"
 

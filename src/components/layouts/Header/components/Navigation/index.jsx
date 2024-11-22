@@ -1,8 +1,7 @@
 import classNames from "classnames/bind"
 import styles from "./Navigation.module.scss"
-import { leftArrow, rightArrow } from "~/icon"
-import { useNavigate, useLocation } from "react-router-dom"
-import { useEffect } from "react"
+import { leftArrow, rightArrow } from "src/icon"
+import { useNavigate } from "react-router-dom"
 
 function Navigation(){
 

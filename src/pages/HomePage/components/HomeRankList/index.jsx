@@ -1,7 +1,7 @@
 import React from "react"
 import classNames from "classnames/bind"
 import styles from "./HomeRankList.module.scss"
-import CarouselContainer from "~components/CarouselContainer"
+import CarouselContainer from "src/components/CarouselContainer"
 import HoverSongAni from "src/components/HoverSongAni"
 import HomeRankItem from "./Components/HomeRankListItem"
 

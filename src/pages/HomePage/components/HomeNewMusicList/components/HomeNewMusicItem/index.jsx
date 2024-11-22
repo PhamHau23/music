@@ -1,6 +1,6 @@
 import classNames from "classnames/bind"
 import styles from "./MusicItem.module.scss" 
-import { dau3Cham } from "~/icon"
+import { dau3Cham } from "src/icon"
 import HoverSongAni from "src/components/HoverSongAni";
 
 function HomeNewMusicItem({data}){

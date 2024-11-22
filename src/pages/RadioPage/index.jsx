@@ -1,4 +1,4 @@
-import CarouselContainer from "~components/CarouselContainer"
+import CarouselContainer from "src/components/CarouselContainer"
 import RadioPageItem from "./components/RadioPageItem"
 
 function RadioPage() {

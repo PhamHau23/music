@@ -1,7 +1,7 @@
 import classNames from "classnames/bind"
 import styles from "./CarouselContainer.module.scss"
 import React, { useEffect, useState } from "react"
-import { angleLeft, angleRight } from "~/icon"
+import { angleLeft, angleRight } from "src/icon"
 
 function CarouselContainer({children, widthItem, num}){
 

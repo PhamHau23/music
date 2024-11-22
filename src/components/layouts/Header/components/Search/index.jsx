@@ -1,6 +1,6 @@
 import classNames from "classnames/bind"
 import styles from './Search.module.scss'
-import { searchIcon } from "~/icon"
+import { searchIcon } from "src/icon"
 
 function Search(){
 

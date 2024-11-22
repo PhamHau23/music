@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind'
 import styles from './Setting.module.scss'
-import { settingIcon } from '~/icon'
+import { settingIcon } from 'src/icon'
 
 function Setting(){
 

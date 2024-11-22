@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './NotiLogin.module.scss'
-import Button from '~components/Button'
+import Button from 'src/components/Button'
 
 function NotiLogin(){
 

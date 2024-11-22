@@ -1,6 +1,6 @@
 import classNames from "classnames/bind"
 import styles from "./User.module.scss"
-import { userIcon } from "~/icon"
+import { userIcon } from "src/icon"
 
 function User(){
 
