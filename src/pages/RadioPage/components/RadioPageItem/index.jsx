@@ -2,8 +2,8 @@ import classNames from "classnames/bind"
 import styles from "./RadioPageItem.module.scss"
 import HoverSongAni from "src/components/HoverSongAni"
 
-const img1 = 'https://res.cloudinary.com/dtzqisgc8/image/upload/v1729841627/webMusic/xh9f21xsq8ithnqhsnxu.jpg'
-const img2 = 'https://res.cloudinary.com/dtzqisgc8/image/upload/v1729841628/webMusic/yerurei_on_twi_j3b4du.jpg'
+const img1 = ''
+const img2 = ''
     
 
 const arr = [

@@ -3,14 +3,14 @@ import styles from "./Genres.module.scss"
 import Genre from "./components/Genre"
 
 
-function Genres({title, data}){
+function Genres({title}){
 
     const c = classNames.bind(styles)
 
     return(
         <div className={c('Category-wrap')}>
-            <h1>{title}</h1>
-            {data && <Genre data={data}/>}
+            {title && <h1 className="title">{title}</h1>}
+            <Genre />
         </div>
     )
 }

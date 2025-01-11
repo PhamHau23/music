@@ -217,6 +217,7 @@ li{
     width: 100%;
 }
 
+//carousel
 .carousel-item-padding{
     padding: 0 10px;
 }
@@ -228,4 +229,26 @@ li{
 
 .carouselContent{
     overflow: hidden;
+}
+//
+
+//banner genre page
+div.banner{
+    height: 400px;
+    width: 100%;
+    position: relative;
+
+    img{
+        height: 100%;
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    p{
+        position: absolute;
+        bottom: 0;
+        left: 30px;
+        font-size: 5em;
+        font-weight: 600;
+    }
 }

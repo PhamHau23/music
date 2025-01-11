@@ -2,13 +2,14 @@ import classNames from "classnames/bind"
 import styles from "./NewMusicPage.module.scss"
 import { playIcon1 } from "src/icon"
 import SongList from "src/components/SongList"
+import useFetchApi from "~/hooks/useFetchApi"
+import { GetApiDataProvider } from "~/contexts"
 
-const api = 'http://localhost:3000/api/newmusic'
 
 export default function NewMusicPage(){
 
     const c = classNames.bind(styles)
-
+    const data = useFetchApi('newsongpage')
     return (
         <div className={c('newMusicPage')}>
             <div className={c('newMusicPage-title')}>
@@ -17,8 +18,11 @@ export default function NewMusicPage(){
                     <span className={c('NewMusicPage-icon')}>{playIcon1}</span>
                 </div>
             </div>
-
-            <SongList api={api}/>
+            {
+                <GetApiDataProvider value={data}> 
+                    <SongList />
+                </GetApiDataProvider>
+            }
         </div>
     )
 }

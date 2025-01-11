@@ -6,13 +6,15 @@ import useFetchApi from "src/hooks/useFetchApi"
 function NationList({title}){
     const c = classNames.bind(styles)
 
-    const data = useFetchApi('quoc-gia')
+    const data = useFetchApi('nation')
 
     const navigate = useNavigate()
 
     const handleClickNavigate = (nationid) => {
-        navigate(`/genres/${nationid} `, {state: data.find(item => item.id === nationid && item)})
+        navigate(`/genre/${nationid}`)
     }
+
+    console.log(data)
 
     return(
         <div className={c('nationList-wrap')}>
@@ -25,7 +27,7 @@ function NationList({title}){
                     data.map((item) => (
                         <div className={c('nationItem')} key={item.id} onClick={() => handleClickNavigate(item.id)}>
                             <img src={item.img} alt="" />
-                            <p>{item.tenQuocGia.toUpperCase()}</p>
+                            <p>{item.name.toUpperCase()}</p>
                         </div>
                     ))
                 }

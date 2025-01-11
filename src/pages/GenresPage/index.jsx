@@ -18,7 +18,6 @@ function GenresPage(){
             <FeaturedList title={'Nổi Bật'} />
             <NationList title={'Quốc Gia'} />
             <TopicList title={'CHỦ ĐỀ'} />
-            <Genres title={'Chữ Tình & Bolero'} />
         </div>
     )
 }

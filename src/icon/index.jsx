@@ -13,6 +13,9 @@ export { RxLoop as LoopSongIcon } from "react-icons/rx";
 export { FaPlay as PlaySongIcon } from "react-icons/fa6";
 export { FaRegEye as ShowPassIcon } from "react-icons/fa";
 export { FaRegEyeSlash as HiddenPassIcon } from "react-icons/fa";
+export { IoVolumeHighOutline as VolumeIcon } from "react-icons/io5";
+export { IoVolumeMuteOutline as MuteVolumeIcon } from "react-icons/io5";
+export { AiOutlineLoading3Quarters as LoadingIcon } from "react-icons/ai";
 export const musicIcon = <FontAwesomeIcon icon={faMusic} />
 export const starIcon = <FontAwesomeIcon icon={faStar} />
 export const categoryIcon = <FontAwesomeIcon icon={faIcons} />

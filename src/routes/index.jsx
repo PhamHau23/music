@@ -19,7 +19,7 @@ export const publicRoutes = [
     {path: '/genres', component: GenresPage},
     {path: '/newmusic', component: NewMusicPage},
     {path: '/songs/:genreId', component: SongPage},
-    {path: '/genres/:genre', component: GenrePage}
+    {path: '/genre/:id', component: GenrePage}
 ]
 
 export const privateRoutes = [

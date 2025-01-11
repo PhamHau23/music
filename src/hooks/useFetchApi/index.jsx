@@ -4,7 +4,7 @@ const api = import.meta.env.VITE_API_URL
 function useFetchApi(url){
 
     const [data, setData] = useState([])
-    console.log(url)
+    console.log(`${api}${url}`)
 
     useEffect(() => {
         (async() => {
