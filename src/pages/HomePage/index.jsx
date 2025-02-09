@@ -11,7 +11,7 @@ function HomePage(){
     const data = useFetchApi('homepage')
     
     if (!data || Object.keys(data).length === 0) {
-        return <div>Loading...</div>;
+        return <div>Loading...</div>
     }
 
     return(

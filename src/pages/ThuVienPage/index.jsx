@@ -1,5 +1,5 @@
 export default function ThuVienPage() {
     return (
-        <h1>Thư viện</h1>
+        <h1>Trang Quản Lý</h1>
     )
 }

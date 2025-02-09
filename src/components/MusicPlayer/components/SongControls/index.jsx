@@ -1,5 +1,5 @@
 import classNames from "classnames/bind"
-import { useEffect, useMemo, useRef, useState, useCallback } from "react"
+import { useRef, useState, useCallback } from "react"
 import { throttle } from "lodash"
 import styles from "../../MusicPlayer.module.scss"
 import { FaRandom as RandomSongIcon } from "react-icons/fa"
@@ -22,7 +22,6 @@ export const SongControls = () => {
     const [randomSong, setRandomSong] = useState(false)
     const [loopSong, setLoopSong] = useState(false)
 
-
     //xử lý play và pause
     const togglePlayPause = () => {
         if(audioRef.current.paused && playSong === true ){
@@ -34,7 +33,7 @@ export const SongControls = () => {
         }
     }
 
-    //set lại nút khi chọn chuyển bài hát
+    //set lại nút khi đổi bài hát
     const handlePlay = () => {
         setPlaySong(false)
     }
@@ -59,10 +58,10 @@ export const SongControls = () => {
             const progressBar = (e.target.currentTime / currentSong.duration) * 100
             currentTimeRef.current.innerText = convertSeconds(currentTime)
             progressBarRef.current.value = progressBar
-        }, 1000),[currentSong]
+        }, 500),[currentSong]
     )
     
-    //play rondom song
+    //random song
     const handleClickRandomSong = () => {
         setRandomSong(!randomSong)
         if(loopSong == true){
@@ -70,7 +69,7 @@ export const SongControls = () => {
         }
     }
 
-    //play loop song
+    //loop song
     const handleClickLoopSong = () => {
         setLoopSong(!loopSong)
         audioRef.current.loop = !loopSong
@@ -93,16 +92,24 @@ export const SongControls = () => {
         dispatch(fetchSongApi(nextSong._id))
     }
 
+    //tua bai hat
+    const handleSeek = (e) => {
+        const newTime = (e.target.value * currentSong.duration) / 100
+        audioRef.current.currentTime = newTime
+    }
+
     return(
-        <div className={c('coltrols')}>
+        <div className={c('controls')}>
             <div className={c('buttonList')}>
-                <div onClick={handleClickRandomSong} style={randomSong ? {color: '#8E46CD'} : {color: 'white'}}> 
+                <div onClick={handleClickRandomSong} className={c('randomIcon')} style={randomSong ? {color: '#8E46CD'} : {color: 'white'}}> 
                     <RandomSongIcon /> 
                 </div>
-                <div onClick={handleClickLoopSong} style={loopSong ? {color: '#8E46CD'} : {color: 'white'}}> 
+                <div onClick={handleClickLoopSong} className={c('loopIcon')} style={loopSong ? {color: '#8E46CD'} : {color: 'white'}}> 
                     <LoopSongIcon /> 
                 </div>
-                <div onClick={handleClickBackSong}> <BackSongIcon /> </div>
+                <div onClick={handleClickBackSong} className="relative" > 
+                    <BackSongIcon /> 
+                </div>
                 <div className={c('playIcon')} onClick={togglePlayPause}> 
                     {playSong ? <PlaySongIcon /> : <PauseSongIcon />}
                 </div>
@@ -116,11 +123,14 @@ export const SongControls = () => {
             <div className={c('songTime')}>
                 <span ref={currentTimeRef} className={c('currentTime', 'timeMusic')}>00:00</span>
                 <div className={c('progressBar')}>
-                    <progress 
+                    <input
+                        type="range" 
                         ref={progressBarRef}
-                        value='0'
+                        value={currentSong ? null : 0}
+                        min='0'
                         max='100'
                         className={c('audioInput')}
+                        onChange={handleSeek}
                         />
                 </div>
                 <audio ref={audioRef} 

@@ -10,6 +10,7 @@ export default function NewMusicPage(){
 
     const c = classNames.bind(styles)
     const data = useFetchApi('newsongpage')
+
     return (
         <div className={c('newMusicPage')}>
             <div className={c('newMusicPage-title')}>

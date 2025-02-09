@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState, useEffect } from "react"
 import classNames from "classnames/bind"
 import styles from "./SongItemType2.module.scss"
 import { dau3Cham } from "src/icon"
@@ -9,20 +9,32 @@ import { fetchSongApi, setPlayList } from "~/redux/slices/musicPlayerSlice"
 import { capitalizeWords } from "~/lib/capitalizeWords"
 import { formatDate } from "~/lib/formatDate"
 import { convertSeconds } from "~/lib/convertSeconds"
+import { useNavigate } from "react-router-dom"
 
-function SongItemType2(){
+function SongItemType2({className}){
+    const [songId, setSongId] = useState(null)
     const c = classNames.bind(styles)
     const dispatch = useDispatch()
     const {value} = useContext(SongDataContext)
+    const navigate = useNavigate()
 
     const handleClick = (id) => {
-        dispatch(fetchSongApi(id))
+        setSongId(id)
         dispatch(setPlayList(value))
     }
 
+    const handleClickSingerPage = (slug) => {
+        navigate(`/singer/${slug}`)
+    }
+
+    useEffect(() => {
+        if(songId){
+            dispatch(fetchSongApi(songId))
+        }
+    }, [songId, dispatch])
    
     return(
-        <div className={c('songItemType2-wrap')}>
+        <div className={c('songItemType2-wrap', className)}>
             {value.map((item) => (
                 <div className={c('song')} key={item._id} onClick={() => handleClick(item._id)}>
                     <div className={c('song-img')}>
@@ -31,16 +43,21 @@ function SongItemType2(){
                     </div>
 
                     <div className={c('song-info')}>
-                        <p className={c('songName')}>{capitalizeWords(item.name)}</p>
+                        <p 
+                            className={c('songName')}
+                        >{capitalizeWords(item.name)}</p>
                         <div className={c('singerName')}>
-                            {item.singerName.map((singer, index) => (
-                                <a href="/" key={index} >
-                                    {capitalizeWords(singer)} 
-                                    {index < item.singerName.length - 1 && ', '}
+                            {item.singerId.map((singer, index) => (
+                                <a
+                                className={c('singerName1')}
+                                onClick={() => handleClickSingerPage(singer.slug)}
+                                key={index} >
+                                    {capitalizeWords(singer.name)} 
+                                    {index < item.singerId.length - 1 && ', '}
                                 </a>
                             ))}
                         </div>
-                        {item.createdAt && <p className={c('timeUpadated')}>{formatDate(item.updatedAt)}</p>}
+                        {item.createdAt && <p className={c('timeUpdated')}>{formatDate(item.updatedAt)}</p>}
                     </div>
 
                     {item.duration && <span className={c('songTime')}>{convertSeconds(item.duration)}</span>}

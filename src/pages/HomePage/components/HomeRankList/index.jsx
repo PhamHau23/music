@@ -7,12 +7,15 @@ import { capitalizeWords } from "~/lib/capitalizeWords"
 import { formatDate } from "~/lib/formatDate"
 import { useDispatch } from "react-redux"
 import { fetchSongApi, setPlayList } from "~/redux/slices/musicPlayerSlice"
+import { useNavigate } from "react-router-dom"
 
 const c = classNames.bind(styles)
 
 function HomeRankList({data}){
     const [song, setSongs] = useState([])
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     useEffect(() => {
         if(data && data.rankAllSong){
             setSongs(data.rankAllSong)
@@ -24,15 +27,19 @@ function HomeRankList({data}){
         dispatch(setPlayList(data.rankAllSong))
     }
 
+    const handleClickSingerPage = (slug) => {
+        navigate(`/singer/${slug}`)
+    }
+
     return(
         <div className={c('HomeRankList','col-gap-18')}>
-            <h1>BXH Nhạc Mới</h1>
-            <CarouselContainer title='BXH Nhạc Mới' data={song} widthItem={33.8} num={3}>
+            <h1>BXH Bài Hát Mới</h1>
+            <CarouselContainer title='BXH Bài Hát Mới' data={song} widthItem={33.8} num={3}>
                 {
                     song.map((item, index) => (
-                        <div className={c('homeRankList-item')} key={item._id} onClick={() => playSongSelected(item._id)}>
+                        <div className={c('homeRankList-item')} key={item._id}>
                             <a className={c('wrap')}>
-                                <div className={c('img')}>
+                                <div className={c('img')} onClick={() => playSongSelected(item._id)}>
                                     <img src={item.img} />
                                     <HoverSongAni />
                                 </div>
@@ -43,10 +50,15 @@ function HomeRankList({data}){
                                             {capitalizeWords(item.name)}
                                         </p>
                                         <div className="flex w-100">
-                                            {item.singerName.map((name, index2) => (
-                                                <a className="t-line2" style={{width: 'auto'}} key={index2}>
-                                                    {capitalizeWords(name)}
-                                                    {index2 < item.singerName.length - 1 && ', '}
+                                            {item.singerId.map((singer, index2) => (
+                                                <a 
+                                                    className="t-line2" 
+                                                    style={{width: 'auto'}} 
+                                                    key={index2}
+                                                    onClick={() => handleClickSingerPage(singer.slug)}
+                                                >
+                                                    {capitalizeWords(singer.name)}
+                                                    {index2 < item.singerId.length - 1 && ', '}
                                                 </a>
                                             ))}
                                         </div>

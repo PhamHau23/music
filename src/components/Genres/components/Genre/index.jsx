@@ -19,7 +19,7 @@ function Genre(){
     return(
         <div className={c('category-item-wrap')}>
             {value.map((item) => (
-                <div className={c('item')} key={item._id} onClick={() => handleNavigateClick(item._id)}>
+                <div className={c('item')} key={item._id} onClick={() => handleNavigateClick(item.id)}>
                     <p className={c('img')}>
                         <img src={item.img} alt="" />
                         <HoverSongAni />

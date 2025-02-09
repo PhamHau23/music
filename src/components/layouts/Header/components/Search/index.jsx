@@ -4,18 +4,26 @@ import styles from './Search.module.scss'
 import { searchIcon } from "src/icon"
 import { SearchData } from "./components/SearchData"
 import { useSelector } from "react-redux"
+import { removeTones } from "~/lib/removeTones"
 
 function Search(){
 
     const c = classNames.bind(styles)
+    const inputRef = useRef(null)
     const [searchValue, setSearchValue] = useState(null)
     const [isDropDownVisible, setIsDropdownVisible] = useState(false)
     const {songsList} = useSelector(state => state.songsData)
     const searchRef = useRef(null)
 
-    const handleInput = (e) => {
-        const value = e.target.value
-        setSearchValue(e.target.value)        
+    const handleInput = () => {
+        const value = removeTones(inputRef.current.value.toLowerCase())
+        let dataSearch
+        if(value.length > 0){
+            dataSearch = songsList.filter((item) =>
+                Object.values(item).some(objItem => removeTones(objItem.toString()).includes(value))
+            )
+        }
+        setSearchValue(dataSearch)
 
         if(value.trim() !== " "){
             setIsDropdownVisible(true);
@@ -23,7 +31,7 @@ function Search(){
             setIsDropdownVisible(false);
         }
     }
-
+    
     const handleClickOutside = (event) => {
         if (searchRef.current && !searchRef.current.contains(event.target)) {
           setIsDropdownVisible(false)
@@ -41,7 +49,7 @@ function Search(){
     return (
         <div className={c('search-wrap')} ref={searchRef}>
             <i>{searchIcon}</i>
-            <input type="search" placeholder='Tìm kiếm bài hát, nghệ sĩ...' onChange={handleInput}/>
+            <input ref={inputRef} type="search" placeholder='Tìm bài hát, ca sĩ...' onChange={handleInput}/>
             {isDropDownVisible && <SearchData data={searchValue}/>}
         </div>
     )

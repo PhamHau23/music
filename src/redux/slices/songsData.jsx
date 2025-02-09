@@ -18,9 +18,9 @@ const songsDataSlice = createSlice({
                 state.songsList = action.payload
                 state.loading = false
             })
-            .addCase(fetchAllSongApi.rejected, (state, actino) => {
+            .addCase(fetchAllSongApi.rejected, (state, action) => {
                 state.loading = false
-                state.error = actino.error.message
+                state.error = action.error.message
             })
     }
 })
