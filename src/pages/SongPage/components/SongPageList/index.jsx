@@ -6,7 +6,6 @@ import { ListSongIcon, musicIcon } from "src/icon"
 function SongPageList(){
 
     const c = classNames.bind(styles)
-
     return(
         <div className="flex-2">
             <div className={c('SongPageList-tilte','flex')}>

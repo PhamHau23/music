@@ -3,20 +3,22 @@ import styles from "./Home.module.scss"
 import Banner from "./components/Banner"
 import HomeNewMusicList from "./components/HomeNewMusicList"
 import HomeRankList from "./components/HomeRankList"
-import GenreList from "src/components/GenreList"
-import Genres from "src/components/Genres"
-
-const img1 = 'https://res.cloudinary.com/dtzqisgc8/image/upload/v1729336892/webMusic/t%E1%BA%A3i_xu%E1%BB%91ng_1_tth1sq.jpg'
+import useFetchApi from "~/hooks/useFetchApi"
 
 function HomePage(){
 
-    const c = classNames.bind(styles)
+    const c = classNames.bind(styles) 
+    const data = useFetchApi('homepage')
+    
+    if (!data || Object.keys(data).length === 0) {
+        return <div>Loading...</div>
+    }
 
     return(
         <div className={c('home-page')}>
             <Banner />
-            <HomeNewMusicList />
-            <HomeRankList />
+            <HomeNewMusicList data = {data} />
+            <HomeRankList data = {data}/>
         </div>
     )
 }

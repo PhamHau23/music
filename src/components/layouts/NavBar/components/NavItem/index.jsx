@@ -1,7 +1,6 @@
 import { Link, useLocation } from "react-router-dom"
 import classNames from "classnames/bind"
 import styles from "./NavItem.module.scss"
-import { useState } from "react"
 
 function NavItem({path, name, mainIcon, subIcon ,live, item, setItem}){
 
@@ -18,7 +17,7 @@ function NavItem({path, name, mainIcon, subIcon ,live, item, setItem}){
     }
     
     return(
-       <li onClick={() => handleClickItem(name)} className={c('navbar-item', linkStyle())}>
+       <li onClick={() => handleClickItem(name)} className={c('navbar-item','tablet-navbar-item', linkStyle())}>
             <Link title={name} to={path}>
                 <span className={c(`${ live ? live : ''}`)}>
                     {mainIcon}

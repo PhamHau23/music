@@ -9,7 +9,7 @@ function SongTopNumber({number}){
     }
 
     return(
-        <span className={styles.topNumber} style={{WebkitTextStroke: topNumberStyle(number)}}>{number}</span> 
+        <topnumb className={styles.topNumber} style={{WebkitTextStroke: topNumberStyle(number)}}>{number}</topnumb> 
     )
 }
 

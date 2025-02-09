@@ -25,6 +25,8 @@
 
     .song-img{
         position: relative;
+        margin-right: 5px;
+        
         img{
             width: 40px;
             height: 40px;
@@ -43,7 +45,7 @@
             display: flex;
             @include lineHeight();
             
-            a{
+            a.singerName1{
                 @include subText();
                 margin-right: 3px;
 
@@ -61,7 +63,7 @@
         right: 10px;
     }
 
-    .timeUpadated{
+    .timeUpdated{
         @include subText();
         @include lineHeight();
         margin: unset;

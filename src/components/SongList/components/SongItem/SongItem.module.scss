@@ -9,6 +9,8 @@
         font-weight: 700;
         margin-right: 20px;
         margin-left: 20px;
+        width: 10%;
+        text-align: center;
     }
     
     .songIconMusic{
@@ -36,7 +38,7 @@
                 margin: unset;
             }
 
-            p.songName{
+            a.songName{
                 margin-bottom: 7px;
                 font-size: 1em;
                 color: var(--t-color);
@@ -46,7 +48,7 @@
                 }
             }
 
-            p.songSinger{
+            a.songSinger{
                 margin-top: 7px;
                 font-size: .8em;
                 color: var(--t-color2);
@@ -60,9 +62,9 @@
     }
     
     .songDesc{
-        p{
+        a{
             margin: unset;
-            font-size: .8em;
+            font-size: .9em;
             color: var(--t-color2);
 
             &:hover{
@@ -87,10 +89,6 @@
         img{
             opacity: .4;
         }
-
-        // span.topNumber{
-        //     display: block;
-        // }
 
         span{
             display: flex;

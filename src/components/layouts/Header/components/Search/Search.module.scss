@@ -6,6 +6,8 @@
     border-radius: 20px;
     display: inline-flex;
     align-items: center;
+    position: relative;
+
 
     i{
         margin-left: 10px;
@@ -18,5 +20,6 @@
         background-color: transparent;
         outline: transparent;
         border-color: transparent;
+        position: relative;
     }
 }
