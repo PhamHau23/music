@@ -2,7 +2,7 @@ import classNames from "classnames/bind"
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import styles from './Navbar.module.scss'
-import { iconKhamPha, iconThuVien } from "src/assets/icon"
+import { iconKhamPha, iconThuVien } from "~assets/icon"
 import { musicIcon, starIcon, CirclePlayIcon } from "src/icon"
 import CreatePlaylist from "./components/CreatePlaylist"
 import NavItem from "./components/NavItem"
