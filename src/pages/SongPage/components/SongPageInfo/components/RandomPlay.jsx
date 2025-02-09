@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { playIcon1 } from "~/icon"
 import { fetchSongApi } from "~/redux/slices/musicPlayerSlice"
-import Button from "~components/Button"
+import Button from "~/components/Button"
 
 
 export const RandomPlay = () => {

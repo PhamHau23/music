@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { logOut } from "~/redux/slices/userSlice"
-import Button from "~components/Button"
+import Button from "~/components/Button"
 
 export const LoginHeader = () => {
     const navigate = useNavigate()
