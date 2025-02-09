@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
+        "baseUrl": "src",
         "paths": {
             "~assets/*": [
                 "D:/react_app/musicApp/music-app/src/assets/*"

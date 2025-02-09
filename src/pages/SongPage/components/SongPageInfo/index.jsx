@@ -1,7 +1,7 @@
 import classNames from "classnames/bind"
 import styles from "./SongPageInfo.module.scss"
-import { dau3Cham, heartIcon } from "src/icon"
-import HoverSongAni from "src/components/HoverSongAni"
+import { dau3Cham, heartIcon } from "~/icon"
+import HoverSongAni from "~/components/HoverSongAni"
 import { RandomPlay } from "./components/RandomPlay"
 import { capitalizeWords } from "~/lib/capitalizeWords"
 

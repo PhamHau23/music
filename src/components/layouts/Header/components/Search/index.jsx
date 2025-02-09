@@ -1,7 +1,7 @@
 import classNames from "classnames/bind"
 import { useRef, useState, useEffect } from "react"
 import styles from './Search.module.scss'
-import { searchIcon } from "src/icon"
+import { searchIcon } from "~/icon"
 import { SearchData } from "./components/SearchData"
 import { useSelector } from "react-redux"
 import { removeTones } from "~/lib/removeTones"

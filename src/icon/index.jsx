@@ -1,5 +1,5 @@
 import { faStar, faUser, faHeart } from "@fortawesome/free-regular-svg-icons"
-import { faArrowLeft, faBars, faArrowRight, faPlay, faIcons, faMusic, faMagnifyingGlass, faEllipsis, faAngleLeft, faAngleRight, faCheck} from "@fortawesome/free-solid-svg-icons"
+import { faArrowLeft, faArrowRight, faPlay, faIcons, faMusic, faMagnifyingGlass, faEllipsis, faAngleLeft, faAngleRight, faCheck} from "@fortawesome/free-solid-svg-icons"
 import {faDownload, faGear} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 

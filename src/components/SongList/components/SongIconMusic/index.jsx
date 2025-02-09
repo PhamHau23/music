@@ -1,4 +1,3 @@
-import styles from "./SongIconMusic.module.scss"
 
 function SongIconMusic({icon, className}){
     return (

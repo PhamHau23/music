@@ -1,4 +1,4 @@
-import { playIcon1 } from "src/icon"
+import { playIcon1 } from "~/icon"
 import classNames from "classnames/bind"
 import styles from "./HoverSongAni.module.scss"
 

@@ -6,7 +6,6 @@ import HotSongs from "./components/HotSongs"
 import { GetApiDataProvider, SongDataProvider } from "~/contexts"
 import useFetchApi from "~/hooks/useFetchApi"
 import { useParams } from "react-router-dom"
-import SongItemType2 from "~components/SongListType2/components/SongItemType2"
 import { useDispatch } from "react-redux"
 import { setPlayList } from "~/redux/slices/musicPlayerSlice"
 
