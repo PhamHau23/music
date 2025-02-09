@@ -15,5 +15,10 @@ export default defineConfig({
         api: 'modern-compiler'
       }
     }
+  },
+  resolve: {
+    alias: {
+      '~': path.resolve(__dirname, 'src'),
+    },
   }
 })
