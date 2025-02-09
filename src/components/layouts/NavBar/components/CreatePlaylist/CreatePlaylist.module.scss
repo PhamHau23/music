@@ -1,0 +1,33 @@
+.wrap{
+    div{
+        display: flex;
+        color: var(--main-t-color);
+        margin: 20px;
+        align-items: center;
+        cursor: pointer;
+
+        p{
+            margin: 0;
+
+            &:hover{
+                color: var(--main-t-color);
+            }
+        }
+
+        :nth-child(1){
+            font-size: 1.5em;
+            margin-right: 20px;
+            background-color: var(--web-color);
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        :nth-child(2){
+            font-size: 1em;
+        }
+    }
+}

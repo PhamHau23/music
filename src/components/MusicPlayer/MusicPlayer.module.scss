@@ -1,0 +1,195 @@
+@mixin textStyle($color, $fontSize){
+    margin: unset;
+    margin-left: 10px;
+    color: var($color);
+    font-size: $fontSize;
+}
+
+@mixin iconHover($content, $width, $left){
+    &:hover{
+        &::after{
+            position: absolute;
+            content: $content;
+            display: flex;
+            padding: 5px;
+            background-color: var(--primary-color);
+            font-size: .8em;
+            color: var(--t-color);
+            border-radius: 3px;
+            font-weight: 400;
+            width: $width;
+            left: $left;
+            top: -40px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &::before{
+            position: absolute;
+            content: "";
+            border: 10px solid;
+            border-color: var(--primary-color) transparent transparent;
+            top: -15px;
+            display: block;
+        }
+    }
+}
+
+.audio{
+    display: none;
+}
+
+.musicPlayer{
+    width: 100%;
+    position: fixed;
+    height: 90px;
+    z-index: 999;
+    border-top: 1px solid var(--alpha-bg);
+    background-color: var(--musicPlayer-color);
+    bottom: 0;
+    display: flex;
+    padding: 0 20px;
+
+    div.info{
+        display: flex;
+        align-items: center;
+        flex: 1;
+
+        .img{
+            width: 70px;
+            height: 70px;
+            border-radius: 5px;
+
+            img{
+                border-radius: 5px;
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        .name{
+            .songName{
+                p{
+                    @include textStyle(--t-color, 1em);
+                }
+            }
+
+            .singerName{
+                p{
+                    @include textStyle(--t-color2, .9em)
+                }
+            }
+        }
+    }
+
+    .controls{
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .buttonList{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            div{
+                margin: 0 20px;
+                color: var(--t-color);
+                cursor: pointer;
+                font-size: 1.2em;
+                display: flex;
+            }
+
+            .playIcon{
+                border-radius: 50%;
+                width: 35px;
+                height: 35px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid var(--t-color);
+            }
+
+            .randomIcon{
+                position: relative;
+                &:hover{
+                    @include iconHover('random', auto, -20px)
+                }
+            }
+
+            .loopIcon{
+                position: relative;
+                &:hover{
+                    @include iconHover('loop', auto, -10px)
+                }
+            }
+
+            .volumeControl{
+                display: flex;
+                align-items: center;
+
+                svg{
+                    font-size: 1.3em;
+                    margin-right: 3px;
+                }
+                .volumeInput{
+                    width: 80px;
+                    height: 5px;
+                    border-radius: 4px;
+                    background: #ddd;
+                    -webkit-appearance: none;
+
+                    &::-webkit-slider-thumb{
+                        -webkit-appearance: none;
+                        background: var(--pp-color);
+                        display: block;
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50%;
+                        cursor: pointer;
+                    }
+
+                }
+            }
+        }
+
+        .songTime{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+
+            span{
+                @include textStyle(--t-color2, .9em)
+            }
+
+            .progressBar{
+                width: 70%;
+                border-radius: 5px;
+                margin: 0 10px;
+                display: flex;
+                
+                input{
+                    width: 100%;
+                    height: 5px;
+                    background-color: var(--scroll-thumb-color);
+                    cursor: pointer;
+                    border: 1px solid transparent;
+                    border-radius: 5px;
+    
+                    &::-webkit-progress-value{
+                        background-color: var(--pp-color);
+                    }
+                }
+            }
+        }
+    }
+
+    .options{
+        flex: 1;
+    }
+}

@@ -1,0 +1,41 @@
+
+.navbar-wrapper{
+    width: 240px;
+    position: relative;
+    background-color: var(--navbar-color);
+    height: 100vh;
+    z-index: 998;
+    position: fixed;
+}
+
+.navbar-logo{
+    width: 240px;
+    height: 70px;
+    position: fixed;
+    align-items: center;
+    display: flex;
+}
+
+.logo{
+    background-image: url('https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 120px;
+    height: 40px;
+    display: inline-block;
+    margin-left: 22px;
+}
+
+.navbar-main{
+    margin-top: 70px;
+    
+    ul{
+        color: var(--t-color2);
+    }
+
+    img{
+        width: 24px;
+        height: 24px;
+    }
+}
+

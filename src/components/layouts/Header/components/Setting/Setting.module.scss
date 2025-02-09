@@ -1,0 +1,10 @@
+.setting-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    color: var(--t-color);
+    background-color: var(--alpha-bg);
+}
