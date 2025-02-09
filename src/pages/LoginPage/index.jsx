@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import classNames from 'classnames/bind'
 import styles from './LoginPage.module.scss'
-import { ShowPassIcon, HiddenPassIcon } from 'src/icon'
+import { ShowPassIcon, HiddenPassIcon } from '~/icon'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { login, registerAccount } from '~/redux/slices/userSlice'

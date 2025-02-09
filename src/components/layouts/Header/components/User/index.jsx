@@ -1,6 +1,6 @@
 import classNames from "classnames/bind"
 import styles from "./User.module.scss"
-import { userIcon } from "src/icon"
+import { userIcon } from "~/icon"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 

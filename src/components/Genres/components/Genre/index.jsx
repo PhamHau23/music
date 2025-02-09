@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { useContext } from "react"
 import classNames from "classnames/bind"
 import styles from "./Genre.module.scss"
-import HoverSongAni from "src/components/HoverSongAni"
+import HoverSongAni from "~/components/HoverSongAni"
 import { GetApiDataContext } from "~/contexts"
 
 

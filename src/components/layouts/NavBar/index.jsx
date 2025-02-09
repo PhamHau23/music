@@ -3,8 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import styles from './Navbar.module.scss'
 import { iconKhamPha, iconThuVien } from "~assets/icon"
-import { musicIcon, starIcon, CirclePlayIcon } from "src/icon"
-import CreatePlaylist from "./components/CreatePlaylist"
+import { musicIcon, starIcon } from "~/icon"
 import NavItem from "./components/NavItem"
 import { useSelector } from "react-redux"
 
