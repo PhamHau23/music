@@ -329,7 +329,7 @@ div.banner{
 
 //responsive tablet
 
-@media (min-width: 768px) {
+@media (max-width: 992px) {
     .tabletNavbar{
         width: 80px;
 
@@ -365,7 +365,7 @@ div.banner{
         .tabletNewSong{
             flex: 1.5;
         }
-        
+
         .tabletNewSongImg{
             width: 80px;
             height: 80px;
