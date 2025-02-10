@@ -15,19 +15,16 @@ function MainLayout({children}){
     const {isLogin} = useSelector(state => state.user)
     const token = localStorage.getItem('authToken')
     const dispatch = useDispatch()
+    const userData = useFetchUserData(token)
+    
     dispatch(fetchAllSongApi('song/search/searchvalue'))
 
-    useEffect(() => {
-        (async() => {
-            if(isLogin === true){
-                const userData = useFetchUserData(token)
-                if(userData != null && Object.keys(userData).length > 0){
-                    dispatch(setImgUser(userData.img))
-                    dispatch(setRole(userData.role))
-                }
-            }
-        })()
-    }, [isLogin, token])
+    if(isLogin){
+        if(userData != null && Object.keys(userData).length > 0){
+            dispatch(setImgUser(userData.img))
+            dispatch(setRole(userData.role))
+        }
+    }
 
     return(
         <>
