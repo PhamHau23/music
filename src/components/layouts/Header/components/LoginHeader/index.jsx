@@ -12,9 +12,11 @@ export const LoginHeader = () => {
     }
 
     const handleLogout = () => {
-        confirm('bạn có muốn đăng xuất')
-        dispatch(logOut())
-        navigate('/')
+        const isConfirmed = confirm('bạn có muốn đăng xuất')
+        if (isConfirmed) {
+            dispatch(logOut());
+            navigate('/');
+        }
     }
 
     return(

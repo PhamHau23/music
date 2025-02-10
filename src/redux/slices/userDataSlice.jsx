@@ -13,7 +13,6 @@ const userDataSlice = createSlice({
         },
         setRole(state, action) {
             state.role = action.payload
-            console.log(action.payload)
         }
     }
 })

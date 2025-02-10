@@ -1,5 +1,5 @@
 import useFetchApi from "~/hooks/useFetchApi"
-import {c} from "../AdminLayout" 
+import {api, c} from "../AdminLayout" 
 import { useEffect, useState } from "react"
 import AdminListItem from "./AdminListItem"
 import { SearchIcon2 } from "~/icon"
@@ -10,7 +10,7 @@ export default function AdminSinger(){
 
     useEffect(() => {
         (async() => {
-            const response = await fetch(`http://localhost:3000/api/singer?nation=${nation}`)
+            const response = await fetch(`${api}singer?nation=${nation}`)
             const data = await response.json()
             setSingerData(data)
         })()
@@ -30,7 +30,7 @@ export default function AdminSinger(){
     const handleDeleteSinger = async(id) => {
         confirm('ban co muon xoa')
         try {
-            const response = await fetch(`http://localhost:3000/api/admin/deletesinger/${id}`, {
+            const response = await fetch(`${api}admin/deletesinger/${id}`, {
                 method: 'DELETE',
                 headers: { "Content-Type": "application/json" }
             })

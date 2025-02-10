@@ -1,5 +1,5 @@
 import { useRef, useState } from "react"
-import {c} from "../AdminLayout"
+import {api, c} from "../AdminLayout"
 import { CiImageOn } from "react-icons/ci"
 
 function UploadGenre(){
@@ -27,10 +27,8 @@ function UploadGenre(){
             formData.append('nation', e.target.nation.value)
         ])
 
-        console.log(formData)
-
         try {
-            const response =  await fetch('http://localhost:3000/api/admin/post/genre',{
+            const response =  await fetch(`${api}admin/post/genre`,{
                 method: 'POST',
                 body: formData
             })

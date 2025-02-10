@@ -9,7 +9,6 @@ import useFetchUserData from "~/hooks/useFetchUserData"
 import { setImgUser, setRole } from "~/redux/slices/userDataSlice"
 
 
-
 function MainLayout({children}){
     const c = classNames.bind(styles)
     const {isLogin} = useSelector(state => state.user)
