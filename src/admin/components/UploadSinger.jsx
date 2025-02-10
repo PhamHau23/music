@@ -1,5 +1,5 @@
 import { CiImageOn } from "react-icons/ci"
-import {c} from "../AdminLayout"
+import {api, c} from "../AdminLayout"
 import { useRef, useState } from "react"
 
 
@@ -30,7 +30,7 @@ function UploadSinger(){
         ])
         
         try {
-            const response =  await fetch('http://localhost:3000/api/admin/post/singer',{
+            const response =  await fetch(`${api}admin/post/singer`,{
                 method: 'POST',
                 body: formData
             })

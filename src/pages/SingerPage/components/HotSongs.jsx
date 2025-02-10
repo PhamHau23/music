@@ -1,6 +1,6 @@
 import classNames from "classnames/bind"
 import styles from "../SingerPage.module.scss"
-import SongItemType2 from "~components/SongListType2/components/SongItemType2"
+import SongItemType2 from "~/components/SongListType2/components/SongItemType2"
 
 const c = classNames.bind(styles)
 

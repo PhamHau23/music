@@ -17,7 +17,7 @@ function User(){
 
     return(
         <div className={c('user-wrap')} onClick={handleProfile}>
-            {isLogin == true ? 
+            {isLogin === true && img !== null ? 
             <img src={img} /> : 
             <span>{userIcon}</span>}
             {/* {

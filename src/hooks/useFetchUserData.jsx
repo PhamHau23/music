@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 const api = import.meta.env.VITE_API_URL
 
 function useFetchUserData(token) {
-    console.log(token)
     const [data, setData] = useState(null)
     useEffect(() => {
       (async() => {

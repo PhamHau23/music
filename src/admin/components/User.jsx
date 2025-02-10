@@ -4,6 +4,7 @@ import { SearchIcon2 } from "~/icon"
 import { useEffect, useRef, useState } from "react"
 import { removeTones } from "~/lib/removeTones"
 import AdminListItem from "./AdminListItem"
+import { api } from "../AdminLayout"
 
 export const c = classNames.bind(styles)
 
@@ -17,7 +18,7 @@ export default function User(){
     //fetch user
     useEffect(() => {
         (async() =>{
-            const response = await fetch('http://localhost:3000/api/user/getUser')
+            const response = await fetch(`${api}user/getUser`)
             const data = await response.json()
             setUserData(data)
         })()
@@ -49,7 +50,7 @@ export default function User(){
     const handleDelete = async(id) => {
         confirm('ban co muon xoa')
         try {
-            const response = await fetch(`http://localhost:3000/api/user/deleteUser/${id}`, {
+            const response = await fetch(`${api}user/deleteUser/${id}`, {
                 method: 'DELETE',
                 headers: { "Content-Type": "application/json" }
             })

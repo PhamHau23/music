@@ -1,10 +1,11 @@
 import AdminListItem from "./AdminListItem";
-import {c} from "../AdminLayout"
+import {api, c} from "../AdminLayout"
 import { useRef, useState } from "react";
 import useFetchApi from "~/hooks/useFetchApi";
 import { SearchIcon2 } from "~/icon";
 import { removeTones } from "~/lib/removeTones";
 import { capitalizeWords } from "~/lib/capitalizeWords";
+
 
 export default function AdminGenres(){
     const [searchValue, setSearchValue] = useState([])
@@ -37,8 +38,6 @@ export default function AdminGenres(){
     //filter select nation
     const handleChangeSelectNation = () => {
         const nationId = selectRef.current.value
-        console.log(nationId)
-        console.log(nationId === "all")
         if(nationId){
             const dataFilter = data.genres.filter((item) => 
                 item.nation === nationId
@@ -56,7 +55,7 @@ export default function AdminGenres(){
     const handleDeleteGenre = async(id) => {
         confirm('ban co muon xoa')
         try {
-            const response = await fetch(`http://localhost:3000/api/admin/deletegenre/${id}`, {
+            const response = await fetch(`${api}admin/deletegenre/${id}`, {
                 method: 'DELETE',
                 headers: { "Content-Type": "application/json" }
             })

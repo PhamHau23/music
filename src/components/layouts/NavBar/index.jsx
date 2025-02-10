@@ -2,7 +2,7 @@ import classNames from "classnames/bind"
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import styles from './Navbar.module.scss'
-import { iconKhamPha, iconThuVien } from "~assets/icon"
+import { iconKhamPha, iconThuVien } from "~/assets/icon"
 import { musicIcon, starIcon } from "~/icon"
 import NavItem from "./components/NavItem"
 import { useSelector } from "react-redux"

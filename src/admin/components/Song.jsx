@@ -6,6 +6,7 @@ import AdminListItem from "./AdminListItem";
 import useFetchApi from "~/hooks/useFetchApi";
 import { capitalizeWords } from "~/lib/capitalizeWords";
 import EditForm from "./EditForm";
+import { api } from "../AdminLayout";
 
 export default function Song() {
    const songData = useFetchApi('admin/song')
@@ -57,7 +58,7 @@ export default function Song() {
    const handleDeleteSong = async(id) => {
       confirm('ban co muon xoa')
       try {
-          const response = await fetch(`http://localhost:3000/api/admin/deletesong/${id}`, {
+          const response = await fetch(`${api}admin/deletesong/${id}`, {
               method: 'DELETE',
               headers: { "Content-Type": "application/json" }
           })

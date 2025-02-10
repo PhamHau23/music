@@ -1,5 +1,5 @@
 import useFetchApi from "~/hooks/useFetchApi"
-import MusicPlayer from "~components/MusicPlayer"
+import MusicPlayer from "~/components/MusicPlayer"
 
 
 export const PlaySongSelected = ({id}) => {

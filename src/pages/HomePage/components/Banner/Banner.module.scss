@@ -2,7 +2,15 @@
     display: flex;
     justify-content: space-between;
 
+    span{
+        flex: 1;
+        border-radius: 5px;
+    }
+
     img{
-        width: 350px;
+        border-radius: 5px;
+        height: auto;
+        max-height: 400px;
+        width: 100%;
     }
 }

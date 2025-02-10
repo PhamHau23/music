@@ -1,7 +1,7 @@
 import classNames from "classnames/bind"
 import styles from "../SingerPage.module.scss"
 import { FollowIcon, PlaySongIcon } from "~/icon"
-import Button from "~components/Button"
+import Button from "~/components/Button"
 import { capitalizeWords } from "~/lib/capitalizeWords"
 
 const c = classNames.bind(styles)

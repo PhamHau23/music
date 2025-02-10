@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { api } from "~/admin/AdminLayout"
 
 const userSlice = createSlice({
     name: 'user',
@@ -37,7 +38,6 @@ const userSlice = createSlice({
                 state.message = action.payload
                 state.loading = false
                 state.error = null
-                console.log(action.payload)
             })
             .addCase(registerAccount.rejected, (state, action) => {
                 state.error = action.payload
@@ -49,8 +49,7 @@ export const login = createAsyncThunk(
     'user/login',
     async (formData,{rejectWithValue}) => {
         try {
-          console.log(formData)
-            const response = await fetch("http://localhost:3000/api/user/login", {
+            const response = await fetch(`${api}user/login`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(formData),
@@ -71,8 +70,7 @@ export const registerAccount = createAsyncThunk(
   'user/register',
   async (formData,{rejectWithValue}) => {
       try {
-        console.log(formData)
-          const response = await fetch("http://localhost:3000/api/user/register", {
+          const response = await fetch(`${api}user/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData),

@@ -39,7 +39,7 @@ function LoginPage(){
 
   useEffect(() => {
     if(isLogin) {
-      navigate('/profile')
+      navigate('/')
     }
   }, [dispatch, handleSubmit])
 

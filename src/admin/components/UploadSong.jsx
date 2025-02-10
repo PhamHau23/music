@@ -1,5 +1,5 @@
 import { useState ,useEffect, useRef } from "react"
-import {c} from "../AdminLayout"
+import {api, c} from "../AdminLayout"
 import { removeTones } from "~/lib/removeTones"
 import { CiImageOn } from "react-icons/ci"
 import EditForm from "./EditForm"
@@ -17,7 +17,7 @@ function UploadSong(){
     //fetch dữ liệu
     useEffect(() => {
         (async() => {
-            const response = await fetch(`http://localhost:3000/api/admin/uploadsongpage?nation=${nation}`)
+            const response = await fetch(`${api}admin/uploadsongpage?nation=${nation}`)
             const data1 = await response.json()
             setData(data1)
         })()
@@ -86,7 +86,7 @@ function UploadSong(){
         formData.append('genre', e.target.genre.value)  
 
         try {
-            const response =  await fetch('http://localhost:3000/api/admin/post/song',{
+            const response =  await fetch(`${api}admin/post/song`,{
                 method: 'POST',
                 body: formData
             })
