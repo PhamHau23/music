@@ -16,13 +16,17 @@ function MainLayout({children}){
     const dispatch = useDispatch()
     dispatch(fetchAllSongApi('song/search/searchvalue'))
 
-    if(isLogin === true){
-        const userData = useFetchUserData(token)
-        if(userData != null && Object.keys(userData).length > 0){
-            dispatch(setImgUser(userData.img))
-            dispatch(setRole(userData.role))
-        }
-    }
+    useEffect(() => {
+        (async() => {
+            if(isLogin === true){
+                const userData = useFetchUserData(token)
+                if(userData != null && Object.keys(userData).length > 0){
+                    dispatch(setImgUser(userData.img))
+                    dispatch(setRole(userData.role))
+                }
+            }
+        })()
+    }, [isLogin, token])
 
     return(
         <>
