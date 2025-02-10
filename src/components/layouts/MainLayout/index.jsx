@@ -1,4 +1,5 @@
 import { Provider, useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
 import classNames from "classnames/bind"
 import styles from "./MainLayout.module.scss"
 import Header from "../Header"
