@@ -5,6 +5,7 @@ import { ShowPassIcon, HiddenPassIcon } from '~/icon'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { login, registerAccount } from '~/redux/slices/userSlice'
+import { toast, ToastContainer } from 'react-toastify'
 
 function LoginPage(){
 
@@ -13,7 +14,7 @@ function LoginPage(){
   const [register, setRegister] = useState(false)
   const formRef = useRef()
   const dispatch = useDispatch()
-  const {isLogin} = useSelector((state) => state.user)
+  const {isLogin, loading, message, error} = useSelector((state) => state.user)
   const navigate = useNavigate()
 
   //show password
@@ -35,6 +36,21 @@ function LoginPage(){
     }
 
     register ? dispatch(registerAccount(formData)) : dispatch(login(formData))
+
+    const toastLoadingId = register ? toast.loading('đang đăng ký') : toast.loading('đang đăng nhập')
+
+    if(register && loading === false && error === null){
+      toast.dismiss(toastLoadingId)
+      toast.success('đăng ký thành công')
+    }
+
+    if(loading === false && error){
+      toast.dismiss(toastLoadingId)
+      toast.error(error,{
+        autoClose: false,
+        closeButton: true
+      })
+    }
   }
 
   useEffect(() => {
@@ -45,6 +61,7 @@ function LoginPage(){
 
   return(
     <form className={c('loginPage')} onSubmit={handleSubmit} ref={formRef}>
+      <ToastContainer autoClose={2000} position='top-right' />
       <div className={c('content')}>
         <h1>
           {register ? 'Đăng Kí' : 'Đăng Nhập'}

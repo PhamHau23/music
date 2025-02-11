@@ -1,18 +1,27 @@
 import AdminListItem from "./AdminListItem";
 import {api, c} from "../AdminLayout"
-import { useRef, useState } from "react";
-import useFetchApi from "~/hooks/useFetchApi";
-import { SearchIcon2 } from "~/icon";
+import { useEffect, useRef, useState } from "react";
+import {SearchIcon2} from "~/icon";
 import { removeTones } from "~/lib/removeTones";
-import { capitalizeWords } from "~/lib/capitalizeWords";
+import { toast, ToastContainer } from 'react-toastify';
+
 
 
 export default function AdminGenres(){
+    const [data, setData] = useState([])
     const [searchValue, setSearchValue] = useState([])
     const [noData, setNoData] = useState('')
     const inputRef = useRef()
     const selectRef = useRef()
-    const data = useFetchApi('admin/genres')
+
+    //fetch data
+    useEffect(() => {
+        (async() => {
+            const response = await fetch(`${api}admin/genres`)
+            const data = await response.json()
+            setData(data.genres)
+        })()
+    }, [])
 
     //kiem tra da co data hay chua
     if(!data || Object.keys(data).length === 0){
@@ -23,7 +32,7 @@ export default function AdminGenres(){
     const handleChangeInput = () => {
         const value = removeTones(inputRef.current.value.toLowerCase())
         if(value.length > 0){
-            const dataSearch = (selectRef.current.value === "all" ? data.genres : searchValue ).filter((item) =>
+            const dataSearch = (selectRef.current.value === "all" ? data : searchValue ).filter((item) =>
                 Object.values(item).some(objItem => removeTones(objItem.toString()).includes(value))
             )
             if(dataSearch.length === 0){
@@ -39,7 +48,7 @@ export default function AdminGenres(){
     const handleChangeSelectNation = () => {
         const nationId = selectRef.current.value
         if(nationId){
-            const dataFilter = data.genres.filter((item) => 
+            const dataFilter = data.filter((item) => 
                 item.nation === nationId
             )
             if(dataFilter.length === 0){
@@ -53,24 +62,39 @@ export default function AdminGenres(){
 
     //xoa the loai
     const handleDeleteGenre = async(id) => {
-        confirm('ban co muon xoa')
-        try {
-            const response = await fetch(`${api}admin/deletegenre/${id}`, {
-                method: 'DELETE',
-                headers: { "Content-Type": "application/json" }
+        const isConfirmed = confirm('ban co muon xoa')
+        if(isConfirmed){
+            const toastLoadingId = toast.loading('đang xóa thể loại',{
+                closeButton: true
             })
-            const newData = await response.json()
-            if (response.ok) {
-                setSearchValue(data.genres.filter(item => item._id !== id))
-                console.log(newData.message)
+
+            try {
+                const response = await fetch(`${api}admin/deletegenre/${id}`, {
+                    method: 'DELETE',
+                    headers: { "Content-Type": "application/json" }
+                })
+
+                const newData = await response.json()
+                toast.dismiss(toastLoadingId)
+                
+                if (response.ok) {
+                    setData(data.filter(item => item._id !== id))
+                    toast.success(newData.message,{
+                        closeButton: true
+                    })
+                }
+            } catch (error) {
+                toast.dismiss(toastLoadingId)
+                toast.error(error.message, {
+                    closeButton: true
+                })
             }
-        } catch (error) {
-            console.log(error.message)
         }
     }
 
     return (
         <div className={c('song-container')}>
+            <ToastContainer position="top-right" autoClose={2000} />
             <div className={c('fixed')}>
                 <h1>Danh sách bài hát</h1>
                 <div className={c('flex', 'filterBox')}>
@@ -82,9 +106,10 @@ export default function AdminGenres(){
                         <label htmlFor="nations">choose nation</label>
                         <select name="nations" onChange={handleChangeSelectNation} ref={selectRef}>
                             <option value='all'>không chọn</option>
-                            {data.nation.map(item => (
-                                <option value={item.id} key={item.id} >{capitalizeWords(item.name)}</option>
-                            ))}
+                            <option value='vn'>việt nam</option>
+                            <option value='eu'>âu mỹ</option>
+                            <option value='cn'>trung quốc</option>
+                            <option value='kr'>hàn quốc</option>
                         </select>
                     </div>
                 </div>
@@ -94,7 +119,7 @@ export default function AdminGenres(){
                    noData
                    ? (<li>{noData}</li>)
                    :  (
-                        (searchValue.length > 0 ? searchValue : data.genres).map(item => {
+                        (searchValue.length > 0 ? searchValue : data).map(item => {
                             return <AdminListItem 
                                     key={item._id}
                                     name={item.name}
