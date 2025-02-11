@@ -7,10 +7,12 @@ import useFetchApi from "~/hooks/useFetchApi";
 import { capitalizeWords } from "~/lib/capitalizeWords";
 import EditForm from "./EditForm";
 import { api } from "../AdminLayout";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function Song() {
-   const songData = useFetchApi('admin/song')
+   const [songData, setSongData] = useState([])
    const [searchValue, setSearchValue] = useState([])
+   const [data, setData] = useState([])
    const [disableSelectBox, setDisableSelectBox] =  useState(true)
    const [nationValue, setNationValue] = useState(null)
    const [genreList, setGenreList] = useState([])
@@ -27,10 +29,19 @@ export default function Song() {
    //loc list the loai theo nation
    useEffect(() => {
       if(nationValue){
-         const genreData = songData.genres.filter(genre => genre.nation === nationValue)
+         const genreData = data.genres.filter(genre => genre.nation === nationValue)
          setGenreList(genreData)
       }
    }, [nationValue, setNationValue])
+
+   useEffect(() => {
+      (async() => {
+         const response = await fetch(`${api}admin/song`)
+         const data = await response.json()
+         setData(data)
+         setSongData(data.song)
+      })()
+   }, [])
 
 
    //kiem tra da co data hay chua
@@ -56,19 +67,34 @@ export default function Song() {
 
    //delete song
    const handleDeleteSong = async(id) => {
-      confirm('ban co muon xoa')
-      try {
-          const response = await fetch(`${api}admin/deletesong/${id}`, {
-              method: 'DELETE',
-              headers: { "Content-Type": "application/json" }
-          })
-          const data = await response.json()
-          if (response.ok) {
-              setSearchValue(songData.song.filter(item => item._id !== id))
-              console.log(data.message)
-          }
-      } catch (error) {
-          console.log(error.message)
+      const isConfirmed = confirm('ban co muon xoa')
+      
+      if(isConfirmed){
+         const toastLoadingId = toast.loading('đang xóa bài hát', {
+            closeButton: true
+         })
+
+         try {
+            const response = await fetch(`${api}admin/deletesong/${id}`, {
+               method: 'DELETE',
+               headers: { "Content-Type": "application/json" }
+            })
+
+            const data = await response.json()
+            toast.dismiss(toastLoadingId)
+            
+            if (response.ok) {
+               setSongData(songData.filter(item => item._id !== id))
+               toast.success(data.message, {
+                  closeButton: true
+               })
+            }
+        } catch (error) {
+            toast.dismiss(toastLoadingId)
+            toast.error(error.message, {
+               closeButton: true
+            })
+        }
       }
    }
 
@@ -85,7 +111,7 @@ export default function Song() {
    //change event nation
    const handleChangeNationOption = () => {
       const selectValue = selectNationRef.current.value
-      const songByNation = songData.song.filter((song) => song.nation.id === selectValue)
+      const songByNation = songData.filter((song) => song.nation.id === selectValue)
       if(Number(selectValue) === 0){
          setDisableSelectBox(true)
          setSearchValue(songData)
@@ -123,6 +149,7 @@ export default function Song() {
 
    return (
       <div className={c("song-container")} ref={divSongContainerRef}>
+         <ToastContainer autoClose={2000} position="top-right"/>
          <div className={c('fixed')}>
             <h1>Danh sách bài hát</h1>
             <div className={c('flex', 'filterBox')}>
@@ -135,9 +162,10 @@ export default function Song() {
                   <label htmlFor="nation">choose nation</label>
                   <select name="nation" id="" ref={selectNationRef} onChange={handleChangeNationOption}>
                      <option value='0'>không chọn</option>
-                     {songData.nation.map((nation) => (
-                        <option value={nation.id} key={nation.id}>{capitalizeWords(nation.name)}</option>
-                     ))}
+                     <option value='vn'>việt nam</option>
+                     <option value='eu'>âu mỹ</option>
+                     <option value='cn'>trung quốc</option>
+                     <option value='kr'>hàn quốc</option>
                   </select>
                </div>
 
@@ -156,7 +184,7 @@ export default function Song() {
             {noData 
             ? (<li>{noData}</li>)
             : (
-               (searchValue.length > 0 ? searchValue : songData.song).map((item) => (
+               (searchValue.length > 0 ? searchValue : songData).map((item) => (
                   <AdminListItem 
                      key={item._id}
                      name={item.name}

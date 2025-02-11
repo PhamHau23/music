@@ -1,8 +1,8 @@
-import useFetchApi from "~/hooks/useFetchApi"
 import {api, c} from "../AdminLayout" 
 import { useEffect, useState } from "react"
 import AdminListItem from "./AdminListItem"
 import { SearchIcon2 } from "~/icon"
+import { toast, ToastContainer } from "react-toastify"
 
 export default function AdminSinger(){
     const [singerData, setSingerData] = useState([])
@@ -28,24 +28,40 @@ export default function AdminSinger(){
     }
 
     const handleDeleteSinger = async(id) => {
-        confirm('ban co muon xoa')
-        try {
-            const response = await fetch(`${api}admin/deletesinger/${id}`, {
-                method: 'DELETE',
-                headers: { "Content-Type": "application/json" }
+        const isConfirmed = confirm('ban co muon xoa')
+        
+        if(isConfirmed){
+            const toastLoadingId = toast.loading('đang xóa ca sĩ', {
+                closeButton:  true
             })
-            const data = await response.json()
-            if (response.ok) {
-                setSingerData(singerData.filter(item => item._id !== id))
-                console.log(data.message)
+            
+            try {
+                const response = await fetch(`${api}admin/deletesinger/${id}`, {
+                    method: 'DELETE',
+                    headers: { "Content-Type": "application/json" }
+                })
+
+                const data = await response.json()
+                toast.dismiss(toastLoadingId)
+
+                if (response.ok) {
+                    setSingerData(singerData.filter(item => item._id !== id))
+                    toast.success(data.message, {
+                        closeButton: true
+                    })
+                }
+            } catch (error) {
+                toast.dismiss(toastLoadingId)
+                toast.error(error.message, {
+                    closeButton: true
+                })
             }
-        } catch (error) {
-            console.log(error.message)
         }
     }
 
     return(
         <div className={c('singer-container')}>
+            <ToastContainer autoClose={2000} position="top-right"/>
             <div className={c('fixed')}>
                 <h1>Danh sách bài hát</h1>
                 <div className={c('flex', 'filterBox')}>

@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react"
 import { removeTones } from "~/lib/removeTones"
 import AdminListItem from "./AdminListItem"
 import { api } from "../AdminLayout"
+import { toast, ToastContainer } from "react-toastify"
 
 export const c = classNames.bind(styles)
 
@@ -48,19 +49,33 @@ export default function User(){
 
     //xóa user
     const handleDelete = async(id) => {
-        confirm('ban co muon xoa')
-        try {
-            const response = await fetch(`${api}user/deleteUser/${id}`, {
-                method: 'DELETE',
-                headers: { "Content-Type": "application/json" }
+        const isConfirm = confirm('ban co muon xoa')
+        if(isConfirm){
+            const toastLoadingId = toast.loading('đang xóa user', {
+                closeButton: true
             })
-            const data = await response.json()
-            if (response.ok) {
-                setUserData(userData.filter(item => item._id !== id))
-                console.log(data.message)
+
+            try {
+                const response = await fetch(`${api}user/deleteUser/${id}`, {
+                    method: 'DELETE',
+                    headers: { "Content-Type": "application/json" }
+                })
+
+                const data = await response.json()
+                toast.dismiss(toastLoadingId)
+
+                if (response.ok) {
+                    setUserData(userData.filter(item => item._id !== id))
+                    toast.success(data.message, {
+                        closeButton: true
+                    })
+                }
+            } catch (error) {
+                toast.dismiss(toastLoadingId)
+                toast.error(error.message, {
+                    closeButton: true
+                })
             }
-        } catch (error) {
-            console.log(error.message)
         }
     }
 
@@ -83,6 +98,7 @@ export default function User(){
     const userRole = "user"
     return (
         <div className={c('user-container')}>
+            <ToastContainer autoClose={2000} position="top-right"/>
             <div className={c('fixed')}>
                 <h1>Danh sách user</h1>
                 <div className={c('flex','filterBox')}>

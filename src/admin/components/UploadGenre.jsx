@@ -1,6 +1,7 @@
 import { useRef, useState } from "react"
 import {api, c} from "../AdminLayout"
 import { CiImageOn } from "react-icons/ci"
+import { toast, ToastContainer } from "react-toastify"
 
 function UploadGenre(){
     const [img, setImg] = useState(null)
@@ -27,22 +28,40 @@ function UploadGenre(){
             formData.append('nation', e.target.nation.value)
         ])
 
+        const toastLoadingId = toast.loading('đang upload', {
+            closeButton: true
+        })
+
         try {
             const response =  await fetch(`${api}admin/post/genre`,{
                 method: 'POST',
                 body: formData
             })
+            
             const data = await response.json()
+            toast.dismiss(toastLoadingId)
+
             if(response.ok){
-                console.log(data)
+                toast.success(data.message, {
+                    closeButton: true
+                })
+
+                e.target.name.value = ''
+                e.target.id.value = ''
+                setImg(null)
+                e.target.nation.value = ''
             }
         } catch (error) {
-            console.log(error)
+            toast.dismiss(toastLoadingId)
+            toast.error(error.message, {
+                closeButton: true
+            })
         }
     }
 
     return(
         <div className={c('uploadContainer')}>
+            <ToastContainer autoClose={2000} position="top-right"/>
             <form action="" method="post" onSubmit={handleSubmitForm} enctype="multipart/form-data">
                 <div>
                     <label htmlFor="name">tên thể loại</label>

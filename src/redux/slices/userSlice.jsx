@@ -41,6 +41,7 @@ const userSlice = createSlice({
             })
             .addCase(registerAccount.rejected, (state, action) => {
                 state.error = action.payload
+                state.loading = false
             })
     }
 })

@@ -19,7 +19,9 @@ export { AiOutlineLoading3Quarters as LoadingIcon } from "react-icons/ai"
 export { IoPersonAddOutline as FollowIcon } from "react-icons/io5"
 export { RiEdit2Fill as EditIcon } from "react-icons/ri"
 export { MdDeleteForever as DeleteIcon } from "react-icons/md"
-export { CiSearch as SearchIcon2 } from "react-icons/ci";
+export { CiSearch as SearchIcon2 } from "react-icons/ci"
+export { VscError as ErrorIcon } from "react-icons/vsc"
+export { IoIosCheckmarkCircleOutline as SuccessIcon } from "react-icons/io"
 export const musicIcon = <FontAwesomeIcon icon={faMusic} />
 export const starIcon = <FontAwesomeIcon icon={faStar} />
 export const categoryIcon = <FontAwesomeIcon icon={faIcons} />

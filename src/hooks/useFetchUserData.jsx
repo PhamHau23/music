@@ -4,7 +4,10 @@ const api = import.meta.env.VITE_API_URL
 
 function useFetchUserData(token) {
     const [data, setData] = useState(null)
+
     useEffect(() => {
+      if(!token) return
+      
       (async() => {
         const response = await fetch(`${api}user/profile`, {
           method: "GET",
@@ -22,6 +25,7 @@ function useFetchUserData(token) {
         setData(userInfo)
       })()
     }, [token])
+
     return data
 }
 
