@@ -3,7 +3,7 @@ import { privateRoutes, publicRoutes } from './routes'
 import MainLayout from './components/layouts/MainLayout'
 import { Provider } from 'react-redux'
 import store from './redux/store'
-import PrivateRoute from '~components/PrivateRoute'
+import PrivateRoute from '~/components/PrivateRoute'
 
 
 function App() {
