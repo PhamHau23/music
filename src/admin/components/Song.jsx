@@ -3,7 +3,6 @@ import { c } from "./User";
 import { useState, useRef, useEffect } from "react";
 import { removeTones } from "~/lib/removeTones";
 import AdminListItem from "./AdminListItem";
-import useFetchApi from "~/hooks/useFetchApi";
 import { capitalizeWords } from "~/lib/capitalizeWords";
 import EditForm from "./EditForm";
 import { api } from "../AdminLayout";
@@ -20,6 +19,7 @@ export default function Song() {
    const [editFormData, setEditFormData] =  useState([])
    const [key, setKey] = useState(null)
    const [editForm, setEditForm] = useState(false)
+   const [SongFiltered, setSongFiltered] = useState([])
    const inputRef = useRef(null)
    const selectNationRef = useRef(null)
    const selectGenreRef = useRef(null)
@@ -53,7 +53,7 @@ export default function Song() {
    const handleChangeInput = () => {
       const value = removeTones(inputRef.current.value.toLowerCase())
       if(value.length > 0){
-         const dataSearch = songData.filter((item) =>
+         const dataSearch = (selectNationRef.current.value === '0' ? songData : searchValue).filter((item) =>
             Object.values(item).some(objItem => removeTones(objItem.toString()).includes(value))
          )
          if(dataSearch.length === 0){
@@ -62,6 +62,8 @@ export default function Song() {
             setSearchValue(dataSearch)
             setNoData('')
          }
+      }else{
+         setSearchValue(SongFiltered)
       }
    }
 
@@ -124,6 +126,7 @@ export default function Song() {
             setNoData('không có dữ liệu')
          }else{
             setSearchValue(songByNation)
+            setSongFiltered(songByNation)
             setNoData('')
          }
       }
@@ -133,15 +136,16 @@ export default function Song() {
    //change event genre
    const handleChangeGenreOption = () => {
       const genreId = selectGenreRef.current.value
-      const songByGenre = searchValue.filter(song => song.genre.id === genreId)
+      const _songByGenre = searchValue.filter(song => song.genre.id === genreId)
       if(Number(genreId) === 0){
          setSearchValue(searchValue)
          setNoData('')
       }else{
-         if(songByGenre.length === 0){
+         if(_songByGenre.length === 0){
             setNoData('không có dữ liệu')
          }else{
-            setSearchValue(songByGenre)
+            setSearchValue(_songByGenre)
+            setSongFiltered(_songByGenre)
             setNoData('')
          }
       }
