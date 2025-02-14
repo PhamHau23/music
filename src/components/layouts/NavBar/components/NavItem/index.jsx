@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom"
 import classNames from "classnames/bind"
 import styles from "./NavItem.module.scss"
 
-function NavItem({path, name, mainIcon, subIcon ,live, item, setItem}){
+function NavItem({path, name, mainIcon, setItem, tabletTitle, classname}){
 
     const c = classNames.bind(styles)
 
@@ -19,10 +19,10 @@ function NavItem({path, name, mainIcon, subIcon ,live, item, setItem}){
     return(
        <li onClick={() => handleClickItem(name)} className={c('navbar-item','tablet-navbar-item', linkStyle())}>
             <Link title={name} to={path}>
-                <span className={c(`${ live ? live : ''}`)}>
+                <span className={c(classname)}>
                     {mainIcon}
-                    <p>{name}</p>
-                    <i>{subIcon}</i>
+                    <p className={c('title')}>{name}</p>
+                    <p className={c('tabletTitle', 'tabletTitle1')}>{tabletTitle}</p>
                 </span>
             </Link>
        </li>

@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react"
 import {api, c} from "../AdminLayout"
-import { json } from "react-router-dom"
 
 const nationArr = ['vn','eu','cn','kr']
 function EditForm({setEditForm, editFormData}){

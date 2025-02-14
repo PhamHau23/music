@@ -38,5 +38,3 @@ function CarouselContainer({children, widthItem, num}){
 }
 
 export default CarouselContainer
-
-/**/

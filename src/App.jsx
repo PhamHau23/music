@@ -1,8 +1,9 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import { publicRoutes } from './routes'
+import { privateRoutes, publicRoutes } from './routes'
 import MainLayout from './components/layouts/MainLayout'
 import { Provider } from 'react-redux'
 import store from './redux/store'
+import PrivateRoute from '~components/PrivateRoute'
 
 
 function App() {
@@ -13,7 +14,23 @@ function App() {
           <Routes>
             {publicRoutes.map((route, i) => {
               const Layout = route.layout || MainLayout
-              return (<Route key={i} path={route.path} element={<Layout><route.component/></Layout>}/>)
+              return (<Route key={i} 
+                       path={route.path} 
+                       element={<Layout><route.component/></Layout>
+                      }/>)
+            })}
+
+            {privateRoutes.map((route, i) =>{
+              const Layout = route.layout || MainLayout
+              return (<Route key={i} 
+                      path={route.path} 
+                      element={
+                        <PrivateRoute>
+                          <Layout>
+                            <route.component />
+                          </Layout>
+                        </PrivateRoute>
+                      }/>)
             })}
           </Routes>
         </div>
