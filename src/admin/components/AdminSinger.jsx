@@ -3,10 +3,13 @@ import { useEffect, useState } from "react"
 import AdminListItem from "./AdminListItem"
 import { SearchIcon2 } from "~/icon"
 import { toast, ToastContainer } from "react-toastify"
+import { removeTones } from "~/lib/removeTones"
 
 export default function AdminSinger(){
     const [singerData, setSingerData] = useState([])
+    const [searchValue, setSearchValue] = useState([])
     const [nation, setNation] = useState(null)
+    const [noData, setNoData] = useState('')
 
     useEffect(() => {
         (async() => {
@@ -20,6 +23,21 @@ export default function AdminSinger(){
         return(
             <div>...loading</div>
         )
+    }
+
+    const handleChangeSearchInput = (e) => {
+        const value = removeTones(e.target.value.toLowerCase())
+        if(value.length > 0){
+            const dataSearch = singerData.filter((item) =>
+                Object.values(item).some(objItem => removeTones(objItem.toString()).includes(value))
+            )
+            if(dataSearch.length === 0){
+                setNoData('không có dữ liệu')
+            }else{
+                setSearchValue(dataSearch)
+                setNoData('')
+            }
+        }
     }
 
     const handleChangeNation = (e) => {
@@ -65,7 +83,7 @@ export default function AdminSinger(){
             <div className={c('fixed')}>
                 <h1>Danh sách bài hát</h1>
                 <div className={c('flex', 'filterBox')}>
-                    <div className={c('search')}>
+                    <div className={c('search')} onChange={handleChangeSearchInput}>
                         <input type="text" placeholder="tìm kiếm...."/>
                         <SearchIcon2 fontSize={30}/>
                     </div>
@@ -84,17 +102,22 @@ export default function AdminSinger(){
 
             </div>
             <ul>
-                {singerData && singerData.map(singer => (
-                    <AdminListItem
-                        key={singer._id}
-                        name={singer.name}
-                        id={singer._id}
-                        img={singer.img}
-                        nation={singer.nation}
-                        view={singer.view}
-                        handleDelete={() => handleDeleteSinger(singer._id)}
-                    />
-                ))}
+                {noData 
+                 ? (<li>{noData}</li>) 
+                 : (
+                    ((searchValue.length > 0 ? searchValue : singerData).map(singer => (
+                        <AdminListItem
+                            key={singer._id}
+                            name={singer.name}
+                            id={singer._id}
+                            img={singer.img}
+                            nation={singer.nation}
+                            view={singer.view}
+                            handleDelete={() => handleDeleteSinger(singer._id)}
+                        />
+                        ))
+                    ))
+                }
             </ul>
         </div>
     )
