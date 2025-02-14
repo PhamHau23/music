@@ -53,7 +53,7 @@ export default function Song() {
    const handleChangeInput = () => {
       const value = removeTones(inputRef.current.value.toLowerCase())
       if(value.length > 0){
-         const dataSearch = songData.song.filter((item) =>
+         const dataSearch = songData.filter((item) =>
             Object.values(item).some(objItem => removeTones(objItem.toString()).includes(value))
          )
          if(dataSearch.length === 0){
@@ -101,7 +101,7 @@ export default function Song() {
    //edit song
    const handleEditSong = (id) => {
       if(id){
-         const song = songData.song.find((song) => song._id === id)
+         const song = songData.find((song) => song._id === id)
          setEditFormData(song)
          setEditForm(!editForm)
          setKey(song._id)
