@@ -20,17 +20,6 @@ function User(){
             {isLogin === true && img !== null ? 
             <img src={img} /> : 
             <span>{userIcon}</span>}
-            {/* {
-                token && 
-                <div className={c('user-dropdown')}>
-                    <div className={c('item')}>
-                        <Link to={'/profile'}>Thông tin</Link>
-                    </div>
-                    <div className={c('item')} onClick={handleLogout}>
-                        <p>Đăng Xuất</p>
-                    </div>
-                </div>
-            } */}
         </div>
     )
 }

@@ -1,6 +1,6 @@
 @mixin inupType(){
     padding: 5px;
-    margin: 40px 0;
+    margin: 50px 0;
     border-radius: 5px;
     background-color: white;
     display: flex;
@@ -56,6 +56,13 @@
         top: -20px;
         left: 0;
         font-size: .9em;
+    }
+    
+    label.notification{
+        color: rgb(255, 47, 47);
+        top: 35px;
+        font-size: 0.9em;
+        display: none;
     }
 
     .login-button{

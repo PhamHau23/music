@@ -19,7 +19,7 @@ export default function AdminGenres(){
         (async() => {
             const response = await fetch(`${api}admin/genres`)
             const data = await response.json()
-            setData(data.genres)
+            setData(data)
         })()
     }, [])
 
@@ -32,7 +32,7 @@ export default function AdminGenres(){
     const handleChangeInput = () => {
         const value = removeTones(inputRef.current.value.toLowerCase())
         if(value.length > 0){
-            const dataSearch = (selectRef.current.value === "all" ? data : searchValue ).filter((item) =>
+            const dataSearch = (selectRef.current.value === "0" ? data : searchValue ).filter((item) =>
                 Object.values(item).some(objItem => removeTones(objItem.toString()).includes(value))
             )
             if(dataSearch.length === 0){
@@ -46,11 +46,12 @@ export default function AdminGenres(){
 
     //filter select nation
     const handleChangeSelectNation = () => {
-        const nationId = selectRef.current.value
-        if(nationId){
-            const dataFilter = data.filter((item) => 
-                item.nation === nationId
-            )
+        const selectValue = selectRef.current.value
+        if(Number(selectValue) === 0){
+            setSearchValue(data)
+            setNoData('')
+        }else{
+            const dataFilter = data.filter((item) => item.nation === selectValue)
             if(dataFilter.length === 0){
                 setNoData('không có dữ liệu')
             }else{
@@ -105,7 +106,7 @@ export default function AdminGenres(){
                     <div className={c('selectBox')}>
                         <label htmlFor="nations">choose nation</label>
                         <select name="nations" onChange={handleChangeSelectNation} ref={selectRef}>
-                            <option value='all'>không chọn</option>
+                            <option value='0'>không chọn</option>
                             <option value='vn'>việt nam</option>
                             <option value='eu'>âu mỹ</option>
                             <option value='cn'>trung quốc</option>

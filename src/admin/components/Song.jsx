@@ -111,13 +111,13 @@ export default function Song() {
    //change event nation
    const handleChangeNationOption = () => {
       const selectValue = selectNationRef.current.value
-      const songByNation = songData.filter((song) => song.nation.id === selectValue)
       if(Number(selectValue) === 0){
          setDisableSelectBox(true)
          setSearchValue(songData)
          setNoData('')
          selectGenreRef.current.value = '0'
       }else{
+         const songByNation = songData.filter((song) => song.nation.id === selectValue)
          setDisableSelectBox(false)
          setNationValue(selectValue)
          if(songByNation.length === 0){

@@ -21,7 +21,9 @@ function useFetchUserData(token) {
           throw new Error("Failed to fetch user info");
         }
     
-        const userInfo = await response.json();
+        const userInfo = await response.json()
+        localStorage.setItem('_id',userInfo._id)
+        localStorage.setItem('role',userInfo.role)
         setData(userInfo)
       })()
     }, [token])

@@ -1,12 +1,14 @@
 import { EditIcon, DeleteIcon } from "~/icon";
 import { c } from "../AdminLayout"
+import changeRole from "../services/changeRole";
 
 export default function AdminListItem({img, handleDelete, handleEdit, name, id, objId, singerName, role, nation, view}){
-    return (
+   
+   return (
             <li>
               <div className={c("left")}>
                  <img src={img} alt="" />
-                 <div className={c("flex")}>
+                 <div className={c("flex w-250px")}>
                     <p>
                        name: <span>{name}</span>
                     </p>
@@ -28,8 +30,17 @@ export default function AdminListItem({img, handleDelete, handleEdit, name, id, 
                     {role && <p>role: <span>{role}</span></p>}
                     {nation && <p>nation: <span>{nation}</span></p>}
                  </div>
-                 
-                  
+                 {
+                  role && <form onSubmit={changeRole}>
+                              <select name="role" id={id} className="m-l-10 w-100px h-25px">
+                                 <option value={role}>{role}</option>
+                                 <option value={role === 'admin' ? 'user' : 'admin'}>{role === 'admin' ? 'user' : 'admin'}</option>
+                              </select>
+                              <button type="submit" style={{marginLeft: '5px'}}>
+                                 đổi role
+                              </button>
+                          </form>
+                 }
               </div>
               <div className={c("right")}>
                   <div>

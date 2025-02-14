@@ -12,7 +12,7 @@ function Navbar(){
     
     const c = classNames.bind(styles)
     const {isLogin} = useSelector(state => state.user)
-    const {role} = useSelector(state => state.userData)
+    const role = localStorage.getItem('role')
     const [item, setItem] = useState('Trang Chủ')
     const navigate = useNavigate()
 
@@ -33,10 +33,10 @@ function Navbar(){
                 </ul>
                 <span className='line' style={{margin: '0 20px'}}></span>
                 <ul>
-                    {<NavItem path={'/nation/vn'} name={'Việt Nam'} mainIcon={starIcon} item={item} setItem={setItem} />}
-                    {<NavItem path={'/nation/cn'} name={'Trung Quốc'} mainIcon={starIcon} item={item} setItem={setItem} />}
-                    {<NavItem path={'/nation/eu'} name={'Âu Mỹ'} mainIcon={starIcon} item={item} setItem={setItem} />}
-                    {<NavItem path={'/nation/kr'} name={'Hàn Quốc'} mainIcon={starIcon} item={item} setItem={setItem} />}
+                    {<NavItem path={'/nation/vn'} classname={'navbarNation'} name={'Việt Nam'} mainIcon={starIcon} item={item} setItem={setItem} tabletTitle={'vn'} />}
+                    {<NavItem path={'/nation/cn'} classname={'navbarNation'} name={'Trung Quốc'} mainIcon={starIcon} item={item} setItem={setItem} tabletTitle={'cn'} />}
+                    {<NavItem path={'/nation/eu'} classname={'navbarNation'} name={'Âu Mỹ'} mainIcon={starIcon} item={item} setItem={setItem} tabletTitle={'eu'} />}
+                    {<NavItem path={'/nation/kr'} classname={'navbarNation'} name={'Hàn Quốc'} mainIcon={starIcon} item={item} setItem={setItem} tabletTitle={'kr'} />}
                 </ul>
             </div>
 

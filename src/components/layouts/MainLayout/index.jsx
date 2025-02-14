@@ -6,7 +6,7 @@ import Navbar from "../NavBar"
 import MusicPlayer from "~/components/MusicPlayer"
 import { fetchAllSongApi } from "~/redux/slices/songsData"
 import useFetchUserData from "~/hooks/useFetchUserData"
-import { setImgUser, setRole } from "~/redux/slices/userDataSlice"
+import { setImgUser } from "~/redux/slices/userDataSlice"
 
 
 function MainLayout({children}){
@@ -21,7 +21,6 @@ function MainLayout({children}){
     if(isLogin){
         if(userData != null && Object.keys(userData).length > 0){
             dispatch(setImgUser(userData.img))
-            dispatch(setRole(userData.role))
         }
     }
 

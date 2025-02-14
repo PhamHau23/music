@@ -4,6 +4,7 @@ import {faDownload, faGear} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export { FaRegPlayCircle  as CirclePlayIcon} from "react-icons/fa"
+export { CiHome as HomeIcon } from "react-icons/ci";
 export { BsMusicNoteList as ListSongIcon } from "react-icons/bs"
 export { FaPause as PauseSongIcon } from "react-icons/fa6"
 export { FaForwardStep as NextSongIcon } from "react-icons/fa6"
