@@ -10,6 +10,7 @@ import { toast, ToastContainer } from 'react-toastify';
 export default function AdminGenres(){
     const [data, setData] = useState([])
     const [searchValue, setSearchValue] = useState([])
+    const [genreByNation, setGenreByNation] = useState([])
     const [noData, setNoData] = useState('')
     const inputRef = useRef()
     const selectRef = useRef()
@@ -33,7 +34,7 @@ export default function AdminGenres(){
         const value = removeTones(inputRef.current.value.toLowerCase())
         if(value.length > 0){
             const dataSearch = (selectRef.current.value === "0" ? data : searchValue ).filter((item) =>
-                Object.values(item).some(objItem => removeTones(objItem.toString()).includes(value))
+                removeTones(item.name).includes(value)
             )
             if(dataSearch.length === 0){
                 setNoData('không có dữ liệu')
@@ -41,6 +42,8 @@ export default function AdminGenres(){
                 setSearchValue(dataSearch)
                 setNoData('')
             }
+        }else{
+            setSearchValue(genreByNation)
         }
     }
 
@@ -56,6 +59,7 @@ export default function AdminGenres(){
                 setNoData('không có dữ liệu')
             }else{
                 setSearchValue(dataFilter)
+                setGenreByNation(dataFilter)
                 setNoData('')
             }
         }

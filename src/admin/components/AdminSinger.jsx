@@ -1,5 +1,5 @@
 import {api, c} from "../AdminLayout" 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import AdminListItem from "./AdminListItem"
 import { SearchIcon2 } from "~/icon"
 import { toast, ToastContainer } from "react-toastify"
@@ -8,16 +8,18 @@ import { removeTones } from "~/lib/removeTones"
 export default function AdminSinger(){
     const [singerData, setSingerData] = useState([])
     const [searchValue, setSearchValue] = useState([])
-    const [nation, setNation] = useState(null)
+    const [singerByNation, setSingerByNation] = useState([])
     const [noData, setNoData] = useState('')
-
+    const selectRef = useRef(null)
+    
+    //fetch data
     useEffect(() => {
         (async() => {
-            const response = await fetch(`${api}singer?nation=${nation}`)
+            const response = await fetch(`${api}singer`)
             const data = await response.json()
             setSingerData(data)
         })()
-    }, [nation])
+    }, [])
 
     if(!singerData || Object.keys(singerData) === 0){
         return(
@@ -25,11 +27,12 @@ export default function AdminSinger(){
         )
     }
 
+    //search func
     const handleChangeSearchInput = (e) => {
         const value = removeTones(e.target.value.toLowerCase())
-        if(value.length > 0){
-            const dataSearch = singerData.filter((item) =>
-                Object.values(item).some(objItem => removeTones(objItem.toString()).includes(value))
+        if(value){
+            const dataSearch = (selectRef.current.value === "0" ? singerData : searchValue).filter((item) =>
+                removeTones(item.name).includes(value)
             )
             if(dataSearch.length === 0){
                 setNoData('không có dữ liệu')
@@ -37,14 +40,30 @@ export default function AdminSinger(){
                 setSearchValue(dataSearch)
                 setNoData('')
             }
+        }else{
+            setSearchValue(singerByNation)
         }
     }
 
+    //select nation
     const handleChangeNation = (e) => {
-        const value = e.target.value
-        setNation(value)
+        const selectValue = e.target.value
+        if(Number(selectValue) === 0){
+            setSearchValue(singerData)
+            setNoData('')
+        }else{
+            const _singerByNation = singerData.filter((singer) => singer.nation === selectValue)
+            if(_singerByNation.length === 0){
+                setNoData('không có dữ liệu')
+            }else{
+                setSearchValue(_singerByNation)
+                setSingerByNation(_singerByNation)
+                setNoData('')
+            }
+        }
     }
 
+    //delete
     const handleDeleteSinger = async(id) => {
         const isConfirmed = confirm('ban co muon xoa')
         
@@ -83,19 +102,19 @@ export default function AdminSinger(){
             <div className={c('fixed')}>
                 <h1>Danh sách bài hát</h1>
                 <div className={c('flex', 'filterBox')}>
-                    <div className={c('search')} onChange={handleChangeSearchInput}>
-                        <input type="text" placeholder="tìm kiếm...."/>
+                    <div className={c('search')}>
+                        <input type="text" onChange={handleChangeSearchInput} placeholder="tìm kiếm...."/>
                         <SearchIcon2 fontSize={30}/>
                     </div>
 
                     <div>
                         <label htmlFor="nation">choose nation</label>
-                        <select name="nation" id="nation" onChange={handleChangeNation}>
-                            <option>không chọn</option>
-                            <option value="vn">việt nam</option>
-                            <option value="eu">âu mỹ</option>
-                            <option value="cn">trung quốc</option>
-                            <option value="kr">hàn quốc</option>
+                        <select name="nation" id="nation" ref={selectRef} onChange={handleChangeNation}>
+                            <option value='0'>không chọn</option>
+                            <option value="việt nam">việt nam</option>
+                            <option value="âu mỹ">âu mỹ</option>
+                            <option value="trung quốc">trung quốc</option>
+                            <option value="hàn quốc">hàn quốc</option>
                         </select>
                     </div>
                 </div>
