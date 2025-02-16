@@ -1,7 +1,7 @@
 import classNames from "classnames/bind"
 import styles from "./CarouselContainer.module.scss"
 import React, { useEffect, useState } from "react"
-import { angleLeft, angleRight } from "src/icon"
+import { angleLeft, angleRight } from "~/icon"
 
 function CarouselContainer({children, widthItem, num}){
 
@@ -38,5 +38,3 @@ function CarouselContainer({children, widthItem, num}){
 }
 
 export default CarouselContainer
-
-/**/

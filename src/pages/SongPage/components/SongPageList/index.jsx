@@ -1,7 +1,7 @@
 import classNames from "classnames/bind"
 import styles from "./SongPageList.module.scss"
-import SongList from "src/components/SongList"
-import { ListSongIcon, musicIcon } from "src/icon"
+import SongList from "~/components/SongList"
+import { ListSongIcon, musicIcon } from "~/icon"
 
 function SongPageList(){
 

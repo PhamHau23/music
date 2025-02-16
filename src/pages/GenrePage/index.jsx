@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom"
 import classNames from "classnames/bind"
 import styles from "./GenrePage.module.scss"
-import SongListType2 from "src/components/SongListType2"
-import { GetApiDataProvider, SongDataProvider } from "src/contexts"
-import Genres from "src/components/Genres"
+import SongListType2 from "~/components/SongListType2"
+import { GetApiDataProvider, SongDataProvider } from "~/contexts"
+import Genres from "~/components/Genres"
 import useFetchApi from "~/hooks/useFetchApi"
 import { GenrePageBanner } from "./components/GenrePageBanner"
 

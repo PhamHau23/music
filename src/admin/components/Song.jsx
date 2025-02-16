@@ -3,13 +3,15 @@ import { c } from "./User";
 import { useState, useRef, useEffect } from "react";
 import { removeTones } from "~/lib/removeTones";
 import AdminListItem from "./AdminListItem";
-import useFetchApi from "~/hooks/useFetchApi";
 import { capitalizeWords } from "~/lib/capitalizeWords";
 import EditForm from "./EditForm";
+import { api } from "../AdminLayout";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function Song() {
-   const songData = useFetchApi('admin/song')
+   const [songData, setSongData] = useState([])
    const [searchValue, setSearchValue] = useState([])
+   const [data, setData] = useState([])
    const [disableSelectBox, setDisableSelectBox] =  useState(true)
    const [nationValue, setNationValue] = useState(null)
    const [genreList, setGenreList] = useState([])
@@ -17,6 +19,7 @@ export default function Song() {
    const [editFormData, setEditFormData] =  useState([])
    const [key, setKey] = useState(null)
    const [editForm, setEditForm] = useState(false)
+   const [SongFiltered, setSongFiltered] = useState([])
    const inputRef = useRef(null)
    const selectNationRef = useRef(null)
    const selectGenreRef = useRef(null)
@@ -26,10 +29,19 @@ export default function Song() {
    //loc list the loai theo nation
    useEffect(() => {
       if(nationValue){
-         const genreData = songData.genres.filter(genre => genre.nation === nationValue)
+         const genreData = data.genres.filter(genre => genre.nation === nationValue)
          setGenreList(genreData)
       }
    }, [nationValue, setNationValue])
+
+   useEffect(() => {
+      (async() => {
+         const response = await fetch(`${api}admin/song`)
+         const data = await response.json()
+         setData(data)
+         setSongData(data.song)
+      })()
+   }, [])
 
 
    //kiem tra da co data hay chua
@@ -41,7 +53,7 @@ export default function Song() {
    const handleChangeInput = () => {
       const value = removeTones(inputRef.current.value.toLowerCase())
       if(value.length > 0){
-         const dataSearch = songData.song.filter((item) =>
+         const dataSearch = (selectNationRef.current.value === '0' ? songData : searchValue).filter((item) =>
             Object.values(item).some(objItem => removeTones(objItem.toString()).includes(value))
          )
          if(dataSearch.length === 0){
@@ -50,31 +62,48 @@ export default function Song() {
             setSearchValue(dataSearch)
             setNoData('')
          }
+      }else{
+         setSearchValue(SongFiltered)
       }
    }
 
    //delete song
    const handleDeleteSong = async(id) => {
-      confirm('ban co muon xoa')
-      try {
-          const response = await fetch(`http://localhost:3000/api/admin/deletesong/${id}`, {
-              method: 'DELETE',
-              headers: { "Content-Type": "application/json" }
-          })
-          const data = await response.json()
-          if (response.ok) {
-              setSearchValue(songData.song.filter(item => item._id !== id))
-              console.log(data.message)
-          }
-      } catch (error) {
-          console.log(error.message)
+      const isConfirmed = confirm('ban co muon xoa')
+      
+      if(isConfirmed){
+         const toastLoadingId = toast.loading('đang xóa bài hát', {
+            closeButton: true
+         })
+
+         try {
+            const response = await fetch(`${api}admin/deletesong/${id}`, {
+               method: 'DELETE',
+               headers: { "Content-Type": "application/json" }
+            })
+
+            const data = await response.json()
+            toast.dismiss(toastLoadingId)
+            
+            if (response.ok) {
+               setSongData(songData.filter(item => item._id !== id))
+               toast.success(data.message, {
+                  closeButton: true
+               })
+            }
+        } catch (error) {
+            toast.dismiss(toastLoadingId)
+            toast.error(error.message, {
+               closeButton: true
+            })
+        }
       }
    }
 
    //edit song
    const handleEditSong = (id) => {
       if(id){
-         const song = songData.song.find((song) => song._id === id)
+         const song = songData.find((song) => song._id === id)
          setEditFormData(song)
          setEditForm(!editForm)
          setKey(song._id)
@@ -84,19 +113,20 @@ export default function Song() {
    //change event nation
    const handleChangeNationOption = () => {
       const selectValue = selectNationRef.current.value
-      const songByNation = songData.song.filter((song) => song.nation.id === selectValue)
       if(Number(selectValue) === 0){
          setDisableSelectBox(true)
          setSearchValue(songData)
          setNoData('')
          selectGenreRef.current.value = '0'
       }else{
+         const songByNation = songData.filter((song) => song.nation.id === selectValue)
          setDisableSelectBox(false)
          setNationValue(selectValue)
          if(songByNation.length === 0){
             setNoData('không có dữ liệu')
          }else{
             setSearchValue(songByNation)
+            setSongFiltered(songByNation)
             setNoData('')
          }
       }
@@ -106,15 +136,16 @@ export default function Song() {
    //change event genre
    const handleChangeGenreOption = () => {
       const genreId = selectGenreRef.current.value
-      const songByGenre = searchValue.filter(song => song.genre.id === genreId)
+      const _songByGenre = searchValue.filter(song => song.genre.id === genreId)
       if(Number(genreId) === 0){
          setSearchValue(searchValue)
          setNoData('')
       }else{
-         if(songByGenre.length === 0){
+         if(_songByGenre.length === 0){
             setNoData('không có dữ liệu')
          }else{
-            setSearchValue(songByGenre)
+            setSearchValue(_songByGenre)
+            setSongFiltered(_songByGenre)
             setNoData('')
          }
       }
@@ -122,6 +153,7 @@ export default function Song() {
 
    return (
       <div className={c("song-container")} ref={divSongContainerRef}>
+         <ToastContainer autoClose={2000} position="top-right"/>
          <div className={c('fixed')}>
             <h1>Danh sách bài hát</h1>
             <div className={c('flex', 'filterBox')}>
@@ -134,9 +166,10 @@ export default function Song() {
                   <label htmlFor="nation">choose nation</label>
                   <select name="nation" id="" ref={selectNationRef} onChange={handleChangeNationOption}>
                      <option value='0'>không chọn</option>
-                     {songData.nation.map((nation) => (
-                        <option value={nation.id} key={nation.id}>{capitalizeWords(nation.name)}</option>
-                     ))}
+                     <option value='vn'>việt nam</option>
+                     <option value='eu'>âu mỹ</option>
+                     <option value='cn'>trung quốc</option>
+                     <option value='kr'>hàn quốc</option>
                   </select>
                </div>
 
@@ -155,7 +188,7 @@ export default function Song() {
             {noData 
             ? (<li>{noData}</li>)
             : (
-               (searchValue.length > 0 ? searchValue : songData.song).map((item) => (
+               (searchValue.length > 0 ? searchValue : songData).map((item) => (
                   <AdminListItem 
                      key={item._id}
                      name={item.name}

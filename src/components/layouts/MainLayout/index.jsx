@@ -1,13 +1,11 @@
-import { Provider, useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import classNames from "classnames/bind"
 import styles from "./MainLayout.module.scss"
-import Header from "../layouts/Header"
-import Navbar from "../layouts/NavBar"
-import MusicPlayer from "src/components/MusicPlayer"
-import { fetchAllSongApi } from "~/redux/slices/songsData"
+import Header from "../Header"
+import Navbar from "../NavBar"
+import MusicPlayer from "~/components/MusicPlayer"
 import useFetchUserData from "~/hooks/useFetchUserData"
-import { setImgUser, setRole } from "~/redux/slices/userDataSlice"
-
+import { setImgUser } from "~/redux/slices/userDataSlice"
 
 
 function MainLayout({children}){
@@ -15,13 +13,12 @@ function MainLayout({children}){
     const {isLogin} = useSelector(state => state.user)
     const token = localStorage.getItem('authToken')
     const dispatch = useDispatch()
-    dispatch(fetchAllSongApi('song/search/searchvalue'))
+    const userData = useFetchUserData(token)
+    
 
-    if(isLogin === true){
-        const userData = useFetchUserData(token)
+    if(isLogin){
         if(userData != null && Object.keys(userData).length > 0){
             dispatch(setImgUser(userData.img))
-            dispatch(setRole(userData.role))
         }
     }
 

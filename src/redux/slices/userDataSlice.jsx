@@ -4,20 +4,15 @@ import { createSlice } from "@reduxjs/toolkit"
 const userDataSlice = createSlice({
     name: 'userData',
     initialState: {
-        img: null,
-        role: null
+        img: null
     },
     reducers: {
         setImgUser(state, action){
             state.img = action.payload
-        },
-        setRole(state, action) {
-            state.role = action.payload
-            console.log(action.payload)
         }
     }
 })
 
-export const {setImgUser, setRole} = userDataSlice.actions
+export const {setImgUser} = userDataSlice.actions
 
 export default userDataSlice.reducer

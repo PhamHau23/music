@@ -4,22 +4,23 @@ import { LoadingIcon } from "~/icon"
 import { convertSeconds } from "~/lib/convertSeconds"
 import { capitalizeWords } from "~/lib/capitalizeWords"
 import { useDispatch } from "react-redux"
-import { fetchSongById } from "~/hooks/useGetSong"
 import { fetchSongApi } from "~/redux/slices/musicPlayerSlice"
 
 const c = classNames.bind(styles)
 
-export const SearchData = ({data}) =>{
+export const SearchData = ({data, isLoading}) =>{
     const dispatch = useDispatch()
 
     const handleClick = (id) => {
         dispatch(fetchSongApi(id))
     }
+    
+    if(!data) return
 
     return (
         <div className={c('container')}>
             {
-                data === undefined ? 
+                isLoading ? 
                 <LoadingIcon /> :
                 <div className={c('data')}>
                     {data.map(item => (

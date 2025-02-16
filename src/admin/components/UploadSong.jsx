@@ -1,9 +1,9 @@
 import { useState ,useEffect, useRef } from "react"
-import {c} from "../AdminLayout"
+import {api, c} from "../AdminLayout"
 import { removeTones } from "~/lib/removeTones"
 import { CiImageOn } from "react-icons/ci"
-import EditForm from "./EditForm"
-
+import { ToastContainer, toast } from "react-toastify"
+import { ErrorIcon, SuccessIcon } from "~/icon"
 function UploadSong(){
     const [data, setData] = useState([])
     const [singer, setSinger] = useState([])
@@ -17,7 +17,7 @@ function UploadSong(){
     //fetch dữ liệu
     useEffect(() => {
         (async() => {
-            const response = await fetch(`http://localhost:3000/api/admin/uploadsongpage?nation=${nation}`)
+            const response = await fetch(`${api}admin/uploadsongpage?nation=${nation}`)
             const data1 = await response.json()
             setData(data1)
         })()
@@ -85,22 +85,47 @@ function UploadSong(){
         formData.append('nation', e.target.nation.value),
         formData.append('genre', e.target.genre.value)  
 
+        const toastLoadingId = toast.loading('đang upload bài hát', {
+            closeButton: true
+        })
+
         try {
-            const response =  await fetch('http://localhost:3000/api/admin/post/song',{
+            const response =  await fetch(`${api}admin/post/song`,{
                 method: 'POST',
                 body: formData
             })
+
             const data = await response.json()
+            toast.dismiss(toastLoadingId)
+
             if(response.ok){
-                console.log(data)
+                toast.success(data.message, {
+                    closeButton: true
+                })
+
+                e.target.songName.value = ''
+                setImg(null)
+                e.target.singer.value = ''
+                setSingerValue('')
+                setSinger([])
+                e.target.nation.value = '0'
+                setNation('0')
+            }else{
+                toast.error(error.message, {
+                    closeButton: true
+                })
             }
         } catch (error) {
-            console.log(error)
+            toast.dismiss(toastLoadingId)
+            toast.error(error.message, {
+                closeButton: true
+            })
         }
     }
 
     return(
         <div className={c('uploadContainer')}>
+            <ToastContainer position="top-right" autoClose={2000} />
             <h1>Thêm bài hát</h1>
             <form action="" method="post" onSubmit={handleSubmitForm} enctype="multipart/form-data">
                 <div>
@@ -113,12 +138,12 @@ function UploadSong(){
                     <label htmlFor="img" className={c('image')} name="thêm ảnh" title="thêm ảnh">
                         {img ? <img src={img} alt="" /> : <CiImageOn fontSize={100} fill="gray"/> }
                     </label>
-                    <input type="file" name="img" id="img" ref={inputImgRef} onChange={handleChangeInputImg}/>
+                    <input accept="image/*" type="file" name="img" id="img" ref={inputImgRef} onChange={handleChangeInputImg}/>
                 </div>
 
                 <div>
                     <label htmlFor="mp3">mp3 file</label>
-                    <input type="file" name="mp3" id="mp3"/>
+                    <input type="file" name="mp3" id="mp3" accept="audio/*"/>
                 </div>
                 <div>
                     <label htmlFor="singer">tìm ca sĩ</label>

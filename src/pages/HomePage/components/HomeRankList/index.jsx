@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
 import classNames from "classnames/bind"
 import styles from './HomeRankList.module.scss'
-import CarouselContainer from "src/components/CarouselContainer"
-import HoverSongAni from "src/components/HoverSongAni"
+import CarouselContainer from "~/components/CarouselContainer"
+import HoverSongAni from "~/components/HoverSongAni"
 import { capitalizeWords } from "~/lib/capitalizeWords"
 import { formatDate } from "~/lib/formatDate"
 import { useDispatch } from "react-redux"

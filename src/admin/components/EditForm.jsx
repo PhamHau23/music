@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import {c} from "../AdminLayout"
-import { json } from "react-router-dom"
+import {api, c} from "../AdminLayout"
 
 const nationArr = ['vn','eu','cn','kr']
 function EditForm({setEditForm, editFormData}){
@@ -16,7 +15,7 @@ function EditForm({setEditForm, editFormData}){
     //useEffect
     useEffect(() => {
         (async() => {
-            const response = await fetch(`http://localhost:3000/api/genre/nation/id?id=${nation}`)
+            const response = await fetch(`${api}genre/nation/id?id=${nation}`)
             const data = await response.json()
             setGenres(data)
         })()
@@ -61,15 +60,9 @@ function EditForm({setEditForm, editFormData}){
     const handleSubmitForm = async(e) => {
         e.preventDefault()
         const formData = new FormData(formRef.current)
-
-        // formData.append('name', e.target.name.value),
-        //formData.append('img', e.target.img.files[0])
-        // formData.append('nation', e.target.nation.value),
-        // formData.append('genre', e.target.genres.value),
-        // formData.getAll('singer')
         try {
             // Giả sử editFormData chứa id của bài hát (ví dụ: editFormData.id)
-            const response = await fetch(`http://localhost:3000/api/admin/put/song/${editFormData._id}`, {
+            const response = await fetch(`${api}admin/put/song/${editFormData._id}`, {
                 method: 'PUT',
                 body: formData
             })
@@ -89,7 +82,6 @@ function EditForm({setEditForm, editFormData}){
             // onUpdate(result.data);
             
           } catch (err) {
-            console.error(err)
             alert(`Cập nhật thất bại: ${err.message}`)
           }
     }

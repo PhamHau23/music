@@ -8,9 +8,15 @@
             margin-left: 10px;
             font-size: .9em;
             width: 140px;
+        }
 
+        p.tabletTitle{
+            display: none;
+            margin-left: 0;
         }
     }
+
+    
 
     i{
         svg{
@@ -28,10 +34,6 @@
     }
 
     &:hover{
-        svg{
-            display: block !important;
-        }
-
         a{
             color: var(--main-t-color) !important;
         }

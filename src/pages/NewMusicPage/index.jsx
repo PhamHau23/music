@@ -1,7 +1,7 @@
 import classNames from "classnames/bind"
 import styles from "./NewMusicPage.module.scss"
-import { playIcon1 } from "src/icon"
-import SongList from "src/components/SongList"
+import { playIcon1 } from "~/icon"
+import SongList from "~/components/SongList"
 import useFetchApi from "~/hooks/useFetchApi"
 import { GetApiDataProvider } from "~/contexts"
 

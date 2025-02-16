@@ -230,6 +230,18 @@ li{
     width: 100%;
 }
 
+.w-100px{
+    width: 100px;
+}
+
+.w-250px{
+    width: 250px;
+}
+
+.h-25px{
+    height: 25px;
+}
+
 //carousel
 .carousel-item-padding{
     padding: 0 10px;
@@ -340,8 +352,19 @@ div.banner{
         .tablet-navbar-item{
             span{
                 padding: 10px;
-                p{
+
+                p.title{
                     display: none;
+                }
+            }
+
+            span.navbarNation{
+                svg{
+                    display: none;
+                }
+                
+                p.tabletTitle1{
+                    display: block !important;
                 }
             }
         }

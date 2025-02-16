@@ -1,9 +1,10 @@
 import { faStar, faUser, faHeart } from "@fortawesome/free-regular-svg-icons"
-import { faArrowLeft, faBars, faArrowRight, faPlay, faIcons, faMusic, faMagnifyingGlass, faEllipsis, faAngleLeft, faAngleRight, faCheck} from "@fortawesome/free-solid-svg-icons"
+import { faArrowLeft, faArrowRight, faPlay, faIcons, faMusic, faMagnifyingGlass, faEllipsis, faAngleLeft, faAngleRight, faCheck} from "@fortawesome/free-solid-svg-icons"
 import {faDownload, faGear} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export { FaRegPlayCircle  as CirclePlayIcon} from "react-icons/fa"
+export { CiHome as HomeIcon } from "react-icons/ci";
 export { BsMusicNoteList as ListSongIcon } from "react-icons/bs"
 export { FaPause as PauseSongIcon } from "react-icons/fa6"
 export { FaForwardStep as NextSongIcon } from "react-icons/fa6"
@@ -19,7 +20,9 @@ export { AiOutlineLoading3Quarters as LoadingIcon } from "react-icons/ai"
 export { IoPersonAddOutline as FollowIcon } from "react-icons/io5"
 export { RiEdit2Fill as EditIcon } from "react-icons/ri"
 export { MdDeleteForever as DeleteIcon } from "react-icons/md"
-export { CiSearch as SearchIcon2 } from "react-icons/ci";
+export { CiSearch as SearchIcon2 } from "react-icons/ci"
+export { VscError as ErrorIcon } from "react-icons/vsc"
+export { IoIosCheckmarkCircleOutline as SuccessIcon } from "react-icons/io"
 export const musicIcon = <FontAwesomeIcon icon={faMusic} />
 export const starIcon = <FontAwesomeIcon icon={faStar} />
 export const categoryIcon = <FontAwesomeIcon icon={faIcons} />

@@ -2,9 +2,8 @@ import classNames from "classnames/bind"
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import styles from './Navbar.module.scss'
-import { iconKhamPha, iconThuVien } from "src/assets/icon"
-import { musicIcon, starIcon, CirclePlayIcon } from "src/icon"
-import CreatePlaylist from "./components/CreatePlaylist"
+import { iconKhamPha, iconThuVien } from "~/assets/icon"
+import { musicIcon, starIcon } from "~/icon"
 import NavItem from "./components/NavItem"
 import { useSelector } from "react-redux"
 
@@ -13,7 +12,7 @@ function Navbar(){
     
     const c = classNames.bind(styles)
     const {isLogin} = useSelector(state => state.user)
-    const {role} = useSelector(state => state.userData)
+    const role = localStorage.getItem('role')
     const [item, setItem] = useState('Trang Chủ')
     const navigate = useNavigate()
 
@@ -34,10 +33,10 @@ function Navbar(){
                 </ul>
                 <span className='line' style={{margin: '0 20px'}}></span>
                 <ul>
-                    {<NavItem path={'/nation/vn'} name={'Việt Nam'} mainIcon={starIcon} item={item} setItem={setItem} />}
-                    {<NavItem path={'/nation/cn'} name={'Trung Quốc'} mainIcon={starIcon} item={item} setItem={setItem} />}
-                    {<NavItem path={'/nation/eu'} name={'Âu Mỹ'} mainIcon={starIcon} item={item} setItem={setItem} />}
-                    {<NavItem path={'/nation/kr'} name={'Hàn Quốc'} mainIcon={starIcon} item={item} setItem={setItem} />}
+                    {<NavItem path={'/nation/vn'} classname={'navbarNation'} name={'Việt Nam'} mainIcon={starIcon} item={item} setItem={setItem} tabletTitle={'vn'} />}
+                    {<NavItem path={'/nation/cn'} classname={'navbarNation'} name={'Trung Quốc'} mainIcon={starIcon} item={item} setItem={setItem} tabletTitle={'cn'} />}
+                    {<NavItem path={'/nation/eu'} classname={'navbarNation'} name={'Âu Mỹ'} mainIcon={starIcon} item={item} setItem={setItem} tabletTitle={'eu'} />}
+                    {<NavItem path={'/nation/kr'} classname={'navbarNation'} name={'Hàn Quốc'} mainIcon={starIcon} item={item} setItem={setItem} tabletTitle={'kr'} />}
                 </ul>
             </div>
 

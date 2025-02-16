@@ -1,7 +1,7 @@
 import classNames from "classnames/bind"
 import styles from "./SongItem.module.scss"
 import { useDispatch, useSelector } from "react-redux"
-import HoverSongAni from "src/components/HoverSongAni"
+import HoverSongAni from "~/components/HoverSongAni"
 import { useContext, useEffect, useState } from "react"
 import SongTopNumber from "../SongTopNumber"
 import SongIconMusic from "../SongIconMusic"
