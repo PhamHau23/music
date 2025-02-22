@@ -25,7 +25,7 @@ export const SearchData = ({data, isLoading}) =>{
                 <div className={c('data')}>
                     {data.map(item => (
                         <div className={c('item','flex')} key={item._id} onClick={() => handleClick(item._id)}>
-                            <img src={item.img} alt="" />
+                            <img src={item.img} alt="" loading="lazy"/>
                             <div className={c('info','flex')}>
                                 <span className={c('name')}>{capitalizeWords(item.name)}</span>
                                 <div className="flex">

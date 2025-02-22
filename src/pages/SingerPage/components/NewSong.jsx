@@ -34,7 +34,7 @@ const NewSong = ({data}) => {
             <h1>New Song</h1>
             {data &&  
             <div className={c('song')} onClick={() => handleClick(data._id)}>
-                <img src={data.img} alt="" className={c('tabletNewSongImg')}/>
+                <img src={data.img} alt="" className={c('tabletNewSongImg')} loading="lazy"/>
                 <div className={c('info')}>
                     <h1>{capitalizeWords(data.name)}</h1>
                     <p>

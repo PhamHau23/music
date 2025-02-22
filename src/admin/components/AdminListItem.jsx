@@ -7,7 +7,7 @@ export default function AdminListItem({img, handleDelete, handleEdit, name, id, 
    return (
             <li>
               <div className={c("left")}>
-                 <img src={img} alt="" />
+                 <img src={img} alt="" loading="lazy"/>
                  <div className={c("flex w-250px")}>
                     <p>
                        name: <span>{name}</span>

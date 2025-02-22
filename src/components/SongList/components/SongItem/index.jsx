@@ -52,7 +52,7 @@ function SongItem({icon}){
                         {icon ? <SongIconMusic icon={icon} className={c('songIconMusic')} />
                             : <SongTopNumber number={index + 1}/>}
                         <div className={c('songItemImg', 'relative')}>
-                            <img src={item.img} alt=""/>
+                            <img src={item.img} alt="" loading="lazy"/>
                             <HoverSongAni />
                         </div>
                         <div className="w-100">

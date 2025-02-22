@@ -38,7 +38,7 @@ function SongItemType2({className}){
             {value.map((item) => (
                 <div className={c('song')} key={item._id} onClick={() => handleClick(item._id)}>
                     <div className={c('song-img')}>
-                        <img src={item.img} alt="" />
+                        <img src={item.img} alt="" loading="lazy"/>
                         <HoverSongAni />
                     </div>
 

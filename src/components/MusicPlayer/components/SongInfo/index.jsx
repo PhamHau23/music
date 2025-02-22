@@ -17,7 +17,7 @@ export const SongInfo = () => {
     return(
         <div className={c('info')}>
             <div className={c('img')}>
-                <img src={currentSong.img} alt="" />
+                <img src={currentSong.img} alt="" loading="lazy"/>
             </div>
             <div className={c('name', 'w-100')}>
                 <div className={c('songName','w-100')}>

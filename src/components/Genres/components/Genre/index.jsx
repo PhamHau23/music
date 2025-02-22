@@ -21,7 +21,7 @@ function Genre(){
             {value.map((item) => (
                 <div className={c('item')} key={item._id} onClick={() => handleNavigateClick(item.id)}>
                     <p className={c('img')}>
-                        <img src={item.img} alt="" />
+                        <img src={item.img} alt="" loading="lazy"/>
                         <HoverSongAni />
                     </p>
                     <div className={c('info')}>

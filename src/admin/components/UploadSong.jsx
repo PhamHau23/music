@@ -3,11 +3,11 @@ import {api, c} from "../AdminLayout"
 import { removeTones } from "~/lib/removeTones"
 import { CiImageOn } from "react-icons/ci"
 import { ToastContainer, toast } from "react-toastify"
-import { ErrorIcon, SuccessIcon } from "~/icon"
+import { Link } from "react-router-dom"
 function UploadSong(){
     const [data, setData] = useState([])
     const [singer, setSinger] = useState([])
-    const [singerValue, setSingerValue] = useState('')
+    const [singerValue, setSingerValue] = useState([])
     const [nation, setNation] = useState(null)
     const [img, setImg] = useState(null)
     const searchInputRef = useRef(null)
@@ -54,7 +54,7 @@ function UploadSong(){
         setSingerValue((prev) => [...prev, singerInfo.name])
     }
 
-    //xoa ten ca si khoi list tim kiem
+    //xoa ca si khoi list tim kiem
     const handleDeleteSinger = (name) => {
         const newArr = singerValue.filter((name1) => name1 !== name)
         setSingerValue(newArr)
@@ -106,7 +106,7 @@ function UploadSong(){
                 e.target.songName.value = ''
                 setImg(null)
                 e.target.singer.value = ''
-                setSingerValue('')
+                setSingerValue([])
                 setSinger([])
                 e.target.nation.value = '0'
                 setNation('0')
@@ -127,10 +127,40 @@ function UploadSong(){
         <div className={c('uploadContainer')}>
             <ToastContainer position="top-right" autoClose={2000} />
             <h1>Thêm bài hát</h1>
-            <form action="" method="post" onSubmit={handleSubmitForm} enctype="multipart/form-data">
+            <form method="post" onSubmit={handleSubmitForm} enctype="multipart/form-data">
                 <div>
                     <label htmlFor="songName">Tên bài hát</label>
                     <input type="text" name="songName" id="songName" placeholder="nhập tên bài hát..."/>
+                </div>
+
+                <div>
+                    <label htmlFor="singer">tìm ca sĩ</label>
+                    <div className={c('uploadSearchInput')}>
+                        <input type="text" name="singer" onChange={handleChangeSearchSinger} ref={searchInputRef} placeholder="tìm kiếm..."/>
+                        <ul>
+                            {singer.length === 0
+                                ? <li>không có dữ liệu</li> 
+                                : singer.map((singer) => <li onClick={() => handleSingerClick(singer)}>{singer.name}</li>)}
+                        </ul>
+                    </div>
+                    <Link to={'/quanly/uploadsinger'}>
+                        <span className={c('addSinger')}>
+                            Thêm ca sĩ
+                        </span>
+                    </Link>
+                </div>
+
+                <div className={c('singerNameSelect-box')}>
+                    <label htmlFor="">danh sách ca sĩ</label>
+                    <ul className={c('singerNameSelect')}>
+                        {singerValue 
+                        && singerValue.map((name, index) => 
+                            <li>
+                                <p>{name}</p>
+                                <span className={c('deleteIcon')} onClick={() => handleDeleteSinger(name)}> x </span>
+                            </li>
+                        )}
+                    </ul>
                 </div>
 
                 <div className={c('imageBox')}>
@@ -144,30 +174,6 @@ function UploadSong(){
                 <div>
                     <label htmlFor="mp3">mp3 file</label>
                     <input type="file" name="mp3" id="mp3" accept="audio/*"/>
-                </div>
-                <div>
-                    <label htmlFor="singer">tìm ca sĩ</label>
-                    <div className={c('uploadSearchInput')}>
-                        <input type="text" name="singer" onChange={handleChangeSearchSinger} ref={searchInputRef} placeholder="tìm kiếm..."/>
-                        <ul>
-                            {singer.length === 0
-                                ? <li>không có dữ liệu</li> 
-                                : singer.map(singer => <li onClick={() => handleSingerClick(singer)}>{singer.name}</li>)}
-                        </ul>
-                    </div>
-                </div>
-
-                <div className={c('singerNameSelect-box')}>
-                    <label htmlFor="">danh sách ca sĩ</label>
-                    <ul className={c('singerNameSelect')}>
-                        {singerValue 
-                        && singerValue.map((name) => 
-                            <li>
-                                <p>{name}</p>
-                                <span className={c('deleteIcon')} onClick={() => handleDeleteSinger(name)}> x </span>
-                            </li>
-                        )}
-                    </ul>
                 </div>
 
                 <div>

@@ -40,7 +40,7 @@ function HomeRankList({data}){
                         <div className={c('homeRankList-item')} key={item._id}>
                             <a className={c('wrap')}>
                                 <div className={c('img')} onClick={() => playSongSelected(item._id)}>
-                                    <img src={item.img} />
+                                    <img src={item.img} loading="lazy"/>
                                     <HoverSongAni />
                                 </div>
 
