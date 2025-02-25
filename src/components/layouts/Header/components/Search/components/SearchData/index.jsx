@@ -8,11 +8,12 @@ import { fetchSongApi } from "~/redux/slices/musicPlayerSlice"
 
 const c = classNames.bind(styles)
 
-export const SearchData = ({data, isLoading}) =>{
+export const SearchData = ({data, isLoading, setDropdownVisible}) =>{
     const dispatch = useDispatch()
 
     const handleClick = (id) => {
         dispatch(fetchSongApi(id))
+        setDropdownVisible(false)
     }
     
     if(!data) return
