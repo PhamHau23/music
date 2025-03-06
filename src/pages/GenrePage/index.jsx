@@ -11,7 +11,7 @@ import { GenrePageBanner } from "./components/GenrePageBanner"
 function GenrePage(){
     const c = classNames.bind(styles)
     const {id} = useParams() 
-    const data = useFetchApi(`genrePage/${id}`)
+    const data = useFetchApi(`genrepage/${id}`)
 
     if (!data || Object.keys(data).length === 0) {
         return <div>Loading...</div>;
