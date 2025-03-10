@@ -7,8 +7,6 @@ function MusicPlayer(){
 
     const c = classNames.bind(styles)
 
-
-
     return(
         <div className={c('musicPlayer')}>
             <SongInfo/>

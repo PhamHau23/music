@@ -1,8 +1,10 @@
-export const GenrePageBanner = (data) => {
+const GenrePageBanner = ({data}) => {
     return(
         <div className="banner">
-            <img src={data.data.img} alt="" />
-            <p>{data.data.name}</p>
+            <img src={data.img} alt="" />
+            <p>{data.name}</p>
         </div>
     )
 }
+
+export default GenrePageBanner

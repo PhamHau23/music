@@ -7,6 +7,7 @@ import { capitalizeWords } from "~/lib/capitalizeWords";
 import EditForm from "./EditForm";
 import { api } from "../AdminLayout";
 import { toast, ToastContainer } from "react-toastify";
+import useFetchAdminApi from "../hook/useFetchAdminApi";
 
 export default function Song() {
    const [songData, setSongData] = useState([])
@@ -19,13 +20,23 @@ export default function Song() {
    const [editFormData, setEditFormData] =  useState([])
    const [key, setKey] = useState(null)
    const [editForm, setEditForm] = useState(false)
-   const [SongFiltered, setSongFiltered] = useState([])
+   const [songFiltered, setSongFiltered] = useState([])
    const inputRef = useRef(null)
    const selectNationRef = useRef(null)
    const selectGenreRef = useRef(null)
    const ulRef = useRef(null)
    const divSongContainerRef = useRef(null)
 
+
+   //fetch
+   const {apiData, isLoading} = useFetchAdminApi('admin/song')
+   useEffect(() => {
+      if(apiData && apiData.data){
+         setData(apiData.data)
+         setSongData(apiData.data.song)
+      }      
+   }, [apiData])
+      
    //loc list the loai theo nation
    useEffect(() => {
       if(nationValue){
@@ -34,18 +45,9 @@ export default function Song() {
       }
    }, [nationValue, setNationValue])
 
-   useEffect(() => {
-      (async() => {
-         const response = await fetch(`${api}admin/song`)
-         const data = await response.json()
-         setData(data)
-         setSongData(data.song)
-      })()
-   }, [])
-
 
    //kiem tra da co data hay chua
-   if(!songData || Object.keys(songData).length === 0){
+   if(isLoading){
       return <div>...loading</div>
    }
 
@@ -63,7 +65,7 @@ export default function Song() {
             setNoData('')
          }
       }else{
-         setSearchValue(SongFiltered)
+         setSearchValue(songFiltered)
       }
    }
 
@@ -116,6 +118,7 @@ export default function Song() {
       if(Number(selectValue) === 0){
          setDisableSelectBox(true)
          setSearchValue(songData)
+         setSongFiltered(songData)
          setNoData('')
          selectGenreRef.current.value = '0'
       }else{
@@ -136,9 +139,12 @@ export default function Song() {
    //change event genre
    const handleChangeGenreOption = () => {
       const genreId = selectGenreRef.current.value
+      const nationId = selectNationRef.current.value
       const _songByGenre = searchValue.filter(song => song.genre.id === genreId)
+      const _songByNation = songData.filter(song => song.nation.id === nationId)
       if(Number(genreId) === 0){
-         setSearchValue(searchValue)
+         setSearchValue(_songByNation)
+         setSongFiltered(_songByNation)
          setNoData('')
       }else{
          if(_songByGenre.length === 0){

@@ -6,16 +6,16 @@ import { GetApiDataProvider } from "~/contexts"
 
 function SongPage(){
     const {genreId} = useParams()
-    const data = useFetchApi(`songpage/${genreId}`)
+    const apiData = useFetchApi(`songpage/${genreId}`)
 
-    if (!data || Object.keys(data).length === 0) {
+    if (!apiData || !apiData.data) {
         return <div>Loading...</div>;
     }
 
     return (
         <div className="flex">
-            <SongPageInfo data={data.genre}/>
-            <GetApiDataProvider value={data.songsList}>
+            <SongPageInfo data={apiData.data.genre}/>
+            <GetApiDataProvider value={apiData.data.songsList}>
                 <SongPageList/>
             </GetApiDataProvider>
         </div>

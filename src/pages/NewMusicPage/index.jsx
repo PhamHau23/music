@@ -5,11 +5,16 @@ import SongList from "~/components/SongList"
 import useFetchApi from "~/hooks/useFetchApi"
 import { GetApiDataProvider } from "~/contexts"
 
-
 export default function NewMusicPage(){
 
     const c = classNames.bind(styles)
-    const data = useFetchApi('newsongpage')
+    const apiData = useFetchApi('newsongpage')
+
+    if(!apiData || !apiData.data){
+        return(
+            <div>loading...</div>
+        )
+    }
 
     return (
         <div className={c('newMusicPage')}>
@@ -20,7 +25,7 @@ export default function NewMusicPage(){
                 </div>
             </div>
             {
-                <GetApiDataProvider value={data}> 
+                <GetApiDataProvider value={apiData.data}> 
                     <SongList />
                 </GetApiDataProvider>
             }

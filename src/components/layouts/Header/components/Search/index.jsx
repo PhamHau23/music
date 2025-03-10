@@ -16,7 +16,9 @@ function Search(){
     const { data: songs, isLoading } = useQuery({
         queryKey: ["songs", query],
         queryFn: () => fetchSearchApi(`song/search/searchvalue?query=${query}`),
-        enabled: !!query
+        enabled: !!query,
+        staleTime: 0,
+        gcTime: 10000
     })
 
     useEffect(() => {

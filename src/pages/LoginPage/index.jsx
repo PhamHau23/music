@@ -104,6 +104,7 @@ function LoginPage(){
     toastLoadingId.current = register ? toast.loading('đang đăng ký') : toast.loading('đang đăng nhập')
   }
 
+  //thong bao loi
   useEffect(() => {
     if(loading == false && error){
       toast.dismiss(toastLoadingId.current)
@@ -113,6 +114,7 @@ function LoginPage(){
     }
   }, [loading, error])
 
+  //thong bao thanh cong
   useEffect(() => {
     if(register && loading == false && !error){
       toast.dismiss(toastLoadingId.current)

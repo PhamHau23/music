@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { fetchSongById } from "~/hooks/useGetSong"
+import { useGetSongById } from "~/hooks/useGetSongById"
 
 const musicPlayerSlice = createSlice({
     name: "musicPlayer",
@@ -16,6 +16,9 @@ const musicPlayerSlice = createSlice({
       setPlayRandomSong(state, action) {
         const currentSong = state.playList[action.payload]
         fetchSongApi(currentSong._id)
+      },
+      setCurrentSong(state, action){
+        state.currentSong = action.payload
       }
     },
     extraReducers: (builder) => {
@@ -39,13 +42,13 @@ const musicPlayerSlice = createSlice({
 
 export const fetchSongApi = createAsyncThunk(
     'musicPlayer/fetchSongApi',
-    async(id) => {
-        const song = fetchSongById(id)
+    async (id) => {
+        const song = useGetSongById(id)
         return song
     }
 )
 
 
-export const {setNextSong, setPlayList, setPrevSong, setPlayRandomSong} = musicPlayerSlice.actions
+export const {setNextSong, setPlayList, setPrevSong, setPlayRandomSong, setCurrentSong} = musicPlayerSlice.actions
 
 export default musicPlayerSlice.reducer

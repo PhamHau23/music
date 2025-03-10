@@ -1,34 +1,24 @@
+import axios from "axios"
 import { useEffect, useState } from "react"
 
 const api = import.meta.env.VITE_API_URL
 
-function useFetchUserData(token) {
-    const [data, setData] = useState(null)
+const useFetchUserData = async (token) => {
+  const response = await axios.get(`${api}user/profile`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    }
+  })
 
-    useEffect(() => {
-      if(!token) return
-      
-      (async() => {
-        const response = await fetch(`${api}user/profile`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
-          }
-        })
-    
-        if (!response.ok) {
-          throw new Error("Failed to fetch user info");
-        }
-    
-        const userInfo = await response.json()
-        localStorage.setItem('_id',userInfo._id)
-        localStorage.setItem('role',userInfo.role)
-        setData(userInfo)
-      })()
-    }, [token])
-
-    return data
+  const userInfo = await response.data
+  
+  await Promise.all([
+    localStorage.setItem('_id',userInfo._id),
+    localStorage.setItem('role',userInfo.role)
+  ])
+  
+  return userInfo
 }
 
 export default useFetchUserData

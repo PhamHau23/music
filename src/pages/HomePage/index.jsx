@@ -8,17 +8,17 @@ import useFetchApi from "~/hooks/useFetchApi"
 function HomePage(){
 
     const c = classNames.bind(styles) 
-    const data = useFetchApi('homepage')
+    const apiData = useFetchApi('homepage')
     
-    if (!data || Object.keys(data).length === 0) {
+    if (!apiData || Object.keys(apiData).length === 0) {
         return <div>Loading...</div>
     }
 
     return(
         <div className={c('home-page')}>
             <Banner />
-            <HomeNewMusicList data = {data} />
-            <HomeRankList data = {data}/>
+            <HomeNewMusicList data = {apiData.data} />
+            <HomeRankList data = {apiData.data}/>
         </div>
     )
 }

@@ -5,11 +5,13 @@ import { dau3Cham } from "~/icon"
 import HoverSongAni from "~/components/HoverSongAni"
 import { SongDataContext } from "~/contexts"
 import { useDispatch } from "react-redux"
-import { fetchSongApi, setPlayList } from "~/redux/slices/musicPlayerSlice"
+import { setCurrentSong, setPlayList } from "~/redux/slices/musicPlayerSlice"
 import { capitalizeWords } from "~/lib/capitalizeWords"
 import { formatDate } from "~/lib/formatDate"
 import { convertSeconds } from "~/lib/convertSeconds"
 import { useNavigate } from "react-router-dom"
+import { useGetSongById } from "~/hooks/useGetSongById"
+import { useQuery } from "@tanstack/react-query"
 
 function SongItemType2({className}){
     const [songId, setSongId] = useState(null)
@@ -17,6 +19,14 @@ function SongItemType2({className}){
     const dispatch = useDispatch()
     const {value} = useContext(SongDataContext)
     const navigate = useNavigate()
+    
+    const {data: song} = useQuery({
+        queryKey: ['songId', songId],
+        queryFn: () => useGetSongById(songId),
+        staleTime: 1000 * 60 * 5,
+        gcTime: 1000 * 60 * 10,
+        enabled: !!songId
+    })
 
     const handleClick = (id) => {
         setSongId(id)
@@ -28,10 +38,10 @@ function SongItemType2({className}){
     }
 
     useEffect(() => {
-        if(songId){
-            dispatch(fetchSongApi(songId))
+        if(song && song.data){
+            dispatch(setCurrentSong(song.data))
         }
-    }, [songId, dispatch])
+    }, [dispatch, song])
    
     return(
         <div className={c('songItemType2-wrap', className)}>

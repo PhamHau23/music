@@ -6,6 +6,7 @@ import Navbar from "../NavBar"
 import MusicPlayer from "~/components/MusicPlayer"
 import useFetchUserData from "~/hooks/useFetchUserData"
 import { setImgUser } from "~/redux/slices/userDataSlice"
+import { useQuery } from "@tanstack/react-query"
 
 
 function MainLayout({children}){
@@ -13,13 +14,17 @@ function MainLayout({children}){
     const {isLogin} = useSelector(state => state.user)
     const token = localStorage.getItem('authToken')
     const dispatch = useDispatch()
-    const userData = useFetchUserData(token)
-    
 
-    if(isLogin){
-        if(userData != null && Object.keys(userData).length > 0){
-            dispatch(setImgUser(userData.img))
-        }
+    const {data: userData} = useQuery({
+        queryKey: ['userData', token],
+        queryFn: () => useFetchUserData(token),
+        enabled: !!token,
+        staleTime: 0,
+        gcTime: 1000 * 60 * 60 * 24
+    })
+
+    if(isLogin && userData){
+        dispatch(setImgUser(userData.img))
     }
 
     return(

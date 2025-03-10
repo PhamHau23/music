@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import {SearchIcon2} from "~/icon";
 import { removeTones } from "~/lib/removeTones";
 import { toast, ToastContainer } from 'react-toastify';
+import useFetchAdminApi from "../hook/useFetchAdminApi";
 
 
 
@@ -16,16 +17,16 @@ export default function AdminGenres(){
     const selectRef = useRef()
 
     //fetch data
+    const {apiData, isLoading} = useFetchAdminApi('admin/genres')
+
     useEffect(() => {
-        (async() => {
-            const response = await fetch(`${api}admin/genres`)
-            const data = await response.json()
-            setData(data)
-        })()
-    }, [])
+        if(apiData && apiData.data){
+            setData(apiData.data)
+        }
+    },[apiData])
 
     //kiem tra da co data hay chua
-    if(!data || Object.keys(data).length === 0){
+    if(isLoading){
         return <div>...loading</div>
     }
 
@@ -52,6 +53,7 @@ export default function AdminGenres(){
         const selectValue = selectRef.current.value
         if(Number(selectValue) === 0){
             setSearchValue(data)
+            setGenreByNation(data)
             setNoData('')
         }else{
             const dataFilter = data.filter((item) => item.nation === selectValue)

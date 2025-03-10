@@ -30,7 +30,7 @@ function ProfilePage (){
         }
     }
 
-    //submit form
+    //gui yeu cau doi avatar cho backend
     const handleSubmitForm = async(e) => {
         e.preventDefault()
         

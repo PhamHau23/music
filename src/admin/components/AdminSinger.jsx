@@ -4,6 +4,7 @@ import AdminListItem from "./AdminListItem"
 import { SearchIcon2 } from "~/icon"
 import { toast, ToastContainer } from "react-toastify"
 import { removeTones } from "~/lib/removeTones"
+import useFetchAdminApi from "../hook/useFetchAdminApi"
 
 export default function AdminSinger(){
     const [singerData, setSingerData] = useState([])
@@ -13,15 +14,15 @@ export default function AdminSinger(){
     const selectRef = useRef(null)
     
     //fetch data
-    useEffect(() => {
-        (async() => {
-            const response = await fetch(`${api}singer`)
-            const data = await response.json()
-            setSingerData(data)
-        })()
-    }, [])
+    const {apiData, isLoading} = useFetchAdminApi('singer')
 
-    if(!singerData || Object.keys(singerData) === 0){
+    useEffect(() => {
+        if(apiData && apiData.data){
+            setSingerData(apiData.data)
+        }
+    }, [apiData])
+
+    if(isLoading){
         return(
             <div>...loading</div>
         )
@@ -50,6 +51,7 @@ export default function AdminSinger(){
         const selectValue = e.target.value
         if(Number(selectValue) === 0){
             setSearchValue(singerData)
+            setSingerData(singerData)
             setNoData('')
         }else{
             const _singerByNation = singerData.filter((singer) => singer.nation === selectValue)

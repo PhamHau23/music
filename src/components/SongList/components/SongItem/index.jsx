@@ -6,10 +6,12 @@ import { useContext, useEffect, useState } from "react"
 import SongTopNumber from "../SongTopNumber"
 import SongIconMusic from "../SongIconMusic"
 import { GetApiDataContext } from "~/contexts"
-import { fetchSongApi, setPlayList } from "~/redux/slices/musicPlayerSlice"
+import { fetchSongApi, setCurrentSong, setPlayList } from "~/redux/slices/musicPlayerSlice"
 import { capitalizeWords } from "~/lib/capitalizeWords"
 import { convertSeconds } from "~/lib/convertSeconds"
 import { useNavigate } from "react-router-dom"
+import { useGetSongById } from "~/hooks/useGetSongById"
+import { useQuery } from "@tanstack/react-query"
 
 
 function SongItem({icon}){
@@ -19,6 +21,14 @@ function SongItem({icon}){
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {currentSong} = useSelector(state => state.musicPlayer)
+
+    const song = useQuery({
+        queryKey: ['songId', songId],
+        queryFn: () => useGetSongById(songId),
+        taleTime: 1000 * 60 * 5,
+        gcTime: 1000 * 60 * 10,
+        enabled: !!songId
+    })
 
     const handleClick = (id) => {
         setSongId(id)
@@ -34,10 +44,10 @@ function SongItem({icon}){
     }
 
     useEffect(() => {
-        if(songId){
-            dispatch(fetchSongApi(songId))
+        if(song && song.data){
+            dispatch(setCurrentSong(song.data))
         }
-    }, [songId, dispatch])
+    }, [song, dispatch])
 
 
     return(

@@ -1,6 +1,5 @@
 import HomePage from '~/pages/HomePage'
 import LoginPage from '~/pages/LoginPage'
-import RankPage from '~/pages/RankPage'
 import NewMusicPage from '~/pages/NewMusicPage'
 import SongPage from '~/pages/SongPage'
 import GenrePage from '~/pages/GenrePage'
@@ -20,7 +19,6 @@ import AdminSinger from '~/admin/components/AdminSinger'
 
 export const publicRoutes = [
     {path: '/', component: HomePage},
-    {path: '/rank', component: RankPage},
     {path: '/login', component: LoginPage, layout: LoginLayout},
     {path: '/newmusic', component: NewMusicPage},
     {path: '/songs/:genreId', component: SongPage},

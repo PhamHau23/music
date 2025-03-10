@@ -6,9 +6,9 @@ import { capitalizeWords } from "~/lib/capitalizeWords"
 export const SongInfo = () => {
 
     const c = classNames.bind(styles)
-    const {currentSong, loading} = useSelector((state) => state.musicPlayer)
+    const {currentSong} = useSelector((state) => state.musicPlayer)
 
-    if(loading){
+    if(!currentSong){
         return(
             <div className={c('info')}></div>
         )
