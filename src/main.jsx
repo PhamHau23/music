@@ -4,9 +4,7 @@ import App from './App.jsx'
 import  GlobalStyles  from './components/globalStyles/index.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-      <GlobalStyles>
-        <App/>
-      </GlobalStyles>
-  </StrictMode>
+  <GlobalStyles>
+    <App/>
+  </GlobalStyles>
 )

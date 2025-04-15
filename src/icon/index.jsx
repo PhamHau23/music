@@ -23,6 +23,8 @@ export { MdDeleteForever as DeleteIcon } from "react-icons/md"
 export { CiSearch as SearchIcon2 } from "react-icons/ci"
 export { VscError as ErrorIcon } from "react-icons/vsc"
 export { IoIosCheckmarkCircleOutline as SuccessIcon } from "react-icons/io"
+export { HiChatBubbleBottomCenterText as ChatIcon } from "react-icons/hi2"
+export { AiFillRobot as AiChatbotIcon } from "react-icons/ai"
 export const musicIcon = <FontAwesomeIcon icon={faMusic} />
 export const starIcon = <FontAwesomeIcon icon={faStar} />
 export const categoryIcon = <FontAwesomeIcon icon={faIcons} />

@@ -4,6 +4,7 @@ import Banner from "./components/Banner"
 import HomeNewMusicList from "./components/HomeNewMusicList"
 import HomeRankList from "./components/HomeRankList"
 import useFetchApi from "~/hooks/useFetchApi"
+import ChatBotIcon from "~components/ChatBotIcon"
 
 function HomePage(){
 
@@ -19,6 +20,7 @@ function HomePage(){
             <Banner />
             <HomeNewMusicList data = {apiData.data} />
             <HomeRankList data = {apiData.data}/>
+            <ChatBotIcon />
         </div>
     )
 }
