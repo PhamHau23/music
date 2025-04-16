@@ -3,7 +3,7 @@ import styles from "./ChatBotContainer.module.scss";
 import chatbotApi from "~/services/chatbotApi";
 import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setMessage } from "~/redux/slices/messageSlice";
+import { setMessage, resetData } from "~/redux/slices/messageSlice";
 
 const c = classNames.bind(styles)
 function ChatBotContainer({setOpen}) {
@@ -17,14 +17,14 @@ function ChatBotContainer({setOpen}) {
         async function fetchData() {
             try {
                 const response = await chatbotApi(userMessage);
-                dispatch(setMessage({text: response.text, from: 'bot'}))
+                dispatch(setMessage({text: response.reply, from: 'bot'}))
             } catch (error) {
                 console.error("Error fetching data:", error);
                 // Handle error appropriately
             }
         }
         fetchData();
-    }, [message])
+    }, [userMessage])
 
     const handleClose = () => {
         setOpen(false)
@@ -32,6 +32,7 @@ function ChatBotContainer({setOpen}) {
 
     const handleSendMessage = () => {
         const message = inputRef.current.value
+        inputRef.current.value = ''
         if (message) {
             setUserMessage(message)
             dispatch(setMessage({text: message, from: 'user'}))
@@ -55,6 +56,18 @@ function ChatBotContainer({setOpen}) {
                         </div>
                         <span className={c("time")}>{time}</span>
                     </div>
+                    {
+                        message.map((msg, index) => (
+                            msg.text && <div key={index} className={c("userMessage", msg.from === 'user' ? 'userMessage' : 'botMessage')}>
+                                <div className={c("userMessageContent", msg.from === 'user' ? 'userMessageContent' : 'botMessageContent')}>
+                                    <p>
+                                        {msg.text}
+                                    </p>
+                                </div>
+                                <span className={c("time")}>{time}</span>
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
 

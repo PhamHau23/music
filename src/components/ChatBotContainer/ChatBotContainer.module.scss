@@ -11,6 +11,10 @@
     max-width: 100%;
     width: fit-content;
     word-wrap: break-word;
+
+    p{
+        margin: unset;
+    }
 }
 
 @keyframes slideInRight {
