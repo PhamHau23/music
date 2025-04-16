@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import styles from "./ChatBot.module.scss";
-import { AiChatbotIcon, ChatIcon } from "~/icon";
-import { useMemo, useState } from "react";
+import { AiChatbotIcon } from "~/icon";
+import { useState } from "react";
 import ChatBotContainer from "~components/ChatBotContainer";
 
 const c = classNames.bind(styles)

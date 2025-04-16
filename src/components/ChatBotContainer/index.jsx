@@ -1,9 +1,9 @@
 import classNames from "classnames/bind";
 import styles from "./ChatBotContainer.module.scss";
-import chatbotApi from "~/services/chatbotApi";
+import chatbotApi from "~services/chatbotApi";
 import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setMessage, resetData } from "~/redux/slices/messageSlice";
+import { setMessage } from "~redux/slices/messageSlice";
 
 const c = classNames.bind(styles)
 function ChatBotContainer({setOpen}) {
